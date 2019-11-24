@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import MainMenu from "./components/main-menus";
+import SectionEvents from "./components/section-events";
+import Footer from "./components/footer";
+import SectionRanking from "./components/section-ranking";
+import Partners from "./components/section-parter";
+import Slider from "./components/slider";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <React.Fragment>
+      <header>
+        <MainMenu />
+        <Slider />
       </header>
-    </div>
+      <main>
+        <SectionEvents />
+        <SectionRanking />
+        <Partners />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </React.Fragment>
   );
 }
-
 export default App;
