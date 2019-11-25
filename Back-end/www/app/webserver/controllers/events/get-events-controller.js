@@ -7,7 +7,7 @@ async function getEvents(req, res, next) {
   try {
     const sqlQuery = `SELECT title,start_date,country,city,description,image,email,web
     FROM events 
-    ORDER BY desc
+
     ;`;
     const connection = await mysqlPool.getConnection();
     const [rows] = await connection.execute(sqlQuery);

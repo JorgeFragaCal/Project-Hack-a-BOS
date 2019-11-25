@@ -17,7 +17,7 @@ app.use(cors());
  */
 app.use("/api/account", routes.account);
 app.use("/api/auth", routes.auth);
-app.use("/api/event", routes.events);
+app.use("/api/events", routes.events);
 app.use("/api/users", routes.user);
 
 /**

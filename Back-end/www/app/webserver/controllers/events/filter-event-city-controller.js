@@ -1,28 +1,15 @@
 "use strict";
 const mysqlPool = require("../../../database/mysql-pool");
 async function filterEventByCity(req, res, next) {
-  const { city } = req.query;
+  const { city } = req.params;
   if (city) {
     try {
-      const sqlQuery = `SELECT ?
+      const sqlQuery = `SELECT *
     FROM events
-    WHERE city = ?
-    ORDER BY puntuation desc
-     ;`;
+    WHERE city = 'lugo'
+    ;`;
       const connection = await mysqlPool.getConnection();
-      const [rows] = await connection.execute(sqlQuery, [
-        {
-          title: title,
-          start_date: start_date,
-          country: country,
-          city: city,
-          description: description,
-          image: image,
-          email: email,
-          web: web
-        },
-        city
-      ]);
+      const [rows] = await connection.execute(sqlQuery, [city]);
       connection.release();
 
       console.log("rows", rows);

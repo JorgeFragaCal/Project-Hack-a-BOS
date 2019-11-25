@@ -12,8 +12,8 @@ const router = express.Router();
 router.get("/my-events", checkAccontSession, getUserEvent);
 router.get("/", getEvents);
 router.get("/event/?skill", filterEventBySkill);
-router.get("/event/?city", filterEventByCity);
+router.get("/:city", filterEventByCity);
 router.post("/", createEvent);
-router.put("/:id", checkAccontSession, updateEvent);
+//router.put("/:id", checkAccontSession, updateEvent);
 
 module.exports = router;

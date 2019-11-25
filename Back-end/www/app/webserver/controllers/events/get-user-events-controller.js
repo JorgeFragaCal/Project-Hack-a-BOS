@@ -6,7 +6,7 @@ async function getUserEvent(req, res, next) {
    */
   const { userId, role } = req.claims;
   try {
-    const sqlQuery = `SELECT ?
+    const sqlQuery = `SELECT *
     FROM user_participate_events 
     INNER JOIN user 
     ON user_participate_events.user_iduser = user.id
@@ -15,19 +15,7 @@ async function getUserEvent(req, res, next) {
     WHERE user_participate_events.user_iduser = ?
      ;`;
     const connection = await mysqlPool.getConnection();
-    const [rows] = await connection.execute(sqlQuery, [
-      {
-        title: title,
-        start_date: start_date,
-        country: country,
-        city: city,
-        description: description,
-        image: image,
-        email: email,
-        web: web
-      },
-      userId
-    ]);
+    const [rows] = await connection.execute(sqlQuery, [userId]);
     connection.release();
 
     console.log("rows", rows);

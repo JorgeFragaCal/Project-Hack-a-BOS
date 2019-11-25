@@ -9,8 +9,7 @@ function MainMenu() {
           </a>
         </li>
         <li>
-          <a href="#">
-            {" "}
+          <a href="/ranking">
             <i className="fa fa-trophy"></i> Ranking
           </a>
         </li>

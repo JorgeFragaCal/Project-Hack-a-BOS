@@ -4,25 +4,13 @@ async function filterEventBySkill(req, res, next) {
   const { skill } = req.query;
   if (skill) {
     try {
-      const sqlQuery = `SELECT ?
+      const sqlQuery = `SELECT *
     INNER JOIN events on ranking.events_idevents = events.idevents
     WHERE skills = ?
     ORDER BY puntuation desc
      ;`;
       const connection = await mysqlPool.getConnection();
-      const [rows] = await connection.execute(sqlQuery, [
-        {
-          title: title,
-          start_date: start_date,
-          country: country,
-          city: city,
-          description: description,
-          image: image,
-          email: email,
-          web: web
-        },
-        skill
-      ]);
+      const [rows] = await connection.execute(sqlQuery, [skill]);
       connection.release();
 
       console.log("rows", rows);
