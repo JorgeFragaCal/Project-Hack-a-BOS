@@ -1,13 +1,13 @@
 import React from "react";
 
-export function Event() {
+export function Event({ image, title, date_start, web, email }) {
   return (
     <section id="event">
-      <div>imagen</div>
-      <h3>METEOHACK</h3>
-      <p>November 8-10, 2019</p>
-      <p>aquahacking.com</p>
-      <p>hackathon@vancouver.ca</p>
+      <div>{image}</div>
+      <h3>{title}</h3>
+      <p>{date_start}</p>
+      <p>{web}</p>
+      <p>{email}</p>
       <a id="button-event" href="">
         CHEK IT OUT
       </a>

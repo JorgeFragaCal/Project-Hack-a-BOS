@@ -1,10 +1,9 @@
 import React from "react";
 import MainMenu from "./components/main-menus";
-import SectionEvents from "./components/section-events";
 import Footer from "./components/footer";
-import SectionRanking from "./components/section-ranking";
-import Partners from "./components/section-parter";
 import Slider from "./components/slider";
+import { Home } from "./components/pages/principal-page";
+import { Auth } from "./components/auth";
 
 function App() {
   return (
@@ -14,9 +13,7 @@ function App() {
         <Slider />
       </header>
       <main>
-        <SectionEvents />
-        <SectionRanking />
-        <Partners />
+        <Home />
       </main>
       <footer>
         <Footer />
