@@ -1,7 +1,7 @@
 "use strict";
 const mysqlPool = require("../../../database/mysql-pool");
 async function filterEventBySkill(req, res, next) {
-  const { skill } = req.query;
+  const { skill, city } = req.query;
   if (skill) {
     try {
       const sqlQuery = `SELECT ?
@@ -34,5 +34,39 @@ async function filterEventBySkill(req, res, next) {
       return res.status(500).send({ message: e.message });
     }
   }
+  if (city) {
+    try {
+      const sqlQuery = `SELECT ?
+    FROM events
+    WHERE city = ?
+    ORDER BY puntuation desc
+     ;`;
+      const connection = await mysqlPool.getConnection();
+      const [rows] = await connection.execute(sqlQuery, [
+        {
+          title: title,
+          start_date: start_date,
+          country: country,
+          city: city,
+          description: description,
+          image: image,
+          email: email,
+          web: web
+        },
+        city
+      ]);
+      connection.release();
+
+      console.log("rows", rows);
+
+      return res.status(200).send({
+        data: rows
+      });
+    } catch (e) {
+      return res.status(500).send({ message: e.message });
+    }
+  }
+
+  res.status(400).send("not filter found");
 }
 module.exports = filterEventBySkill;
