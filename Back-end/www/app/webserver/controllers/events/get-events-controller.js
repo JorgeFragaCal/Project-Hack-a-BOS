@@ -5,12 +5,13 @@ async function getEvents(req, res, next) {
    * Select All Events
    */
   try {
-    const sqlQuery = `SELECT title,start_date,country,city,description,image,email,web
+    const sqlQuery = `SELECT  *
     FROM events 
-
+    ORDER BY start_date desc
     ;`;
+
     const connection = await mysqlPool.getConnection();
-    const [rows] = await connection.execute(sqlQuery);
+    const [rows] = await connection.execute(sqlQuery, []);
     connection.release();
 
     console.log("rows", rows);

@@ -1,4 +1,5 @@
 import React from "react";
+//import '../css/terms.css'
 export function Terms() {
   return (
     <React.Fragment>

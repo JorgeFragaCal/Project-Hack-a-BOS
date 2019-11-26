@@ -35,16 +35,15 @@ async function createEvent(res, req, next) {
     try {
       const connection = await mysqlPool.getConnection();
       const sqlInsercion = "INSERT INTO `Hackathones`.`event` SET ? ";
+
       await connection.query(sqlInsercion, {
         title: eventData.title,
         start_date: eventData.start_date,
-        address: eventData.address,
-        city: eventData.city,
         country: eventData.country,
+        city: eventData.city,
         description: eventData.description,
         image: eventData.image,
         email: eventData.email,
-        price: eventData.price,
         web: eventData.web
       });
       connection.release();

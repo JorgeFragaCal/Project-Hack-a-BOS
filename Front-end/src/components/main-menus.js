@@ -1,45 +1,41 @@
-import React from "react";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-function MainMenu() {
+export function MainMenu() {
+  const [open, setOpen] = useState(false);
   return (
-    <nav className="menu">
-      <ul className="hidden">
-        <li>
-          <a href="index.html">
-            <img src="" alt="logo" />
-          </a>
-        </li>
-        <li>
-          <a href="/ranking">
-            <i className="fa fa-trophy"></i> Ranking
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i className="fa fa-calendar"></i> Events calendar
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i className="fa fa-info-circle"></i> About us
-          </a>
-        </li>
-        <li>
-          <a href="login.html">Log In</a> |<a href="signup.html">Sign up</a>
-        </li>
-      </ul>
-      <button
-        id="menu-button"
-        onClick={() => {
-          //  menu.classList.toggle("hidden");
-          //  overflow.classList.toggle("hidden");
-        }}
-      >
-        <i className="fa fa-bars fa-lg"></i>
-      </button>
-    </nav>
+    <header>
+      <nav className="menu">
+        <ul className={` ${open ? "hidden" : ""}`}>
+          <li>
+            <Link to="/">
+              <img src="/" alt="logo" />
+            </Link>
+          </li>
+          <li>
+            <Link to="/ranking">
+              <i className="fa fa-trophy"></i> Ranking
+            </Link>
+          </li>
+          <li>
+            <Link to="/events">
+              <i className="fa fa-calendar"></i> Events calendar
+            </Link>
+          </li>
+          <li>
+            <Link to="/about">
+              <i className="fa fa-info-circle"></i> About us
+            </Link>
+          </li>
+          <li>
+            <Link to="/login">Log In</Link> | <Link to="/signup">Sign up</Link>
+          </li>
+        </ul>
+        <button id="menu-button" onClick={e => setOpen(!open)}>
+          <i className="fa fa-bars fa-lg"></i>
+        </button>
+      </nav>
+      <div className={`site-overlay-active ${open ? "hidden" : ""}`}></div>
+    </header>
   );
 }
-
-export default MainMenu;

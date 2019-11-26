@@ -1,18 +1,17 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Footer() {
   return (
-    <React.Fragment>
-      <div className="site-overlay-active hidden"></div>
+    <footer>
       <nav className="services">
         <h3>Hackatones</h3>
         <h5>(c) 2019, Hackathones Inc.</h5>
         <ul>
           <li>
-            <a href="views/privacy.html">Privacy Policy</a>
+            <Link to="/privacy">Privacy Policy</Link>
           </li>
           <li>
-            <a href="views/terms.html">Terms of Service</a>
+            <Link to="/terms">Terms of Service</Link>
           </li>
         </ul>
       </nav>
@@ -52,7 +51,7 @@ function Footer() {
           </a>
         </address>
       </section>
-    </React.Fragment>
+    </footer>
   );
 }
 

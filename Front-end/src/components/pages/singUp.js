@@ -1,5 +1,5 @@
 import React from "react";
-export function Privacy() {
+export function SignUp() {
   return (
     <React.Fragment>
       <section id="register" class="auth">

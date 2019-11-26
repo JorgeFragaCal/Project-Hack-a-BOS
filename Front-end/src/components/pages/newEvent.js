@@ -1,5 +1,5 @@
 import React from "react";
-export function Privacy() {
+export function NewEvent() {
   return (
     <React.Fragment>
       <section id="create-event" class="auth">

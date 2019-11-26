@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/privacy.css";
+//import "../css/privacy.css";
 export function Privacy() {
   return (
     <React.Fragment>
