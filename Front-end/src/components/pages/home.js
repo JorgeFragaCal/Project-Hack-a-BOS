@@ -6,11 +6,13 @@ import { Slider } from "../slider";
 
 export function Home() {
   return (
-    <main>
+    <React.Fragment>
       <Slider />
-      <SectionEvents />
-      <SectionRanking />
-      <Partners />
-    </main>
+      <main id="main-home">
+        <SectionEvents />
+        <SectionRanking />
+        <Partners />
+      </main>
+    </React.Fragment>
   );
 }

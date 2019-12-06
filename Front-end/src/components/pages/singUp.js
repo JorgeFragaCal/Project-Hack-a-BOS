@@ -4,7 +4,7 @@ export function SignUp() {
     <React.Fragment>
       <section id="register" class="auth">
         <form action="">
-          <h2>Sign up to see an event or contestand</h2>
+          <h1>Sign up </h1>
 
           <fieldset>
             <label for="name">Name</label>
@@ -26,11 +26,11 @@ export function SignUp() {
             <input type="password" name="pass2" id="pass2" />
           </fieldset>
 
-          <button>Next</button>
+          <button id="button-orange">Next</button>
 
           <p>
             Have an account?
-            <a href="http://localhost:3000//login.html">Log in</a>
+            <a href="http://localhost:3000//login.html"> Log in</a>
           </p>
         </form>
       </section>

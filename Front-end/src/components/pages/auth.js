@@ -1,5 +1,4 @@
 import React from "react";
-import "../../css/login.css";
 export function Auth() {
   return (
     <section id="access" class="auth">
@@ -13,7 +12,7 @@ export function Auth() {
           <label for="pass1">Contraseña</label>
           <input type="password" name="pass1" id="pass1" />
         </fieldset>
-        <button>Log in</button>
+        <button id="button-orange">Log in</button>
         <p>
           <a href="/">Forgot password?</a>
         </p>

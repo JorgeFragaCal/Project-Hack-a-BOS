@@ -4,7 +4,7 @@ import { Ranking } from "./ranking";
 function SectionRanking() {
   return (
     <React.Fragment>
-      <section className="ranking-list">
+      <section id="ranking-list-home">
         <h2>Latest Ranking</h2>
         <Ranking />
         <Ranking />

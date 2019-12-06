@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 export function Slider() {
   return (
-    <React.Fragment>
+    <section id="section-slider">
       <section id="slider">
         <h1>hackathones</h1>
-        <button type="button">
+        <button type="button" id="button-orange">
           <Link to="/newevent"> Plan your hackaton</Link>
         </button>
       </section>
-    </React.Fragment>
+    </section>
   );
 }

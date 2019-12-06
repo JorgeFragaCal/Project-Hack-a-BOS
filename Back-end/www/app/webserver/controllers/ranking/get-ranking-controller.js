@@ -2,11 +2,11 @@
 const mysqlPool = require("../../../database/mysql-pool");
 async function getEvents(req, res, next) {
   /**
-   * Select All Events
+   * Select All Rankings
    */
   try {
     const sqlQuery = `SELECT  *
-    FROM events 
+    FROM ranking
     ORDER BY start_date asc
     ;`;
 

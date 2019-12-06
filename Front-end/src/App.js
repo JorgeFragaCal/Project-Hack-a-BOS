@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { MainMenu } from "./components/main-menus";
 import Footer from "./components/footer";
@@ -9,6 +9,7 @@ import { SignUp } from "./components/pages/singUp";
 import { Privacy } from "./components/pages/privacy";
 import { Terms } from "./components/pages/terms";
 import { NewEvent } from "./components/pages/newEvent";
+import { EventsPage } from "./components/pages/events-page";
 
 function App() {
   return (
@@ -37,9 +38,9 @@ function App() {
         {/* <Route path="/rankings">
           <SectionRanking />
         </Route> */}
-        {/* <Route path="/events">
-          <SectionEvents />
-        </Route> */}
+        <Route path="/events">
+          <EventsPage />
+        </Route>
         {/* <Route path="/event/:eventDetailId">
           <EventDetail />
         </Route> */}

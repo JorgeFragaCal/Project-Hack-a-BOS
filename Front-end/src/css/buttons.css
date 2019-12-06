@@ -1,0 +1,40 @@
+button {
+  border: 0;
+  background: orange;
+  color: white;
+}
+#button-slider {
+  padding: 0.25rem 3rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#button-event {
+  width: 100%;
+  background: #40c655;
+  padding: 0.5rem 2rem;
+}
+
+#menu-button {
+  background: white;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 4rem;
+  right: 1.5rem;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  color: #252525;
+  z-index: 100;
+  display: block;
+}
+.button-search {
+  padding: 1rem;
+}
+@media only screen and (max-width: 640px) {
+  #menu-button {
+    display: block;
+  }
+}
