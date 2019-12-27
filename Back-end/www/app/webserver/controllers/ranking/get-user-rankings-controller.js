@@ -1,19 +1,21 @@
 "use strict";
 const mysqlPool = require("../../../database/mysql-pool");
-async function getRanking(req, res, next) {
+async function getUserRanking(req, res, next) {
   /**
-   * Select All Rankings
+   * Select User Rankings
    */
+  const { id } = req.params;
   try {
-    const sqlQuery = `SELECT title ,username , puntuation,skills
+    const sqlQuery = `SELECT title , puntuation,skills,username
     FROM Hackathones.ranking 
     INNER JOIN Hackathones.user on ranking.user_iduser = user.id
     INNER JOIN Hackathones.events on ranking.events_idevents = events.id
+    WHERE user.id=?
     ORDER BY puntuation desc
     ;`;
 
     const connection = await mysqlPool.getConnection();
-    const [rows] = await connection.execute(sqlQuery, []);
+    const [rows] = await connection.execute(sqlQuery, [id]);
     connection.release();
 
     console.log("rows", rows);
@@ -25,4 +27,4 @@ async function getRanking(req, res, next) {
     return res.status(500).send({ message: e.message });
   }
 }
-module.exports = getRanking;
+module.exports = getUserRanking;

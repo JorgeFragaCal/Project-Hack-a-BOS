@@ -16,7 +16,7 @@ async function getUserEvent(req, res, next) {
      ;`;
 
     const connection = await mysqlPool.getConnection();
-    const [rows] = await connection.execute(sqlQuery, [, userId]);
+    const [rows] = await connection.execute(sqlQuery, [userId]);
     connection.release();
 
     console.log("rows", rows);

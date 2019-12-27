@@ -1,18 +1,18 @@
 "use strict";
 const mysqlPool = require("../../../database/mysql-pool");
-async function getEvents(req, res, next) {
-  /**
-   * Select All Events
-   */
-
+async function getUser(req, res, next) {
+  /*
+  Get User Data
+  */
+  const { id } = req.params;
   try {
     const sqlQuery = `SELECT  *
-    FROM events 
-    ORDER BY start_date asc
+    FROM user
+    WHERE id=?
     ;`;
 
     const connection = await mysqlPool.getConnection();
-    const [rows] = await connection.execute(sqlQuery, []);
+    const [rows] = await connection.execute(sqlQuery, [id]);
     connection.release();
 
     console.log("rows", rows);
@@ -24,4 +24,4 @@ async function getEvents(req, res, next) {
     return res.status(500).send({ message: e.message });
   }
 }
-module.exports = getEvents;
+module.exports = getUser;

@@ -13,8 +13,8 @@ function SectionEvents() {
   return (
     <section id="list-events-home">
       <h2>Events</h2>
-      {events.map(
-        ({ id, title, start_date, city, image, email, prize, web }) => (
+      {events
+        .map(({ id, title, start_date, city, image, email, prize, web }) => (
           <section className="event" key={id}>
             <div
               className="image"
@@ -43,8 +43,8 @@ function SectionEvents() {
               </Link>
             </section>
           </section>
-        )
-      )}
+        ))
+        .slice(0, 4)}
     </section>
   );
 }

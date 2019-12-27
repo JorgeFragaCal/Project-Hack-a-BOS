@@ -5,6 +5,7 @@ export function Privacy() {
     <React.Fragment>
       <section id="privacy">
         <h1>Privacy policy</h1>
+
         <section id="Effective">
           <h2>Effective Date: December, 2019</h2>
           <p>
@@ -17,6 +18,7 @@ export function Privacy() {
             www.hackathones.es (the “Site”).
           </p>
         </section>
+
         <section id="Acceptance">
           <h2>Description of User and Acceptance of Terms</h2>
           <p>
@@ -61,6 +63,7 @@ export function Privacy() {
             meaning set forth in our Terms of Service.
           </p>
         </section>
+        
         <section id="collect">
           <h2>
             What Information We Collect/Receive; the Purpose of Collection and
@@ -309,6 +312,7 @@ export function Privacy() {
             question.
           </p>
         </section>
+
       </section>
     </React.Fragment>
   );

@@ -6,8 +6,8 @@ export function Slider() {
     <section id="section-slider">
       <section id="slider">
         <h1>hackathones</h1>
-        <button type="button" id="button-orange">
-          <Link to="/newevent"> Plan your hackaton</Link>
+        <button type="button" className="button-orange">
+          <Link to="/newEvent"> Plan your hackaton</Link>
         </button>
       </section>
     </section>

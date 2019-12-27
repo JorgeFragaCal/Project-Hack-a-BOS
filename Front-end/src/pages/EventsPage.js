@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getEvents } from "../../http/get-events";
-import { Selector } from "../selector";
-import { Search } from "../search";
-import { Slider } from "../slider-form";
+import { getEvents } from "../http/get-events";
+import { Selector } from "../components/Selector";
+import { Search } from "../components/Search";
+import { Slider } from "../components/Slider-form";
 
 export function EventsPage() {
   const [events, setEvents] = useState([]);
@@ -18,7 +18,7 @@ export function EventsPage() {
 
   return (
     <main id="main-page-of-events">
-      <span></span>
+      <span />
       <section className="aside">
         <p>{city}</p>
         <Search text={city} onSearchChange={text => setCity(text)} />

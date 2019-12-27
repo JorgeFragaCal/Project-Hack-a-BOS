@@ -3,6 +3,7 @@ button {
   background: orange;
   color: white;
 }
+
 #button-slider {
   padding: 0.25rem 3rem;
   font-weight: bold;
@@ -30,9 +31,11 @@ button {
   z-index: 100;
   display: block;
 }
+
 .button-search {
   padding: 1rem;
 }
+
 @media only screen and (max-width: 640px) {
   #menu-button {
     display: block;

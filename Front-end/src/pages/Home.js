@@ -1,8 +1,8 @@
 import React from "react";
-import SectionEvents from "../section-events";
-import SectionRanking from "../section-ranking";
-import Partners from "../section-parter";
-import { Slider } from "../slider";
+import SectionEvents from "../components/Section-events";
+import SectionRanking from "../components/Section-ranking";
+import Partners from "../components/Section-parter";
+import { Slider } from "../components/Slider";
 
 export function Home() {
   return (

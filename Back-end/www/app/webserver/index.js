@@ -18,7 +18,8 @@ app.use(cors());
 app.use("/api/account", routes.account);
 app.use("/api/auth", routes.auth);
 app.use("/api/events", routes.events);
-app.use("/api/users", routes.user);
+app.use("/api/user", routes.user);
+app.use("/api/rankings", routes.rankings);
 
 /**
  * Create a default router for endpoint / to send next string: 'base url : /api'

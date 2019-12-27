@@ -1,0 +1,49 @@
+@import "styles.css";
+
+#about {
+	padding: 40px 20px 100px 20px;
+	background: #f6f5f5;
+	font-size: 1.1em;
+}
+
+#company {
+	background: #f6f5f5;
+	display: block;
+	box-sizing: inherit;
+	font-size: 1.1em;
+	-webkit-font-smoothing: antialiased;
+	font-weight: normal;
+	line-height: 1.5;
+}
+
+#testimonial2 {
+	background: #f6f5f5;
+	display: block;
+	box-sizing: inherit;
+	font-size: 1.1em;
+	-webkit-font-smoothing: antialiased;
+	font-weight: normal;
+	line-height: 1.5;
+}
+
+#careers {
+	background: #f6f5f5;
+	display: block;
+	box-sizing: inherit;
+	font-size: 1.1em;
+	-webkit-font-smoothing: antialiased;
+	font-weight: normal;
+	line-height: 1.5;
+}
+
+#past-partners {
+	padding-top: 100px;
+	padding-bottom: 100px;
+	background: #f6f5f5;
+	font-weight: normal;
+	line-height: 1.5;
+}
+
+.row {
+	padding: 10px 10px 100px 20px;
+}
