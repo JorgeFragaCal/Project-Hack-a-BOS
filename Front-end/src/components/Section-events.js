@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getEvents } from "../http/get-events";
+import { getEvents } from "../http/eventService";
 import { Link } from "react-router-dom";
+import aos from "aos";
 
 function SectionEvents() {
   const [events, setEvents] = useState([]);
-
+  aos.init();
   useEffect(() => {
     getEvents().then(events => {
       setEvents(events);
@@ -12,38 +13,61 @@ function SectionEvents() {
   }, []);
   return (
     <section id="list-events-home">
-      <h2>Events</h2>
+      <h2>New Events</h2>
       {events
-        .map(({ id, title, start_date, city, image, email, prize, web }) => (
-          <section className="event" key={id}>
-            <div
-              className="image"
-              style={{
-                backgroundImage: `url(${
-                  image === "N/A" ? "https://via.placeholder.com/300" : image
-                }`
-              }}
-            />
-            <section id="event-medium-description">
-              <h2>{title}</h2>
-              <p>{start_date}</p>
-              <p>City: {city}</p>
-              <p href={web}>{web}</p>
-              <p>
-                <i className="fa fa-globe fa-fw"> </i>
-                {web}
-              </p>
-              <p>
-                <i className="fa fa-envelope"> </i>
-                {email}
-              </p>
-              <p>Prize: {prize} €</p>
-              <Link to={`/event/${id}`} id="button-event">
-                CHEK IT OUT
-              </Link>
+        .map(
+          ({
+            id,
+            title,
+            start_date,
+            city,
+            image,
+            email,
+            prize,
+            web,
+            country,
+            address
+          }) => (
+            <section
+              className="event"
+              key={id}
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
+            >
+              <div
+                className="image"
+                style={{
+                  backgroundImage: `url(${
+                    image === "null" ? "https://via.placeholder.com/300" : image
+                  }`
+                }}
+              />
+              <section id="event-medium-description">
+                <h2>{title}</h2>
+                <p>{start_date}</p>
+                <p>
+                  {address}
+                  {city} {country}
+                </p>
+                <p href={web}>{web}</p>
+                <p>
+                  <i className="fa fa-globe fa-fw"> </i>
+                  {web}
+                </p>
+                <p>
+                  <i className="fa fa-envelope fa-fw"> </i>
+                  {email}
+                </p>
+                <p id="prize">Prize: {prize} €</p>
+                <Link to={`/event/${id}`} className="button-blue">
+                  CHEK IT OUT
+                </Link>
+              </section>
             </section>
-          </section>
-        ))
+          )
+        )
         .slice(0, 4)}
     </section>
   );

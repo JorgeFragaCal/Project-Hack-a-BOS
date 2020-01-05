@@ -1,5 +1,4 @@
 import React from "react";
-//import "../css/privacy.css";
 export function Privacy() {
   return (
     <React.Fragment>
@@ -63,7 +62,7 @@ export function Privacy() {
             meaning set forth in our Terms of Service.
           </p>
         </section>
-        
+
         <section id="collect">
           <h2>
             What Information We Collect/Receive; the Purpose of Collection and
@@ -312,7 +311,6 @@ export function Privacy() {
             question.
           </p>
         </section>
-
       </section>
     </React.Fragment>
   );

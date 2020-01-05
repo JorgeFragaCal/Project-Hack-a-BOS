@@ -4,6 +4,7 @@ const multer = require("multer");
 const checkAccountSession = require("../controllers/account/check-account-session");
 const uploadAvatar = require("../controllers/user/upload-avatar-controller");
 const getUser = require("../controllers/user/get-user-controller");
+const updateUser = require("../controllers/user/update-user-controller");
 /*Create object multer*/
 const upload = multer();
 const router = express.Router();
@@ -14,6 +15,6 @@ router.post(
   upload.single("avatar"),
   uploadAvatar
 );
-router.get("/:id", getUser);
+router.get("/:id", getUser, updateUser);
 
 module.exports = router;

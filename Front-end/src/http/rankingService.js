@@ -6,4 +6,10 @@ async function getRanking() {
   const response = await axios.get(`${API_BASE_URL}`);
   return response.data.data || [];
 }
-export { getRanking };
+
+async function getUserRanking(id) {
+  const response = await axios.get(`${API_BASE_URL}/user/${id}`);
+  return response.data.data || [];
+}
+
+export { getRanking, getUserRanking };

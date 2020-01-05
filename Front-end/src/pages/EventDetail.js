@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { getEvent } from "../http/get-event";
+import { getEvent } from "../http/eventService";
 import { useParams } from "react-router-dom";
+import Interweave from "interweave";
 
 export function EventDetail() {
   const [eventDetail, setEventDetail] = useState([]);
@@ -16,7 +17,6 @@ export function EventDetail() {
 
   return (
     <React.Fragment>
-      <h2>Prueba</h2>
       {eventDetail.map(
         ({
           image,
@@ -28,20 +28,19 @@ export function EventDetail() {
           prize,
           web,
           email,
-          desciption
+          description
         }) => (
           <section className="events">
-            <h2>Events</h2>
             <section id="event">
               <div
                 className="image"
                 style={{
                   backgroundImage: `url(${
-                    image === "N/A" ? "https://via.placeholder.com/1000" : image
+                    image === "null" ? "https://via.placeholder.com/300" : image
                   }`
                 }}
               />
-              <h3>{title}</h3>
+              <h1>{title}</h1>
               <p>{date_start}</p>
               <p>{web}</p>
               <p>{email}</p>
@@ -49,7 +48,8 @@ export function EventDetail() {
               <p>{city}</p>
               <p>{country}</p>
               <p>{prize}</p>
-              <section className="description">{desciption}</section>
+              <Interweave content={description}></Interweave>
+              <section className="description"></section>
             </section>
           </section>
         )

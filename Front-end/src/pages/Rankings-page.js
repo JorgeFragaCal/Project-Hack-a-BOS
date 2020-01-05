@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getRanking } from "../http/get-ranking";
+import { getRanking } from "../http/rankingService";
 export function RankingPage() {
   const [rankings, setRankings] = useState([]);
   useEffect(() => {

@@ -5,7 +5,7 @@ async function getRanking(req, res, next) {
    * Select All Rankings
    */
   try {
-    const sqlQuery = `SELECT title ,username , puntuation,skills
+    const sqlQuery = `SELECT title ,username , puntuation,skills,user_iduser
     FROM Hackathones.ranking 
     INNER JOIN Hackathones.user on ranking.user_iduser = user.id
     INNER JOIN Hackathones.events on ranking.events_idevents = events.id

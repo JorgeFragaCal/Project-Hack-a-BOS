@@ -1,5 +1,7 @@
 "use strict";
+
 const jwt = require("jsonwebtoken");
+
 async function checkAccountSession(req, res, next) {
   /*
   Miramos el header que contiene el token del id codificado
@@ -11,6 +13,7 @@ async function checkAccountSession(req, res, next) {
   }
 
   const [prefix, token] = authoritation.split(" ");
+
   if (prefix !== "Bearer") {
     return res.status(401).send();
   }
@@ -20,10 +23,10 @@ async function checkAccountSession(req, res, next) {
   }
 
   try {
-    const { userId, role } = jwt.verify(token, process.env.AUTH_JWT_SECRET);
+    const { userId, userType } = jwt.verify(token, process.env.AUTH_JWT_SECRET);
     req.claims = {
       userId,
-      role
+      userType
     };
     return next();
   } catch (e) {

@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `events`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `events` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` varchar(100) NOT NULL,
   `title` varchar(45) NOT NULL,
   `start_date` varchar(45) NOT NULL,
   `address` varchar(45) DEFAULT NULL,

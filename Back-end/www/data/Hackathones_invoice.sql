@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `invoice`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `invoice` (
   `id` varchar(100) NOT NULL,
-  `user_iduser` int(11) NOT NULL,
-  `events_idevents` int(11) NOT NULL,
+  `user_iduser` varchar(100) NOT NULL,
+  `events_idevents` varchar(100) NOT NULL,
   `IBAN` varchar(45) NOT NULL,
   `price` float NOT NULL,
   `IVA` int(11) NOT NULL,

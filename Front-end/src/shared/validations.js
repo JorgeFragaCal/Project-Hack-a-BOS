@@ -9,8 +9,8 @@ export const LOGIN_VALIDATIONS = {
 	password: {
 		required: 'The password should be in place',
 		minLength: {
-			message: 'Password length should be greater than 6',
-			value: 6
+			message: 'Password length should be greater than 4',
+			value: 4
 		}
 	}
 };
@@ -29,8 +29,8 @@ export const REGISTER_VALIDATIONS = {
 	password: {
 		required: 'The password should be in place',
 		minLength: {
-			message: 'Password length should be greater than 6',
-			value: 6
+			message: 'Password length should be greater than 4',
+			value: 4
 		}
 	}
 };

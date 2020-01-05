@@ -9,7 +9,7 @@ export function MainMenu() {
         <ul className={` ${open ? "hidden" : ""}`}>
           <li>
             <Link to="/">
-              <img src="/" alt="logo" />
+              <i className="fa fa-home"></i> Home
             </Link>
           </li>
           <li>

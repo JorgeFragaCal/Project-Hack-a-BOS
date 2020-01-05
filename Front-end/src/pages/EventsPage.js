@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getEvents } from "../http/get-events";
+import { getEvents } from "../http/eventService";
 import { Selector } from "../components/Selector";
 import { Search } from "../components/Search";
 import { Slider } from "../components/Slider-form";
@@ -31,15 +31,13 @@ export function EventsPage() {
           ({ id, title, start_date, city, image, email, prize, web }) => (
             <section className="event-on-event-page" key={id}>
               <div
-                className="image"
+                className="image-event-page"
                 style={{
-                  backgroundImage: `url(${
-                    image === "N/A" ? "https://via.placeholder.com/300" : image
-                  }`
+                  backgroundImage: `url(${image}`
                 }}
               />
               <section id="event-medium-description">
-                <h2>{title}</h2>
+                <h3>{title}</h3>
                 <p>{start_date}</p>
                 <p>City: {city}</p>
                 <p href={web}>{web}</p>

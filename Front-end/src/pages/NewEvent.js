@@ -42,7 +42,7 @@ export function NewEvent() {
             <label for="description">Description</label>
             <textarea name="description" id="" rows="10"></textarea>
           </fieldset>
-          <button>Create</button>
+          <button className="button-blue">Create</button>
         </form>
       </section>
     </React.Fragment>

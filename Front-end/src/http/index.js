@@ -1,21 +1,31 @@
 import axios from "axios";
 import { login, register } from "./authService";
-import { getEvents } from "./get-events";
-import { getRanking } from "./get-ranking";
+import { getRanking, getUserRanking } from "./rankingService";
+import {
+  getEvent,
+  getEvents,
+  createEvent,
+  deleteEvent,
+  uploadEvent
+} from "./eventService";
 
 const TOKEN_URLS = ["/auth", "/users"];
 
-// Al iniciar este módulo recuperamos el usuario guardado del localStorage;
+function isBearerTokenRequired(url) {
+  const parsedURL = new URL(url);
+  if (TOKEN_URLS.includes(parsedURL.pathname)) {
+    return false;
+  }
+  return true;
+}
+
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-// Iniciamos la variable token con lo almacenado en el localStorage
-// Si no tenia nada la inicio a null
 let token = (currentUser && currentUser.token) || null;
 
-// Definimos interceptors
 axios.interceptors.request.use(
   function(config) {
-    if (token && TOKEN_URLS.indexOf(config.url) === -1) {
+    if (token && isBearerTokenRequired(config.url)) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
     return config;
@@ -45,4 +55,14 @@ axios.interceptors.response.use(
   }
 );
 
-export { login, register, getEvents, getRanking };
+export {
+  login,
+  register,
+  getEvent,
+  getEvents,
+  createEvent,
+  deleteEvent,
+  uploadEvent,
+  getRanking,
+  getUserRanking
+};

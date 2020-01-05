@@ -17,10 +17,6 @@ export function Login() {
     mode: "onBlur"
   });
 
-  // console.log("WATCH: ", watch());
-  // console.log("STATE: ", formState);
-  // console.log("ERRORS:", errors);
-
   const handleSignin = formData => {
     return signIn(formData)
       .then(d => console.log(d))
@@ -66,7 +62,7 @@ export function Login() {
         </fieldset>
         <button
           type="submit"
-          className="button-orange"
+          className="button-blue"
           disabled={formState.isSubmitting}
         >
           Log in

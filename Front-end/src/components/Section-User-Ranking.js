@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getUserRanking } from "../http/get-user-ranking";
-import { Link, useParams } from "react-router-dom";
+import { getUserRanking } from "../http/rankingService";
+import { useParams } from "react-router-dom";
 
 function SectionUserRanking() {
   const [rankings, setRankings] = useState([]);

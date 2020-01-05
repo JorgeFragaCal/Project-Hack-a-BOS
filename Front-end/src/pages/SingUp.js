@@ -6,10 +6,9 @@ import { REGISTER_VALIDATIONS } from "../shared/validations";
 
 export function SignUp() {
   const { signUp } = useAuth();
-  const { register, errors, handleSubmit, setError } = useForm({
-    mode: "onBlur" // Lanza validaciones cada vez que hago blur
+  const { register, errors, handleSubmit, formState, setError } = useForm({
+    mode: "onBlur"
   });
-  // Utilizar la funcion creada en el auth-context
 
   const handleSignUp = formData => {
     return signUp(formData).catch(error => {
@@ -84,7 +83,14 @@ export function SignUp() {
             </span>
           </fieldset>
 
-          <button className="button-orange">Next</button>
+          <button
+            id="login"
+            className="button-blue"
+            type="submit"
+            disabled={formState.isSubmitting}
+          >
+            Create account
+          </button>
 
           <p>
             Have an account?

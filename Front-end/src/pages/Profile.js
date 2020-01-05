@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getProfile } from "../http/get-profile";
-import { useParams, Link } from "react-router-dom";
+import { getProfile } from "../http/get-account";
+import { useParams } from "react-router-dom";
 import SectionUserRanking from "../components/Section-User-Ranking";
 
 export function Profile() {
