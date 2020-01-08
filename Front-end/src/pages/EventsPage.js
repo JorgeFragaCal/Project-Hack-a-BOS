@@ -3,7 +3,7 @@ import { getEvents } from "../http/eventService";
 import { Selector } from "../components/Selector";
 import { Search } from "../components/Search";
 import { Slider } from "../components/Slider-form";
-
+import { Link } from "react-router-dom";
 export function EventsPage() {
   const [events, setEvents] = useState([]);
   const [city, setCity] = useState("");
@@ -28,7 +28,18 @@ export function EventsPage() {
 
       <section className=" list-of-events-event-page">
         {events.map(
-          ({ id, title, start_date, city, image, email, prize, web }) => (
+          ({
+            id,
+            title,
+            start_date,
+            city,
+            image,
+            email,
+            prize,
+            web,
+            address,
+            country
+          }) => (
             <section className="event-on-event-page" key={id}>
               <div
                 className="image-event-page"
@@ -39,7 +50,11 @@ export function EventsPage() {
               <section id="event-medium-description">
                 <h3>{title}</h3>
                 <p>{start_date}</p>
-                <p>City: {city}</p>
+                <p>
+                  {" "}
+                  {address}
+                  {city} {country}
+                </p>
                 <p href={web}>{web}</p>
                 <p>
                   <i className="fa fa-globe fa-fw"> </i>
@@ -50,6 +65,9 @@ export function EventsPage() {
                   {email}
                 </p>
                 <p>Prize: {prize} €</p>
+                <Link to={`/event/${id}`} className="button-blue">
+                  CHEK IT OUT
+                </Link>
               </section>
             </section>
           )

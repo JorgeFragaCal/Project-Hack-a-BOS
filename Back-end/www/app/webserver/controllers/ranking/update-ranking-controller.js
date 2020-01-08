@@ -5,62 +5,22 @@ const mysqlPool = require("../../../database/mysql-pool");
 
 async function validateSchema(payload) {
   const schema = Joi.object({
-    title: Joi.string()
+    skills: Joi.string()
       .trim()
       .min(1)
       .max(45)
       .required(),
-    start_date: Joi.string()
+    puntuation: Joi.string()
       .trim()
       .min(1)
-      .max(45)
+      .max(11)
       .required(),
-    address: Joi.string()
-      .trim()
-      .min(1)
-      .max(45)
-      .required(),
-    city: Joi.string()
-      .trim()
-      .min(1)
-      .max(45)
-      .required(),
-    country: Joi.string()
-      .trim()
-      .min(1)
-      .max(45)
-      .required(),
-    description: Joi.string()
-      .trim()
-      .min(1)
-      .max(65536)
-      .required(),
-    image: Joi.string()
-      .trim()
-      .min(1)
-      .max(65536)
-      .required(),
-    email: Joi.string()
-      .trim()
-      .min(1)
-      .max(45)
-      .required(),
-    prize: Joi.string()
-      .trim()
-      .min(1)
-      .max(45)
-      .required(),
-    web: Joi.string()
-      .trim()
-      .min(1)
-      .max(45)
-      .required(),
-    eventId: Joi.string()
+    events_idevents: Joi.string()
       .guid({
         version: ["uuidv4"]
       })
       .required(),
-    userId: Joi.string()
+    user_iduser: Joi.string()
       .guid({
         version: ["uuidv4"]
       })
@@ -78,13 +38,13 @@ async function validateSchema(payload) {
  * @param {Function} next
  * @returns {Object} Tag created
  */
-async function updateEvent(req, res, next) {
-  const { eventId } = req.params;
+async function updateRanking(req, res, next) {
+  const { events_idevents } = req.params;
   const { userId } = req.claims;
-  const noteData = {
+  const rankingData = {
     ...req.body,
-    eventId,
-    userId
+    events_idevents,
+    user_iduser
   };
 
   try {
@@ -100,7 +60,7 @@ async function updateEvent(req, res, next) {
       .toISOString()
       .replace("T", " ")
       .substring(0, 19);
-    const sqlUpdateEvent = `UPDATE events
+    const sqlUpdateRanking = `UPDATE events
       SET title = ?,
         start_date = ?,
         address = ?,
@@ -112,21 +72,13 @@ async function updateEvent(req, res, next) {
         prize = ?,
         web = ?
       WHERE id = ?
-        AND user_id = ?`;
+        AND user_iduser = ?`;
 
-    await connection.query(sqlUpdateEvent, [
-      eventData.title,
-      eventData.start_date,
-      eventData.address,
-      eventData.city,
-      eventData.country,
-      eventData.description,
-      eventData.image,
-      eventData.email,
-      eventData.prize,
-      eventData.web,
-      eventId,
-      userId
+    await connection.query(sqlUpdateRanking, [
+      rankingData.skills,
+      rankingData.puntuation,
+      events_idevents,
+      user_iduser
     ]);
     connection.release();
 
@@ -139,4 +91,4 @@ async function updateEvent(req, res, next) {
   }
 }
 
-module.exports = updateEvent;
+module.exports = updateRanking;

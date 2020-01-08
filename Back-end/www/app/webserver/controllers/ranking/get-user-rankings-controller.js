@@ -7,9 +7,9 @@ async function getUserRanking(req, res, next) {
   const { id } = req.params;
   try {
     const sqlQuery = `SELECT title , puntuation,skills,username
-    FROM Hackathones.ranking 
-    INNER JOIN Hackathones.user on ranking.user_iduser = user.id
-    INNER JOIN Hackathones.events on ranking.events_idevents = events.id
+    FROM ranking 
+    INNER JOIN user on ranking.user_iduser = user.id
+    INNER JOIN events on ranking.events_idevents = events.id
     WHERE user.id=?
     ORDER BY puntuation desc
     ;`;

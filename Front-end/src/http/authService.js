@@ -20,14 +20,16 @@ export function register({
   address,
   city,
   country,
-  userType
+  userType,
+  id
 }) {
   return axios.post(`${BASE_URL}/account`, {
+    id,
     username,
     email,
     password,
-    image,
     userType,
+    image: image ? image : "null",
     name: name ? name : "null",
     lastName: lastName ? lastName : "null",
     phone: phone ? phone : "null",

@@ -4,7 +4,6 @@ import SectionRanking from "../components/Section-ranking";
 import Partners from "../components/Section-parter";
 import { Slider } from "../components/Slider";
 import img from "../img/whatis.jpg";
-import aos from "aos";
 export function Home() {
   return (
     <React.Fragment>
@@ -16,9 +15,14 @@ export function Home() {
           data-aos-duration="1000"
           data-aos-easing="ease-in-out"
         >
-          <h2>WHAT IS A HACKATON ?</h2>
+          <h2>WHAT IS A HACKATHON ?</h2>
           <div id="whatis">
-            <img src={img} className="image" id="img-whatis"></img>
+            <img
+              src={img}
+              className="image"
+              id="img-whatis"
+              alt="hackathon"
+            ></img>
             <p>
               Hackathon is a coding marathon, an event lasting from few hours to
               few days, usually hosted on weekends. Despite the possible

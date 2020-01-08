@@ -24,7 +24,7 @@ export function Profile() {
           lastName,
           email,
           phone,
-          image,
+          avatar,
           address,
           city,
           country,
@@ -32,34 +32,33 @@ export function Profile() {
         }) => (
           <section className="profile">
             <div
-              className="image"
+              className="image-profile"
               style={{
                 backgroundImage: `url(${
-                  image === "N/A" ? "https://via.placeholder.com/1000" : image
+                  avatar === "N/A" ? "https://via.placeholder.com/1000" : avatar
                 }`
               }}
             />
-            <section>
-              <h2>1000000</h2>
+            <section id="user-data">
+              <h2>250{puntuation}</h2>
               <h1>{username}</h1>
               <h3>
                 {name} {lastName}
               </h3>
               <div>
-                <p>{email}</p>
-                <p>{phone}</p>
                 <p>
                   {address}, {city}, {country}
                 </p>
+                <p>{phone}</p>
+                <p>{email}</p>
               </div>
-              <button className="button-orange">Enviar Mensaje</button>
+              <button className="button-blue">Enviar Mensaje</button>
             </section>
           </section>
         )
       )}
-      <section>
-        <SectionUserRanking />
-      </section>
+
+      <SectionUserRanking />
     </main>
   );
 }

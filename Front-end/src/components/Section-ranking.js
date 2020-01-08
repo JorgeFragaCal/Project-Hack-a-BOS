@@ -17,6 +17,7 @@ function SectionRanking() {
         .map(({ title }) => (
           <section
             className="ranking"
+            id="ranking-home"
             key={title}
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -26,11 +27,23 @@ function SectionRanking() {
             <i className="fa fa-trophy fa-3x" />
             <h3>{title}</h3>
             <ul>
-              {rankings.map(({ username, puntuation, user_iduser }) => (
+              {rankings.map(({ username, puntuation, user_iduser, avatar }) => (
                 <li key={username}>
-                  <Link to={`/user/${user_iduser}`}>
-                    {username} {puntuation}
-                  </Link>
+                  <div
+                    className="image-profile-small"
+                    style={{
+                      backgroundImage: `url(${
+                        avatar === "N/A"
+                          ? "https://via.placeholder.com/1000"
+                          : avatar
+                      }`
+                    }}
+                  />
+                  <div>
+                    <Link to={`/user/${user_iduser}`}>
+                      {username} {puntuation}
+                    </Link>
+                  </div>
                 </li>
               ))}
             </ul>

@@ -75,7 +75,7 @@ async function createAccount(req, res, next) {
       email: accountData.email,
       password: securePassword,
       phone: accountData.phone,
-      image: accountData.image,
+      avatar: accountData.image,
       address: accountData.address,
       city: accountData.city,
       country: accountData.country,

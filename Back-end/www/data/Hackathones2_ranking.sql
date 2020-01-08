@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.28, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: Hackathones
+-- Host: 127.0.0.1    Database: Hackathones2
 -- ------------------------------------------------------
--- Server version	5.7.27-0ubuntu0.18.04.1
+-- Server version	5.7.28-0ubuntu0.18.04.4
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,32 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_assment_events`
+-- Table structure for table `ranking`
 --
 
-DROP TABLE IF EXISTS `user_assment_events`;
+DROP TABLE IF EXISTS `ranking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_assment_events` (
+CREATE TABLE `ranking` (
   `user_iduser` varchar(100) NOT NULL,
   `events_idevents` varchar(100) NOT NULL,
-  `assement` varchar(45) NOT NULL,
+  `skills` varchar(45) NOT NULL,
+  `puntuation` int(11) NOT NULL,
   PRIMARY KEY (`user_iduser`,`events_idevents`),
-  KEY `fk_user_has_events_events2_idx` (`events_idevents`),
-  KEY `fk_user_has_events_user1_idx` (`user_iduser`),
-  CONSTRAINT `fk_user_has_events_events2` FOREIGN KEY (`events_idevents`) REFERENCES `events` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_has_events_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_user_has_events_events3_idx` (`events_idevents`),
+  KEY `fk_user_has_events_user2_idx` (`user_iduser`),
+  CONSTRAINT `fk_user_has_events_events3` FOREIGN KEY (`events_idevents`) REFERENCES `events` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_has_events_user2` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_assment_events`
+-- Dumping data for table `ranking`
 --
 
-LOCK TABLES `user_assment_events` WRITE;
-/*!40000 ALTER TABLE `user_assment_events` DISABLE KEYS */;
-INSERT INTO `user_assment_events` VALUES (1,1,'4'),(1,2,'5'),(2,1,'3'),(2,2,'4'),(3,1,'2'),(3,2,'5');
-/*!40000 ALTER TABLE `user_assment_events` ENABLE KEYS */;
+LOCK TABLES `ranking` WRITE;
+/*!40000 ALTER TABLE `ranking` DISABLE KEYS */;
+INSERT INTO `ranking` VALUES ('1','1','java',100),('1','2','php',20),('1','3','javascript',50),('2','1','java',80),('2','2','php',100),('3','1','java',30),('3','2','node',100);
+/*!40000 ALTER TABLE `ranking` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-24 16:42:19
+-- Dump completed on 2020-01-07 18:52:56

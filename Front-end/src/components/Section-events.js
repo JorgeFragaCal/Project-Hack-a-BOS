@@ -45,7 +45,7 @@ function SectionEvents() {
                 }}
               />
               <section id="event-medium-description">
-                <h2>{title}</h2>
+                <h3>{title}</h3>
                 <p>{start_date}</p>
                 <p>
                   {address}

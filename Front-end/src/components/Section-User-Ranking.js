@@ -15,12 +15,13 @@ function SectionUserRanking() {
       <h2>My Events</h2>
       {rankings
         .map(({ title, username, puntuation }) => (
-          <section className="ranking-on-prfile-page" key={title}>
+          <section id="ranking-user" className="ranking" key={title}>
             <i className="fa fa-trophy fa-3x" />
             <h3>{title}</h3>
             <ul>
-              <li>{username}</li>
-              <li>{puntuation}</li>
+              <li>
+                {username} {puntuation}
+              </li>
             </ul>
           </section>
         ))

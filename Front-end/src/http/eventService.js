@@ -29,12 +29,12 @@ async function createEvent({
   return axios.post(`${API_BASE_URL}/events`, {
     title,
     start_date,
+    email,
     address: address ? address : "null",
     city: city ? city : "null",
     country: country ? country : "null",
     description: description ? description : "null",
     image: image ? image : "https://via.placeholder.com/300",
-    email,
     prize: prize ? prize : "free",
     web: web ? web : "null"
   });

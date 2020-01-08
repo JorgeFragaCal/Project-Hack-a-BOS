@@ -1,23 +1,17 @@
 @import "styles.css";
 
 #about {
-	padding: 40px 20px 100px 20px;
-	background: #f6f5f5;
-	font-size: 1.1em;
+  padding: 2rem 1rem;
+  background: hsl(216, 18%, 16%);
 }
 
-#company {
-	background: #f6f5f5;
-	display: block;
-	box-sizing: inherit;
-	font-size: 1.1em;
-	-webkit-font-smoothing: antialiased;
-	font-weight: normal;
-	line-height: 1.5;
+#Company img {
+  width: 50px;
+  height: 50px;
 }
-
+/*
 #testimonial2 {
-	background: #f6f5f5;
+	background:  #222831;
 	display: block;
 	box-sizing: inherit;
 	font-size: 1.1em;
@@ -27,7 +21,7 @@
 }
 
 #careers {
-	background: #f6f5f5;
+	background: #222831;
 	display: block;
 	box-sizing: inherit;
 	font-size: 1.1em;
@@ -35,27 +29,24 @@
 	font-weight: normal;
 	line-height: 1.5;
 }
-
-#past-partners {
-	padding-top: 100px;
-	padding-bottom: 100px;
-	background: #f6f5f5;
-	font-weight: normal;
-	line-height: 1.5;
+*/
+#team {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-
-#about h2 {
-	font-size: 2.5rem;
+.leader {
+  margin: 0 auto;
+  max-width: 300px;
+  text-align: center;
 }
-
-#about img {
-	width: 300px;
-	height: 300px;
-	display: inline-flexbox;
-	margin: auto;
-	padding: 1.5rem;
+.image-team {
+  width: 200px;
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 1rem auto;
 }
-
-.row {
-	padding: 10px 10px 100px 20px;
+.social ul li {
+  display: inline-block;
 }

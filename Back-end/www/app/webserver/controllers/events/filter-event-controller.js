@@ -6,7 +6,7 @@ async function filterEvent(req, res, next) {
   if (skill) {
     try {
       const sqlQuery = `SELECT  *
-      FROM Hackathones.ranking 
+      FROM ranking 
       INNER JOIN events on ranking.events_idevents = events.id
       WHERE skills = ?
       order by puntuation desc

@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "browser-sync start --server www --files www"
+    "start": "node www/index.js"
   },
   "keywords": [],
   "author": "",

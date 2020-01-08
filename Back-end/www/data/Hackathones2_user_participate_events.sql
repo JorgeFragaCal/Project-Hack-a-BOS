@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.28, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: Hackathones
+-- Host: 127.0.0.1    Database: Hackathones2
 -- ------------------------------------------------------
--- Server version	5.7.27-0ubuntu0.18.04.1
+-- Server version	5.7.28-0ubuntu0.18.04.4
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,7 +39,7 @@ CREATE TABLE `user_participate_events` (
 
 LOCK TABLES `user_participate_events` WRITE;
 /*!40000 ALTER TABLE `user_participate_events` DISABLE KEYS */;
-INSERT INTO `user_participate_events` VALUES (1,1),(2,1),(3,1),(1,2),(2,2),(3,2);
+INSERT INTO `user_participate_events` VALUES ('1','1'),('2','1'),('3','1'),('1','2'),('2','2'),('3','2');
 /*!40000 ALTER TABLE `user_participate_events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-24 16:42:19
+-- Dump completed on 2020-01-07 18:52:56

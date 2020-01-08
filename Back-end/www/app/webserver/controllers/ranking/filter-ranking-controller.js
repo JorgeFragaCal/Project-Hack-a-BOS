@@ -7,7 +7,7 @@ async function filterRanking(req, res, next) {
   if (puntuation) {
     try {
       const sqlQuery = `SELECT  *
-      FROM Hackathones ranking .ranking 
+      FROM ranking.ranking 
       INNER JOIN user_participate_events_events_idevents = events.id
       WHERE skills = ?
       order by puntuation desc

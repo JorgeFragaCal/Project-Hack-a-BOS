@@ -35,7 +35,7 @@ async function validateSchema(payload) {
       .min(1)
       .max(45)
       .required(),
-    image: Joi.string()
+    avatar: Joi.string()
       .trim()
       .min(1)
       .max(65536)
@@ -60,10 +60,15 @@ async function validateSchema(payload) {
       .min(1)
       .max(45)
       .required(),
-    timeREgister: Joi.string()
+    created_at: Joi.string()
       .trim()
       .min(1)
       .max(45)
+      .required(),
+    verification_code: Joi.string()
+      .trim()
+      .min(1)
+      .max(100)
       .required(),
     userId: Joi.string()
       .guid({
@@ -120,11 +125,12 @@ async function updateUser(req, res, next) {
         city = ?,
         country = ?,
         userType = ?,
-        timeREgister = ?
+        created_at = ?,
+        verification_code
       WHERE id = ?
         AND iduser = ?`;
 
-    await connection.query(sqlUpdateUSer, [
+    await connection.query(sqlUpdateUser, [
       userData.username,
       userData.name,
       userData.lastname,
@@ -132,12 +138,13 @@ async function updateUser(req, res, next) {
       userData.phone,
       userData.password,
       userData,
-      image,
+      avatar,
       userData.address,
       userData.city,
       userData.country,
       userData.userType,
-      userData.timeREgister,
+      userData.created_at,
+      userData.verification_code,
       userId
     ]);
     connection.release();

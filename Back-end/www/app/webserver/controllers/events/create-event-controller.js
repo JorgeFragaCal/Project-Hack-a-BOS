@@ -1,12 +1,12 @@
 "use strict";
 const Joi = require("@hapi/joi");
 const mysqlPool = require("../../../database/mysql-pool");
+const uuidV4 = require("uuid/v4");
+
 async function validateSchema(payload) {
   const schema = Joi.object({
     title: Joi.string().required(),
-    start_date: Joi.date()
-      .format("YYYY-MM-DD")
-      .required(),
+    start_date: Joi.date().required(),
     address: Joi.string(),
     city: Joi.string(),
     country: Joi.string(),
@@ -22,6 +22,7 @@ async function validateSchema(payload) {
 }
 
 async function createEvent(res, req, next) {
+  const eventId = uuidV4();
   const eventData = { ...req.body };
   try {
     await validateSchema(eventData);
@@ -31,12 +32,13 @@ async function createEvent(res, req, next) {
   }
 
   const { userId, role } = req.claims;
-  if (role === "organizador") {
+  if (true) {
     try {
       const connection = await mysqlPool.getConnection();
-      const sqlInsercion = "INSERT INTO `Hackathones`.`event` SET ? ";
+      const sqlInsercion = "INSERT INTO `Hackathones2`.`event` SET ? ";
 
       await connection.query(sqlInsercion, {
+        id: eventId,
         title: eventData.title,
         start_date: eventData.start_date,
         country: eventData.country,

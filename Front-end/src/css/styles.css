@@ -18,7 +18,7 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 h1 {
-  margin: 1rem;
+  margin: 1rem 0;
 }
 
 h2 {
@@ -40,6 +40,20 @@ a {
   color: white;
   text-align: center;
 }
+select {
+  display: block;
+  background-color: transparent;
+  padding: 0.8rem 2rem;
+  border: 1px solid #00adb5;
+  border-radius: 3px;
+  color: #00adb5;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+option {
+  background-color: #393e46;
+  color: #00adb5;
+}
 
 li {
   list-style: none;
@@ -51,12 +65,21 @@ ol li {
   font-size: 0.8rem;
   margin-left: 3rem;
 }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
 
+th,
+td {
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 form {
   text-align: center;
   font-weight: bold;
   background-color: #393e46;
-  width: 300px;
   border-radius: 10px;
   margin: auto;
   max-width: 1250px;
@@ -72,11 +95,14 @@ input {
 }
 fieldset {
   border: 0;
-  margin: 1rem;
   text-align: left;
-  grid-column: span 2;
+  margin: 1rem;
+}
+select {
+  margin: 1rem auto;
 }
 
+/*--------- Components ---------*/
 /*........... MENU............*/
 header .menu ul {
   display: grid;
@@ -93,6 +119,9 @@ header .menu ul li {
 header .menu ul li a {
   padding: 1rem;
 }
+header .menu ul li a .fa-trophy {
+  color: #eeeeee;
+}
 header .menu ul li a:hover {
   border-bottom: 3px solid #eeeeee;
   background-color: #00adb5;
@@ -100,15 +129,13 @@ header .menu ul li a:hover {
 header .menu ul li:last-child {
   grid-column: 5;
 }
-
-/*--------- Components ---------*/
-
 /*-------------Slider---------*/
 
 #section-slider {
   background: url(../img/BigFocusedCassowary.webp);
   background-size: cover;
   background-attachment: fixed;
+  background-position: bottom;
   height: 500px;
   display: flex;
   align-content: center;
@@ -134,14 +161,17 @@ header .menu ul li:last-child {
 
 #list-events-home {
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 0 auto;
 }
 
 .event {
   margin: 0 auto;
   background-color: #393e46;
+
   width: 90%;
   border-radius: 1%;
   padding: 1rem;
+  max-width: 800px;
 }
 .image {
   height: 300px;
@@ -150,21 +180,82 @@ header .menu ul li:last-child {
   background-repeat: no-repeat;
   margin: 0 auto;
 }
+/*---------User Ranking----------*/
+#section-user-ranking {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
 /*-------- Ranking List --------*/
-
+.image-profile-small {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+}
 #ranking-list-home {
   grid-template-columns: 1fr 1fr 1fr;
   max-width: 1300px;
   margin: 0 auto;
 }
-#ranking-list-home .fa-trophy {
+.fa-trophy {
   color: yellow;
 }
-#ranking-list-home .fa-lg {
+.fa-lg {
   color: gray;
 }
-#ranking-list-home .fa-sm {
+.fa-sm {
   color: brown;
+}
+/*-----------SECTION PARTNER----------------*/
+.image-partner {
+  height: 150px;
+  width: 250px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+#companies {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+/*-----------FOOTER -----------*/
+
+footer {
+  background: #222831;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  align-items: center;
+}
+.services a:hover,
+.contact a:hover {
+  color: #00adb5;
+}
+footer li {
+  margin: 1rem;
+  display: inline-block;
+  align-items: center;
+}
+
+.social li {
+  width: 50px;
+
+  margin: 1rem;
+  background-color: #393e46;
+  border-radius: 50%;
+  align-items: center;
+}
+.social li:hover {
+  background-color: #00adb5;
+}
+.social li a i {
+  padding: 1rem;
 }
 
 /*......... HOME........... */
@@ -182,7 +273,7 @@ header .menu ul li:last-child {
 }
 #whatis {
   display: flex;
-  width: 1300px;
+  max-width: 1300px;
   margin: 0 auto;
   align-items: center;
 }
@@ -191,6 +282,8 @@ header .menu ul li:last-child {
 }
 #explication {
   line-height: 1.6rem;
+
+  margin: 0 auto;
 }
 /*--------PRIVACY-----*/
 
@@ -209,8 +302,40 @@ section#about {
   margin: 0 auto;
 }
 .profile {
+  margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+#user-data {
+  text-align: center;
+}
+#user-data div p {
+  text-align: center;
+}
+#user-data h2 {
+  font-size: 3rem;
+  color: coral;
+}
+#user-data h1 {
+  text-transform: uppercase;
+}
+#user-data h3 {
+  text-transform: capitalize;
+}
+#ranking-user ul li {
+  margin: 1rem;
+
+  text-transform: uppercase;
+}
+/*----------------------------------------------------------------------------------------*/
+.image-profile {
+  width: 300px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  border-radius: 50%;
 }
 /*--------TERMS--------*/
 
@@ -221,7 +346,8 @@ section#terms {
 /*---------LOGIN SIGN IN-----------*/
 
 #access,
-#register {
+#register,
+#not-found {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -231,16 +357,41 @@ section#terms {
   font-size: 0.8rem;
   color: #d0373f;
 }
-/*---------NEW EVENT-----------*/
-#create-event form {
+.inputfile {
+  display: none;
+}
+
+.inputfile + label {
+  cursor: pointer;
+}
+
+.row-2 {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.col-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.col-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.col-4 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: initial;
+}
+/*---------NEW EVENT-----------*/
+#create-event form {
+  margin-top: 50px;
 }
 
 #create-event form button {
   grid-column: span 2/4;
   margin-bottom: 1rem;
+  width: 90%;
+  font-size: 1rem;
+  display: initial;
 }
 
 #create-event form textarea {
@@ -258,31 +409,18 @@ section#terms {
 #create-event form .location-event {
   grid-column: span 4;
 }
-/*-----------FOOTER -----------*/
+#create-event form fieldset {
+  grid-column: span 2;
+}
+/*.............PAGE OF EVENTS DETAILS..........*/
 
-footer {
-  background: blue;
-  color: white;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  text-align: left;
+#main-event-detail {
+  margin-top: 50px;
 }
 
-footer > * {
-  margin: 2rem;
-  text-align: left;
+#description {
+  grid-column: -1/1;
 }
-
-footer li {
-  margin: 1rem 0;
-}
-
-footer address a {
-  display: block;
-  margin: 1rem 0;
-  text-align: left;
-}
-
 /*.............PAGE OF EVENTS..........*/
 
 #main-page-of-events {
@@ -302,10 +440,47 @@ footer address a {
 }
 .image-event-page {
   width: 400px;
-  background-size: cover;
+  height: 200px;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   margin-right: 1rem;
+}
+
+/*-------------------------RATING------------------*/
+.rating {
+  transform: translate(-43%) rotateY(180deg);
+  display: flex;
+}
+.rating input {
+  display: none;
+}
+.rating label {
+  width: 50px;
+}
+.rating label:before {
+  content: "\f005";
+  font-family: fontAwesome;
+  font-size: 2rem;
+
+  color: #101010;
+}
+.rating label:after {
+  content: "\f005";
+  font-family: fontAwesome;
+
+  position: absolute;
+  display: block;
+  font-size: 2rem;
+  color: coral;
+  top: 0;
+  opacity: 0;
+  transition: 0.5s;
+}
+.rating label:hover:after,
+.rating label:hover ~ label:after,
+.rating input:checked ~ label:after {
+  opacity: 1;
 }
 /*-----------Aside---------*/
 
@@ -329,15 +504,18 @@ footer address a {
   margin-left: 1rem;
 }
 /*.............PAGE OF RANKINGS..........*/
-
-#main-page-of-rankings {
+#main-ranking-page {
   margin: 50px auto 0;
+  text-align: center;
+}
+#list-page-of-rankings {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1rem;
 }
 .ranking {
-  width: 300px;
+  max-width: 300px;
+  width: 100%;
   padding: 1rem;
   margin: 0 auto;
   text-align: center;
@@ -345,7 +523,7 @@ footer address a {
   border: solid 1px rgba(255, 255, 255, 0.1);
   border-radius: 2%;
 }
-.ranking ul li {
+#ranking-home ul li {
   margin: 1rem;
   padding: 0.5rem;
   border: 2px solid transparent;
@@ -355,11 +533,14 @@ footer address a {
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.5s ease-out;
+  display: flex;
+  justify-content: center;
 }
-.ranking ul li a {
-  margin-right: 1rem;
+#ranking-home ul li div {
+  padding: 1rem;
+  text-transform: capitalize;
 }
-.ranking ul li:hover {
+#ranking-home ul li:hover {
   border: 2px solid coral;
   background-position: left bottom;
 }
@@ -441,27 +622,42 @@ button {
   #main-home > * {
     grid-template-columns: 1fr 1fr;
     align-content: center;
-    max-width: 800px;
   }
 
+  .image {
+    height: 450px;
+  }
+
+  #whatis {
+    display: block;
+  }
+  #explication {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+  }
   #ranking-list-home {
     grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  #slider h1 {
-    font-size: 5rem;
+    margin: 0 auto;
   }
 }
 
 @media only screen and (max-width: 640px) {
+  p {
+    text-align: center;
+  }
+  #slider h1 {
+    font-size: 2rem;
+  }
+  .button-white {
+    font-size: initial;
+  }
   #main-home > * {
     grid-template-columns: 1fr;
   }
-  #slider h1 {
-    font-size: 2.5rem;
-    margin-top: 1rem;
-  }
 
+  #companies {
+    grid-template-columns: 1fr;
+  }
   header .menu ul {
     display: inline-block;
     position: fixed;
@@ -469,29 +665,17 @@ button {
     bottom: 9rem;
     z-index: 100;
     border-radius: 10px;
+    max-width: 200px;
+    text-align: center;
   }
 
   #menu-button {
     display: block;
   }
 
-  #slider {
-    align-content: space-between;
-    max-height: 250px;
-    background-size: auto;
-  }
-
   footer {
     grid-template-columns: 1fr;
     text-align: center;
-  }
-
-  footer > * {
-    margin: 1rem;
-  }
-
-  footer > nav {
-    margin-bottom: 0;
   }
 
   .hidden {
@@ -507,15 +691,46 @@ button {
     margin: 0;
   }
 
-  #create-event form button {
-    width: 90%;
-  }
-
   #menu-button {
     display: block;
   }
-
-  #button-slider {
-    width: 100%;
+  #list-page-of-rankings {
+    grid-template-columns: 1fr;
+  }
+  #main-ranking-page {
+    margin: 0 auto;
+  }
+  #main-page-of-events {
+    grid-template-columns: 1fr;
+  }
+  .event-on-event-page {
+    grid-template-columns: 1fr;
+    background-color: #393e46;
+    padding: 1rem;
+    border-radius: 1%;
+    text-align: center;
+  }
+  .image-event-page {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+  }
+  .image {
+    height: 200px;
+  }
+  .aside {
+    display: none;
+  }
+  .col-3 {
+    grid-template-columns: 1fr;
+  }
+  .col-4 {
+    display: block;
+  }
+  .profile {
+    grid-template-columns: 1fr;
+  }
+  #section-user-ranking {
+    grid-template-columns: 1fr;
   }
 }
