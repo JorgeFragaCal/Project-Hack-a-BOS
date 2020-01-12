@@ -1,6 +1,6 @@
 import axios from "axios";
 import { login, register } from "./authService";
-import { getRanking, getUserRanking } from "./rankingService";
+import { getRanking, getUserRanking, getSkills } from "./rankingService";
 import {
   getEvent,
   getEvents,
@@ -64,5 +64,6 @@ export {
   deleteEvent,
   uploadEvent,
   getRanking,
-  getUserRanking
+  getUserRanking,
+  getSkills
 };

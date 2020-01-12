@@ -1,15 +1,13 @@
 "use strict";
 const mysqlPool = require("../../../database/mysql-pool");
-async function getRanking(req, res, next) {
+async function getSkills(req, res, next) {
   /**
-   * Select All Rankings
+   * Select All Skills
    */
   try {
-    const sqlQuery = `SELECT title ,username , puntuation,skills,user_iduser,avatar,events_idevents
+    const sqlQuery = `SELECT distinct skills
     FROM ranking 
-    INNER JOIN user on ranking.user_iduser = user.id
-    INNER JOIN events on ranking.events_idevents = events.id
-    ORDER BY puntuation desc
+    ORDER BY skills desc
     ;`;
 
     const connection = await mysqlPool.getConnection();
@@ -25,4 +23,4 @@ async function getRanking(req, res, next) {
     return res.status(500).send({ message: e.message });
   }
 }
-module.exports = getRanking;
+module.exports = getSkills;
