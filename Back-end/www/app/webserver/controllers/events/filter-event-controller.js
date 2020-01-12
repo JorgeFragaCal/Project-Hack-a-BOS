@@ -49,7 +49,7 @@ async function filterEvent(req, res, next) {
     try {
       const sqlQuery = `SELECT *
     FROM events
-    WHERE start_date between ? and ?
+    WHERE start_date between ${date_init} and ${date_final}
    
      ;`;
       const connection = await mysqlPool.getConnection();

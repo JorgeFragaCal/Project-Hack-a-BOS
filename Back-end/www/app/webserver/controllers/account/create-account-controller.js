@@ -67,6 +67,7 @@ async function createAccount(req, res, next) {
     const verificationCode = cryptoRandomString({ length: 64 });
     const connection = await mysqlPool.getConnection();
     const sqlInsercion = "INSERT INTO user SET ?";
+
     await connection.query(sqlInsercion, {
       id: userId,
       username: accountData.username,
@@ -86,11 +87,9 @@ async function createAccount(req, res, next) {
 
     connection.release();
 
-    await sendEmailRegistration(accountData.email, verificationCode);
+    // await sendEmailRegistration(accountData.email, verificationCode);
 
-    const response = { token, User };
-
-    res.status(201).send(response, "account created");
+    res.status(201).send("account created");
   } catch (e) {
     return res.status(500).send({ message: e.message });
   }

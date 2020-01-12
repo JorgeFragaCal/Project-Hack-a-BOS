@@ -14,7 +14,7 @@ router.get("/", getEvents);
 router.get("/event/:id", getEvent);
 router.get("/my-events", checkAccontSession, getUserEvent);
 router.get("/filter", filterEvent);
-router.post("/", createEvent);
+router.post("/new", createEvent);
 //router.put("/event/:id", checkAccontSession, updateEvent);
 
 module.exports = router;

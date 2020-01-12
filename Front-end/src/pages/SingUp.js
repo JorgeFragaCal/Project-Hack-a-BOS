@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import useForm from "react-hook-form";
 import { useAuth } from "../shared/context/auth-context";
 import { REGISTER_VALIDATIONS } from "../shared/validations";
@@ -9,17 +9,20 @@ export function SignUp() {
   const { register, errors, handleSubmit, formState, setError } = useForm({
     mode: "onBlur"
   });
+  const history = useHistory();
 
   const handleSignUp = formData => {
-    return signUp(formData).catch(error => {
-      if (error.response.status === 409) {
-        setError(
-          "email",
-          "conflict",
-          "The email already exists. Please try again"
-        );
-      }
-    });
+    return signUp(formData)
+      .then(history.push("/login"))
+      .catch(error => {
+        if (error.response.status === 409) {
+          setError(
+            "email",
+            "conflict",
+            "The email already exists. Please try again"
+          );
+        }
+      });
   };
 
   return (

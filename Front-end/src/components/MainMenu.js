@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useAuth } from "../shared/context/auth-context";
 export function MainMenu() {
   const [open, setOpen] = useState(true);
+  const { isAuthenticated } = useAuth();
   return (
     <header>
       <nav className="menu">
@@ -28,7 +29,7 @@ export function MainMenu() {
             </Link>
           </li>
           <li>
-            <Link to="/login">Log In</Link> | <Link to="/signup">Sign up</Link>
+            <Link to="/login">Sign In</Link> |<Link to="/signup">Sign Up</Link>
           </li>
         </ul>
         <button id="menu-button" onClick={e => setOpen(!open)}>

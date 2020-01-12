@@ -1,7 +1,11 @@
 import React from "react";
+import { useAuth } from "../shared/context/auth-context";
 import { Link } from "react-router-dom";
 import aos from "aos";
+
 export function Slider() {
+  const { userType } = useAuth();
+
   aos.init();
   return (
     <section id="section-slider">
@@ -13,7 +17,10 @@ export function Slider() {
       >
         <h1>hackathones</h1>
 
-        <Link to="/newEvent" className="button-white">
+        <Link
+          to={userType === "Organizating" ? "/newEvent" : "/login"}
+          className="button-white"
+        >
           PLAN YOUR HACKATHONE
         </Link>
       </section>

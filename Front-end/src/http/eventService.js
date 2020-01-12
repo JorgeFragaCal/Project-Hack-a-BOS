@@ -7,9 +7,9 @@ async function getEvent(id) {
   return response.data.data || [];
 }
 
-async function getEvents(city, skill, id) {
+async function getEvents(skill, city, date_init, date_final) {
   const response = await axios.get(
-    `${API_BASE_URL}/events?city=${city}&skill=${skill}&id=${id}`
+    `${BASE_URL}/events/filter?city=${city}&skill=${skill}&date_init=${date_init}&date_finanl=${date_final}`
   );
   return response.data.data || [];
 }
@@ -66,8 +66,8 @@ async function uploadEvent({
   });
 }
 
-async function deleteEvent(event_id) {
-  return axios.delete(`${API_BASE_URL}/events/${event_id}`);
+async function deleteEvent(id) {
+  return axios.delete(`${API_BASE_URL}/events/${id}`);
 }
 
 export { getEvent, getEvents, createEvent, deleteEvent, uploadEvent };

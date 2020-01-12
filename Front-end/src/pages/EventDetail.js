@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { getEvent } from "../http/eventService";
 import { useParams } from "react-router-dom";
 import Interweave from "interweave";
+import { Link } from "react-router-dom";
+import { useAuth } from "../shared/context/auth-context";
 
 export function EventDetail() {
   const [eventDetail, setEventDetail] = useState([]);
   const params = useParams();
-
+  const { userType } = useAuth();
   useEffect(() => {
     getEvent(params.id).then(eventDetail => {
       setEventDetail(eventDetail);
@@ -48,6 +50,12 @@ export function EventDetail() {
                 {address}
                 {city} {country}
               </p>
+              {userType === "Developer" && (
+                <Link to="/newEvent" className="button-white">
+                  APPLY TO THE HACKATHONE
+                </Link>
+              )}
+
               <div className="rating">
                 <input type="radio" name="start" id="start1" />
                 <label for="start1"></label>
