@@ -21,6 +21,7 @@ export function EventDetail() {
     <main id="main-event-detail">
       {eventDetail.map(
         ({
+          id,
           image,
           title,
           start_date,
@@ -32,7 +33,7 @@ export function EventDetail() {
           email,
           description
         }) => (
-          <section id="event-detail">
+          <section id="event-detail" key={id}>
             <section
               id="section-slider"
               style={{
@@ -58,15 +59,15 @@ export function EventDetail() {
 
               <div className="rating">
                 <input type="radio" name="start" id="start1" />
-                <label for="start1"></label>
+                <label htmlFor="start1"></label>
                 <input type="radio" name="start" id="start2" />
-                <label for="start2"></label>
+                <label htmlFor="start2"></label>
                 <input type="radio" name="start" id="start3" />
-                <label for="start3"></label>
+                <label htmlFor="start3"></label>
                 <input type="radio" name="start" id="start4" />
-                <label for="start4"></label>
+                <label htmlFor="start4"></label>
                 <input type="radio" name="start" id="start5" />
-                <label for="start5"></label>
+                <label htmlFor="start5"></label>
               </div>
             </div>
             <div id="description">

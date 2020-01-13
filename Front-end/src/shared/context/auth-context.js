@@ -33,13 +33,7 @@ export function AuthProvider({ children }) {
       setIsAuthenticated(true);
       setUserType(userType);
       if (token) {
-        if (userType === "Developer") {
-          history.push("/principalDeveloper");
-        } else if (userType === "Organizating") {
-          history.push("/principalEmployerOrg");
-        } else if (userType === "Recruiting") {
-          history.push("/principalEmployerRec");
-        }
+        history.push("/");
       }
     } catch (error) {
       return Promise.reject(error);

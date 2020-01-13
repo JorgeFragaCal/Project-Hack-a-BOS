@@ -13,6 +13,7 @@ export function SignUp() {
 
   const handleSignUp = formData => {
     return signUp(formData)
+      .then(window.alert("Account created"))
       .then(history.push("/login"))
       .catch(error => {
         if (error.response.status === 409) {
@@ -31,7 +32,7 @@ export function SignUp() {
         <h1>Sign up </h1>
         <div className="col-3">
           <fieldset>
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
             <input
               ref={register(REGISTER_VALIDATIONS.name)}
               id="username"
@@ -63,12 +64,12 @@ export function SignUp() {
           <fieldset>
             <i className="fa fa-upload fa-fw"></i>
             <input type="file" name="image" id="image" class="inputfile" />
-            <label for="image">Choose a image</label>
+            <label htmlFor="image">Choose a image</label>
           </fieldset>
         </div>
 
         <fieldset>
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             ref={register(REGISTER_VALIDATIONS.email)}
             id="email"
@@ -83,7 +84,7 @@ export function SignUp() {
         </fieldset>
 
         <fieldset>
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             ref={register(REGISTER_VALIDATIONS.password)}
             id="password"
@@ -98,7 +99,7 @@ export function SignUp() {
         </fieldset>
         <div className="col-3">
           <fieldset>
-            <label for="name">Name</label>
+            <label htmlFor="name">Name</label>
             <input
               ref={register()}
               id="name"
@@ -112,7 +113,7 @@ export function SignUp() {
             </span>
           </fieldset>
           <fieldset>
-            <label for="lastName">Last Name</label>
+            <label htmlFor="lastName">Last Name</label>
             <input
               ref={register()}
               id="lastName"
@@ -126,7 +127,7 @@ export function SignUp() {
             </span>
           </fieldset>
           <fieldset className="register-user">
-            <label for="phone">Telephone</label>
+            <label htmlFor="phone">Telephone</label>
             <input
               ref={register({
                 pattern: {
@@ -145,7 +146,7 @@ export function SignUp() {
         </div>
         <div className="col-3">
           <fieldset>
-            <label for="address">Address</label>
+            <label htmlFor="address">Address</label>
             <input
               ref={register()}
               id="address"
@@ -159,7 +160,7 @@ export function SignUp() {
             </span>
           </fieldset>
           <fieldset>
-            <label for="city">City</label>
+            <label htmlFor="city">City</label>
             <input
               ref={register()}
               id="city"
@@ -173,7 +174,7 @@ export function SignUp() {
             </span>
           </fieldset>
           <fieldset>
-            <label for="country">Country</label>
+            <label htmlFor="country">Country</label>
             <input
               ref={register()}
               id="country"

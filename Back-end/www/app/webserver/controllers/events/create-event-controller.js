@@ -16,7 +16,8 @@ async function validateSchema(payload) {
       .email()
       .required(),
     price: Joi.string(),
-    web: Joi.string()
+    web: Joi.string(),
+    price: Joi.string()
   });
   Joi.assert(payload, schema);
 }
@@ -44,7 +45,8 @@ async function createEvent(res, req, next) {
       description: eventData.description,
       image: eventData.image,
       email: eventData.email,
-      web: eventData.web
+      web: eventData.web,
+      price: eventData.price
     });
     connection.release();
 

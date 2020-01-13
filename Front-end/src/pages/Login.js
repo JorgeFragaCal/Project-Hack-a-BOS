@@ -35,7 +35,7 @@ export function Login() {
       <form onSubmit={handleSubmit(handleSignin)}>
         <h1>Please Log in</h1>
         <fieldset>
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             ref={register(LOGIN_VALIDATIONS.email)}
             id="email"
@@ -49,7 +49,7 @@ export function Login() {
           </span>
         </fieldset>
         <fieldset>
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             ref={register(LOGIN_VALIDATIONS.password)}
             id="password"

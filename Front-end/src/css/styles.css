@@ -88,10 +88,12 @@ input {
   background-color: #222831;
   color: #eeeeee;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  margin-top: 1rem;
   text-indent: 0.5rem;
   padding: 0.8rem;
   width: 100%;
+}
+form input {
+  margin-top: 1rem;
 }
 fieldset {
   border: 0;
@@ -222,6 +224,7 @@ header .menu ul li:last-child {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+
 /*-----------FOOTER -----------*/
 
 footer {
@@ -412,6 +415,9 @@ section#terms {
 #create-event form fieldset {
   grid-column: span 2;
 }
+.cke_top {
+  background-color: #222831;
+}
 /*.............PAGE OF EVENTS DETAILS..........*/
 
 #main-event-detail {
@@ -459,19 +465,19 @@ section#terms {
 }
 .rating label:before {
   content: "\f005";
-  font-family: fontAwesome;
+  font-family: "Font Awesome 5 Pro";
   font-size: 2rem;
-
   color: #101010;
 }
 .rating label:after {
   content: "\f005";
-  font-family: fontAwesome;
-
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
   position: absolute;
   display: block;
   font-size: 2rem;
   color: coral;
+
   top: 0;
   opacity: 0;
   transition: 0.5s;
@@ -493,14 +499,37 @@ section#terms {
 #search-aside {
   display: flex;
 }
-
-.radio {
-  text-align: left;
-  margin: 1rem 0;
+#section-radio {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
-
-.radio span {
-  margin-left: 1rem;
+.radio {
+  margin: 1rem auto 0;
+}
+.radio input {
+  display: none;
+}
+.radio input:checked + label {
+  background-color: #eeeeee;
+}
+.radio label {
+  border: 1px solid rgb(255, 127, 80);
+  border-radius: 50%;
+  position: relative;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.radio label:hover {
+  background-color: #eeeeee;
+  transition: 0.5s;
+}
+.radio label .fab {
+  color: coral;
+  font-size: 2rem;
 }
 /*.............PAGE OF RANKINGS..........*/
 #main-ranking-page {
@@ -597,6 +626,15 @@ button {
 }
 .button-search {
   padding: 1rem;
+  background-color: transparent;
+  border: 1px solid #00adb5;
+  color: #00adb5;
+}
+.button-search:hover {
+  background-color: #00adb5;
+  color: #eeeeee;
+  transition-duration: 0.5s;
+  box-shadow: 0 10px 45px rgba(0, 173, 181, 0.2);
 }
 
 /*-------Patantalla Negra----------*/

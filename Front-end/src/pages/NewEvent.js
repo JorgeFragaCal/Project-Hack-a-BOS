@@ -1,50 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import useForm from "react-hook-form";
 import { createEvent } from "../http/eventService";
+import CKEditor from "../../node_modules/ckeditor4-react";
 
 export function NewEvent() {
-  const [valueInput, setValueInput] = useState("");
-
-  const valueIOne = e => {
-    setValueInput(e.target.value);
-  };
-
-  const publish = async ({
-    title,
-    start_date,
-    address,
-    city,
-    country,
-    description,
-    image,
-    email,
-    prize,
-    web
-  }) => {
-    try {
-      await createEvent({
-        title,
-        start_date,
-        address,
-        city,
-        country,
-        description,
-        image,
-        email,
-        prize,
-        web
-      });
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  };
-
+  const { newEvent } = createEvent();
   const { register, errors, formState, handleSubmit, setError } = useForm({
     mode: "onBlur"
   });
+  const history = useHistory();
 
-  const handlePublicChallenges = formData => {
-    return publish(formData)
+  const handleCreateEvent = formData => {
+    return newEvent(formData)
+      .then(window.alert("Challenge created"))
+      .then(history.push("/events"))
       .catch(error => {
         if (error.response.status === 409) {
           setError(
@@ -53,13 +23,11 @@ export function NewEvent() {
             "The title already exists. Please try again"
           );
         }
-      })
-      .then(window.alert("Challenge created"))
-      .then(window.location.reload());
+      });
   };
   return (
     <section id="create-event" class="auth">
-      <form className="col-4" onSubmit={handleSubmit(handlePublicChallenges)}>
+      <form className="col-4" onSubmit={handleSubmit(handleCreateEvent)}>
         <h1>Add a Hackathon</h1>
         <fieldset>
           <i className="fa fa-upload fa-fw"></i>
@@ -67,7 +35,7 @@ export function NewEvent() {
           <label for="image">Choose a image</label>
         </fieldset>
         <fieldset class="name-event">
-          <label for="title">Hackathon name:</label>
+          <label htmlFor="title"> Hackathone title * :</label>
           <input
             ref={register({
               required: "The title is required"
@@ -77,98 +45,90 @@ export function NewEvent() {
             id="title"
             placeholder="Enter your title"
           />
+          <span className="errorMessage">
+            {errors.title && errors.title.message}
+          </span>
         </fieldset>
 
         <fieldset>
-          <label for="start_date">Start date:</label>
+          <label for="start_date">Start date * :</label>
           <input
             ref={register({
-              required: "The title is required"
+              required: "The Date is required"
             })}
             type="date"
-            name="start-date"
+            name="start_date"
             id="start_date"
-            placeholder="Enter your title"
           />
-        </fieldset>
-
-        <fieldset>
-          <label for="address">Address:</label>
-          <input
-            ref={register({
-              required: "The title is required"
-            })}
-            type="text"
-            name="address"
-            id="address"
-            placeholder="Enter your title"
-          />
-        </fieldset>
-
-        <fieldset>
-          <label for="city">City:</label>
-          <input
-            ref={register({
-              required: "The title is required"
-            })}
-            type="city"
-            name="city"
-            id="city"
-            placeholder="Enter your title"
-          />
+          <span className="errorMessage">
+            {errors.start_date && errors.start_date.message}
+          </span>
         </fieldset>
         <fieldset>
-          <label for="country">Country:</label>
+          <label htmlFor="email">Email * :</label>
           <input
             ref={register({
-              required: "The title is required"
-            })}
-            type="country"
-            name="country"
-            id="country"
-            placeholder="Enter your title"
-          />
-        </fieldset>
-        <fieldset>
-          <label for="ewb">Website:</label>
-          <input
-            ref={register({
-              required: "The title is required"
-            })}
-            type="text"
-            name="web"
-            id="web"
-            placeholder="Enter your title"
-          />
-        </fieldset>
-
-        <fieldset>
-          <label for="email">Email</label>
-          <input
-            ref={register({
-              required: "The title is required"
+              required: "The email is required"
             })}
             type="email"
             name="email"
             id="email"
-            placeholder="Enter your title"
+            placeholder="Enter your email"
           />
-        </fieldset>
-        <fieldset class="description">
-          <label for="description">Description</label>
-          <textarea name="description" id="description" rows="10"></textarea>
+          <span className="errorMessage">
+            {errors.email && errors.email.message}
+          </span>
         </fieldset>
         <fieldset>
-          <label for="prize">Prize:</label>
+          <label htmlFor="web">Website:</label>
           <input
-            ref={register({
-              required: "The title is required"
-            })}
+            type="text"
+            name="web"
+            id="web"
+            placeholder="Enter your website"
+          />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="address">Address:</label>
+          <input
+            type="text"
+            name="address"
+            id="address"
+            placeholder="Enter the address"
+          />
+        </fieldset>
+
+        <fieldset>
+          <label htmlFor="city">City:</label>
+          <input
+            type="city"
+            name="city"
+            id="city"
+            placeholder="Enter the city"
+          />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="country">Country:</label>
+          <input
+            type="country"
+            name="country"
+            id="country"
+            placeholder="Enter the country"
+          />
+        </fieldset>
+
+        <fieldset>
+          <label htmlFor="prize">Prize:</label>
+          <input
             type="text"
             name="prize"
             id="prize"
-            placeholder="Enter your title"
+            placeholder="Enter the prize"
           />
+          <fieldset class="description">
+            <label htmlFor="description">Description</label>
+            <CKEditor style={{ marginTop: "1rem" }} />
+          </fieldset>
         </fieldset>
         <button
           type="submit"

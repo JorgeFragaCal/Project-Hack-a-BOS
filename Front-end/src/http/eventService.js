@@ -7,30 +7,30 @@ async function getEvent(id) {
   return response.data.data || [];
 }
 
-async function getEvents(skill, city, date_init, date_final) {
+async function getEvents() {
   const response = await axios.get(`${API_BASE_URL}/events`);
   return response.data.data || [];
 }
 async function filterEvents(skill, city, date_init, date_final) {
   const response = await axios.get(
-    `${API_BASE_URL}/events/filter/?city=${city}&skill=${skill}&date_init=${date_init}&date_finanl=${date_final}`
+    `${API_BASE_URL}/events/filter?city=${city}&skill=${skill}&date_init=${date_init}&date_finanl=${date_final}`
   );
-  return response.data.data || [];
+  return response.data.Search || [];
 }
 
-async function createEvent({
+export function createEvent({
   title,
   start_date,
+  email,
   address,
   city,
   country,
   description,
   image,
-  email,
   prize,
   web
 }) {
-  return axios.post(`${API_BASE_URL}/events`, {
+  return axios.post(`${API_BASE_URL}/events/new`, {
     title,
     start_date,
     email,
@@ -44,7 +44,7 @@ async function createEvent({
   });
 }
 
-async function uploadEvent({
+export function uploadEvent({
   title,
   start_date,
   address,
@@ -70,15 +70,8 @@ async function uploadEvent({
   });
 }
 
-async function deleteEvent(id) {
+export function deleteEvent(id) {
   return axios.delete(`${API_BASE_URL}/events/${id}`);
 }
 
-export {
-  getEvent,
-  getEvents,
-  createEvent,
-  deleteEvent,
-  uploadEvent,
-  filterEvents
-};
+export { getEvent, getEvents, filterEvents };

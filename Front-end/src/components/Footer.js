@@ -21,22 +21,22 @@ export function Footer() {
         <ul>
           <li>
             <a href="https://twitter.com/">
-              <i className="fa fa-twitter" />
+              <i className="fab fa-twitter" />
             </a>
           </li>
           <li>
             <a href="https://www.linkedin.com/">
-              <i className="fa fa-linkedin" />
+              <i className="fab fa-linkedin" />
             </a>
           </li>
           <li>
             <a href="https://www.instagram.com/">
-              <i className="fa fa-instagram" />
+              <i className="fab fa-instagram" />
             </a>
           </li>
           <li>
             <a href="https://www.facebook.com/">
-              <i className="fa fa-facebook " />
+              <i className="fab fa-facebook " />
             </a>
           </li>
         </ul>

@@ -1,29 +1,35 @@
 import React, { useState, useEffect } from "react";
+import { filterEvents } from "../http/eventService";
 import { getEvents } from "../http/eventService";
+import { Link } from "react-router-dom";
 import { Selector } from "../components/Selector";
 import { Search } from "../components/Search";
-import { Slider } from "../components/Slider-form";
-import { Link } from "react-router-dom";
 export function EventsPage() {
   const [events, setEvents] = useState([]);
+
   const [city, setCity] = useState("");
   const [skill, setSkill] = useState("");
-  const [data_final, setDate] = useState("");
+  const [data_final, setDateF] = useState("");
+  const [data_start, setDateI] = useState("");
 
   useEffect(() => {
-    getEvents(city).then(events => {
+    filterEvents(city, skill, data_final, data_start).then(events => {
       setEvents(events);
     });
-  }, [city]);
+  }, [city, skill, data_final, data_start]);
+
+  useEffect(() => {
+    getEvents().then(events => {
+      setEvents(events);
+    });
+  }, []);
 
   return (
     <main id="main-page-of-events">
       <span />
       <section className="aside">
-        <p>{city}</p>
         <Search text={city} onSearchChange={text => setCity(text)} />
         <Selector type={skill} onSkillChange={e => setSkill(e)} />
-        <Slider type={data_final} onSliderChange={e => setDate(e)} />
       </section>
 
       <section className=" list-of-events-event-page">

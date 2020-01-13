@@ -1,14 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 
 export function Search({ onSearchChange }) {
-	const input = useRef();
+  const input = useRef();
 
-	return (
-		<section id="search-aside">
-			<input ref={input} type="text" placeholder="Search for city" />
-			<button class="button-search" onClick={() => onSearchChange(input.current.value)}>
-				<i className="fa fa-search" />
-			</button>
-		</section>
-	);
+  return (
+    <section id="search-aside">
+      <input ref={input} type="text" placeholder="Search for city" />
+      <button
+        className="button-search"
+        onClick={() => onSearchChange(input.current.value)}
+      >
+        <i className="fa fa-search" />
+      </button>
+    </section>
+  );
 }

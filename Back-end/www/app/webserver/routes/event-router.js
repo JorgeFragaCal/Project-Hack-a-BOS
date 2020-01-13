@@ -6,15 +6,18 @@ const filterEvent = require("../controllers/events/filter-event-controller");
 const getEvents = require("../controllers/events/get-events-controller");
 const getEvent = require("../controllers/events/get-event-controller");
 const getUserEvent = require("../controllers/events/get-user-events-controller");
-//const updateEvent = require("../controllers/events/update-event-controller");
-
+const updateEvent = require("../controllers/events/update-event-controller");
+const putAssement = require("../controllers/events/put-assement");
+const participation = require("../controllers/events/participations");
 const router = express.Router();
 
 router.get("/", getEvents);
 router.get("/event/:id", getEvent);
 router.get("/my-events", checkAccontSession, getUserEvent);
 router.get("/filter", filterEvent);
-router.post("/new", createEvent);
-//router.put("/event/:id", checkAccontSession, updateEvent);
+router.post("/new", checkAccontSession, createEvent);
+router.post("/event", participation);
+router.put("/event/:id", checkAccontSession, updateEvent);
+router.put("/event", checkAccontSession, putAssement);
 
 module.exports = router;
