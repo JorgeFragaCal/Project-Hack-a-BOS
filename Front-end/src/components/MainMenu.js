@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../shared/context/auth-context";
 export function MainMenu() {
   const [open, setOpen] = useState(true);
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
   return (
     <header>
       <nav className="menu">
@@ -29,7 +29,18 @@ export function MainMenu() {
             </Link>
           </li>
           <li>
-            <Link to="/login">Sign In</Link> |<Link to="/signup">Sign Up</Link>
+            {isAuthenticated ? (
+              <Link to={`/myprofile/${user.userData.id}`}>My profile</Link>
+            ) : (
+              <Link to="/login">Sign In</Link>
+            )}
+            {isAuthenticated ? (
+              <button className="button-blue" onClick={logout}>
+                Logout
+              </button>
+            ) : (
+              <Link to="/signup">Sign Up</Link>
+            )}
           </li>
         </ul>
         <button id="menu-button" onClick={e => setOpen(!open)}>

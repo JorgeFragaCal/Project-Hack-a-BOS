@@ -6,18 +6,25 @@ const filterEvent = require("../controllers/events/filter-event-controller");
 const getEvents = require("../controllers/events/get-events-controller");
 const getEvent = require("../controllers/events/get-event-controller");
 const getUserEvent = require("../controllers/events/get-user-events-controller");
+const getUserOrganizateEvent = require("../controllers/events/get-user-organization-events-controller");
 const updateEvent = require("../controllers/events/update-event-controller");
-const putAssement = require("../controllers/events/put-assement");
-const participation = require("../controllers/events/participations");
+const putAssement = require("../controllers/events/put-assement-controller");
+const participation = require("../controllers/events/put-participations-controller");
+const deleteEvent = require("../controllers/events/delete-event-controller");
+
 const router = express.Router();
 
 router.get("/", getEvents);
 router.get("/event/:id", getEvent);
-router.get("/my-events", checkAccontSession, getUserEvent);
+router.get("/my-events/:id", getUserOrganizateEvent);
 router.get("/filter", filterEvent);
+
 router.post("/new", checkAccontSession, createEvent);
-router.post("/event", participation);
-router.put("/event/:id", checkAccontSession, updateEvent);
+router.post("/event/:eventId", checkAccontSession, participation);
+
+router.put("/event/:eventId", checkAccontSession, updateEvent);
 router.put("/event", checkAccontSession, putAssement);
+
+router.delete("/event/:eventId", checkAccontSession, deleteEvent);
 
 module.exports = router;

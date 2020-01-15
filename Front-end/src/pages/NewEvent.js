@@ -5,16 +5,17 @@ import { createEvent } from "../http/eventService";
 import CKEditor from "../../node_modules/ckeditor4-react";
 
 export function NewEvent() {
-  const { newEvent } = createEvent();
   const { register, errors, formState, handleSubmit, setError } = useForm({
     mode: "onBlur"
   });
   const history = useHistory();
 
   const handleCreateEvent = formData => {
-    return newEvent(formData)
+    // formData.description = description;
+    return createEvent(formData)
       .then(window.alert("Challenge created"))
       .then(history.push("/events"))
+
       .catch(error => {
         if (error.response.status === 409) {
           setError(
@@ -45,6 +46,7 @@ export function NewEvent() {
             id="title"
             placeholder="Enter your title"
           />
+
           <span className="errorMessage">
             {errors.title && errors.title.message}
           </span>
@@ -82,6 +84,7 @@ export function NewEvent() {
         <fieldset>
           <label htmlFor="web">Website:</label>
           <input
+            ref={register}
             type="text"
             name="web"
             id="web"
@@ -91,6 +94,7 @@ export function NewEvent() {
         <fieldset>
           <label htmlFor="address">Address:</label>
           <input
+            ref={register}
             type="text"
             name="address"
             id="address"
@@ -101,6 +105,7 @@ export function NewEvent() {
         <fieldset>
           <label htmlFor="city">City:</label>
           <input
+            ref={register}
             type="city"
             name="city"
             id="city"
@@ -110,6 +115,7 @@ export function NewEvent() {
         <fieldset>
           <label htmlFor="country">Country:</label>
           <input
+            ref={register}
             type="country"
             name="country"
             id="country"
@@ -120,6 +126,7 @@ export function NewEvent() {
         <fieldset>
           <label htmlFor="prize">Prize:</label>
           <input
+            ref={register}
             type="text"
             name="prize"
             id="prize"

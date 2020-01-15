@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { getEvent } from "../http/eventService";
+import { getEvent, participationEvent } from "../http/eventService";
 import { useParams } from "react-router-dom";
 import Interweave from "interweave";
-import { Link } from "react-router-dom";
 import { useAuth } from "../shared/context/auth-context";
 
 export function EventDetail() {
@@ -52,9 +51,12 @@ export function EventDetail() {
                 {city} {country}
               </p>
               {userType === "Developer" && (
-                <Link to="/newEvent" className="button-white">
+                <button
+                  className="button-blue"
+                  onClick={() => participationEvent(id)}
+                >
                   APPLY TO THE HACKATHONE
-                </Link>
+                </button>
               )}
 
               <div className="rating">

@@ -2,7 +2,7 @@
 const express = require("express");
 const getRankings = require("../controllers/ranking/get-ranking-controller");
 const getUserRankings = require("../controllers/ranking/get-user-rankings-controller");
-const getSkills = require("../controllers/ranking/get-skills");
+const getSkills = require("../controllers/ranking/get-skills-controller");
 const router = express.Router();
 
 router.get("/", getRankings);

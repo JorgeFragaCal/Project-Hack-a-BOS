@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/about.css";
+import "../css/styles.css";
 import ProfilePhotosAndres from "../img/team/andres.jpeg";
 import ProfilePhotosJorge from "../img/team/jorge.jpeg";
 import Partners from "../components/Section-parter";
@@ -88,17 +88,17 @@ export function AboutUs() {
               <ul>
                 <li>
                   <a href="https://www.linkedin.com/in/jorge-fraga-cal-programacion-y-video/">
-                    <i className="fa fa-linkedin" />
+                    <i className="fab fa-linkedin" />
                   </a>
                 </li>
                 <li>
                   <a href="https://github.com/JorgeFragaCal">
-                    <i className="fa fa-github " />
+                    <i className="fab fa-github " />
                   </a>
                 </li>
                 <li>
                   <a href="https://">
-                    <i className="fa fa-twitter" />
+                    <i className="fab fa-twitter" />
                   </a>
                 </li>
               </ul>
@@ -118,17 +118,17 @@ export function AboutUs() {
               <ul>
                 <li>
                   <a href="https://www.linkedin.com/in/andres-ya%C3%B1ez-florez/">
-                    <i className="fa fa-linkedin" />
+                    <i className="fab fa-linkedin" />
                   </a>
                 </li>
                 <li>
                   <a href="https://github.com/andresyf">
-                    <i className="fa fa-github " />
+                    <i className="fab fa-github " />
                   </a>
                 </li>
                 <li>
                   <a href="https://twitter.com/ndrsyanez">
-                    <i className="fa fa-twitter" />
+                    <i className="fab fa-twitter" />
                   </a>
                 </li>
               </ul>

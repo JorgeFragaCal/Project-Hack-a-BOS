@@ -54,18 +54,7 @@ async function validateSchema(payload) {
       .trim()
       .min(1)
       .max(45)
-      .required(),
-    eventId: Joi.string()
-      .guid({
-        version: ["uuidv4"]
-      })
-      .required(),
-    userId: Joi.string()
-      .guid({
-        version: ["uuidv4"]
-      })
       .required()
-    // tags: Joi.array().items(Joi.string().guid({ version: ['uuidv4'] })),
   });
 
   Joi.assert(payload, schema);
@@ -81,14 +70,14 @@ async function validateSchema(payload) {
 async function updateEvent(req, res, next) {
   const { eventId } = req.params;
   const { userId } = req.claims;
-  const noteData = {
+  const eventData = {
     ...req.body,
     eventId,
     userId
   };
 
   try {
-    await validateSchema(noteData);
+    await validateSchema(req.body);
   } catch (e) {
     console.error(e);
     return res.status(400).send(e);
@@ -112,7 +101,7 @@ async function updateEvent(req, res, next) {
         prize = ?,
         web = ?
       WHERE id = ?
-        AND user_id = ?`;
+       `;
 
     await connection.query(sqlUpdateEvent, [
       eventData.title,
@@ -125,8 +114,7 @@ async function updateEvent(req, res, next) {
       eventData.email,
       eventData.prize,
       eventData.web,
-      eventId,
-      userId
+      eventId
     ]);
     connection.release();
 

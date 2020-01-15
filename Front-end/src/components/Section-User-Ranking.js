@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { getUserRanking } from "../http/rankingService";
 import { useParams } from "react-router-dom";
 
-function SectionUserRanking() {
+function SectionUserRanking({ userId }) {
   const [rankings, setRankings] = useState([]);
-  const params = useParams();
   useEffect(() => {
-    getUserRanking(params.id).then(rankings => {
+    getUserRanking(userId).then(rankings => {
       setRankings(rankings);
     });
-  }, [params.id]);
+  }, [userId]);
   return (
     <section id="section-user-ranking">
       <h2>My Events</h2>

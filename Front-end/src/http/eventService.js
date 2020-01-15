@@ -11,11 +11,17 @@ async function getEvents() {
   const response = await axios.get(`${API_BASE_URL}/events`);
   return response.data.data || [];
 }
-async function filterEvents(skill, city, date_init, date_final) {
+
+async function getUserOrganizateEvents(id) {
+  const response = await axios.get(`${API_BASE_URL}/events/my-events/${id}`);
+  return response.data.data || [];
+}
+
+async function filterEvents(city, skill, date_init, date_final) {
   const response = await axios.get(
-    `${API_BASE_URL}/events/filter?city=${city}&skill=${skill}&date_init=${date_init}&date_finanl=${date_final}`
+    `${API_BASE_URL}/events/filter/?city=${city}&skill=${skill}`
   );
-  return response.data.Search || [];
+  return response.data.data || [];
 }
 
 export function createEvent({
@@ -27,6 +33,7 @@ export function createEvent({
   country,
   description,
   image,
+
   prize,
   web
 }) {
@@ -71,7 +78,11 @@ export function uploadEvent({
 }
 
 export function deleteEvent(id) {
-  return axios.delete(`${API_BASE_URL}/events/${id}`);
+  return axios.delete(`${API_BASE_URL}/events/event/${id}`);
 }
 
-export { getEvent, getEvents, filterEvents };
+export function participationEvent(id) {
+  return axios.post(`${API_BASE_URL}/events/event/${id}`);
+}
+
+export { getEvent, getEvents, filterEvents, getUserOrganizateEvents };

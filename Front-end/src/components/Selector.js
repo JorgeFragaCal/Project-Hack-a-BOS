@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Selector({ onSkillChange, skill }) {
+export function Selector({ onSkillChange, type }) {
   return (
     <section id="section-radio">
       <section className="radio">
@@ -8,17 +8,18 @@ export function Selector({ onSkillChange, skill }) {
           id="1"
           type="radio"
           value="java"
-          name="filter"
+          checked={type === "java"}
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="1">
           <i class="fab fa-java php"></i>
         </label>
       </section>
+
       <section className="radio">
         <input
           id="2"
-          name="filter"
+          checked={type === "php"}
           type="radio"
           value="php"
           onChange={e => onSkillChange(e.target.value)}
@@ -27,24 +28,26 @@ export function Selector({ onSkillChange, skill }) {
           <i class="fab fa-php"></i>
         </label>
       </section>
+
       <section className="radio">
         <input
           id="3"
-          name="filter"
+          checked={type === "javascript"}
           type="radio"
-          value="JavaScript"
+          value="javascript"
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="3">
           <i class="fab fa-js"></i>
         </label>
       </section>
+
       <section className="radio">
         <input
           id="4"
-          name="filter"
+          checked={type === "python"}
           type="radio"
-          value="pyton"
+          value="python"
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="4">
@@ -55,72 +58,77 @@ export function Selector({ onSkillChange, skill }) {
       <section className="radio">
         <input
           id="5"
-          name="filter"
+          checked={type === "c"}
           type="radio"
-          value="pyton"
+          value="c"
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="5">
           <i class="fab fa-cuttlefish"></i>
         </label>
       </section>
+
       <section className="radio">
         <input
           id="6"
-          name="filter"
+          checked={type === "node"}
           type="radio"
-          value="pyton"
+          value="node"
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="6">
           <i class="fab fa-node"></i>
         </label>
       </section>
+
       <section className="radio">
         <input
           id="7"
-          name="filter"
+          checked={type === "react"}
           type="radio"
-          value="pyton"
+          value="react"
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="7">
           <i class="fab fa-react"></i>
         </label>
       </section>
+
       <section className="radio">
         <input
           id="8"
-          name="filter"
+          checked={type === "angular"}
           type="radio"
-          value="pyton"
+          value="angular"
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="8">
           <i class="fab fa-angular"></i>
         </label>
       </section>
+
       <section className="radio">
         <input
-          id="8"
-          name="filter"
+          id="9"
+          checked={type === "html5"}
           type="radio"
-          value="pyton"
+          value="html5"
           onChange={e => onSkillChange(e.target.value)}
         />
-        <label htmlFor="8">
+        <label htmlFor="9">
           <i class="fab fa-html5"></i>
         </label>
       </section>
+
       <section className="radio">
         <input
-          id="8"
-          name="filter"
+          id="10"
+          checked={type === "css3"}
           type="radio"
-          value="pyton"
+          value="css3"
           onChange={e => onSkillChange(e.target.value)}
         />
-        <label htmlFor="8">
+        <label htmlFor="10">
           <i class="fab fa-css3-alt"></i>
         </label>
       </section>

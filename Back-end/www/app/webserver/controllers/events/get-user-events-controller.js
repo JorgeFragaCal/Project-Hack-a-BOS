@@ -8,10 +8,6 @@ async function getUserEvent(req, res, next) {
   try {
     const sqlQuery = `SELECT *
     FROM user_participate_events 
-    INNER JOIN user 
-    ON user_participate_events.user_iduser = user.id
-    INNER JOIN events 
-    ON user_participate_events.events_idevents = events.idevents
     WHERE user_participate_events.user_iduser = ?
      ;`;
 

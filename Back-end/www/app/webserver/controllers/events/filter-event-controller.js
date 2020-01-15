@@ -3,24 +3,54 @@ const mysqlPool = require("../../../database/mysql-pool");
 async function filterEvent(req, res, next) {
   const { skill, city, date_init, date_final } = req.query;
 
-  if (skill) {
+  if (skill && city) {
     try {
-      const sqlQuery = `SELECT  *
+      const sqlQuery = `SELECT DISTINCT 
+      id, title, start_date,city, image, email, prize, web, address, country
       FROM ranking 
       INNER JOIN events on ranking.events_idevents = events.id
-      WHERE skills = ?
-      order by puntuation desc
-      ;`;
+      WHERE skills = ? and LOCATE(?, city) > 0;`;
       const connection = await mysqlPool.getConnection();
-      const [rows] = await connection.execute(sqlQuery, [skill]);
+      const [rows] = await connection.execute(sqlQuery, [skill, city]);
       connection.release();
 
       console.log("rows", rows);
+      if (!rows.length) {
+        return res.status(404).send();
+      }
 
       return res.status(200).send({
         data: rows
       });
     } catch (e) {
+      console.error(e);
+      connection.release();
+      return res.status(500).send({ message: e.message });
+    }
+  }
+
+  if (skill) {
+    try {
+      const sqlQuery = `SELECT DISTINCT 
+      id, title, start_date,city, image, email, prize, web, address, country
+      FROM ranking 
+      INNER JOIN events on ranking.events_idevents = events.id
+      WHERE skills = ?;`;
+      const connection = await mysqlPool.getConnection();
+      const [rows] = await connection.execute(sqlQuery, [skill]);
+      connection.release();
+
+      console.log("rows", rows);
+      if (!rows.length) {
+        return res.status(404).send();
+      }
+
+      return res.status(200).send({
+        data: rows
+      });
+    } catch (e) {
+      console.error(e);
+      connection.release();
       return res.status(500).send({ message: e.message });
     }
   }
@@ -29,19 +59,22 @@ async function filterEvent(req, res, next) {
     try {
       const sqlQuery = `SELECT *
     FROM events
-    WHERE city = ?
-   
+    WHERE LOCATE(?, city) > 0
      ;`;
       const connection = await mysqlPool.getConnection();
       const [rows] = await connection.execute(sqlQuery, [city]);
       connection.release();
 
       console.log("rows", rows);
+      if (!rows.length) {
+        return res.status(404).send();
+      }
 
       return res.status(200).send({
         data: rows
       });
     } catch (e) {
+      connection.release();
       return res.status(500).send({ message: e.message });
     }
   }
@@ -60,11 +93,38 @@ async function filterEvent(req, res, next) {
       connection.release();
 
       console.log("rows", rows);
+      if (!rows.length) {
+        return res.status(404).send();
+      }
 
       return res.status(200).send({
         data: rows
       });
     } catch (e) {
+      connection.release();
+      return res.status(500).send({ message: e.message });
+    }
+  } else {
+    try {
+      const sqlQuery = `SELECT  *
+    FROM events 
+    ORDER BY start_date asc
+    ;`;
+
+      const connection = await mysqlPool.getConnection();
+      const [rows] = await connection.execute(sqlQuery, []);
+      connection.release();
+
+      console.log("rows", rows);
+      if (!rows.length) {
+        return res.status(404).send();
+      }
+
+      return res.status(200).send({
+        data: rows
+      });
+    } catch (e) {
+      connection.release();
       return res.status(500).send({ message: e.message });
     }
   }

@@ -7,12 +7,12 @@ async function checkAccountSession(req, res, next) {
   Miramos el header que contiene el token del id codificado
   Comprobamos que coincide con el del usuario logeado
   */
-  const { authoritation } = req.headers;
-  if (!authoritation) {
+  const { authorization } = req.headers;
+  if (!authorization) {
     return res.status(401).send();
   }
 
-  const [prefix, token] = authoritation.split(" ");
+  const [prefix, token] = authorization.split(" ");
 
   if (prefix !== "Bearer") {
     return res.status(401).send();

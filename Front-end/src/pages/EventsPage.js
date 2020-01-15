@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import { filterEvents } from "../http/eventService";
 import { getEvents } from "../http/eventService";
 import { Link } from "react-router-dom";
@@ -13,10 +14,14 @@ export function EventsPage() {
   const [data_start, setDateI] = useState("");
 
   useEffect(() => {
-    filterEvents(city, skill, data_final, data_start).then(events => {
-      setEvents(events);
-    });
-  }, [city, skill, data_final, data_start]);
+    filterEvents(city, skill)
+      .then(events => {
+        setEvents(events);
+      })
+      .catch(() => {
+        setEvents([]);
+      });
+  }, [city, skill]);
 
   useEffect(() => {
     getEvents().then(events => {

@@ -53,7 +53,7 @@ async function login(req, res, next) {
     }
 
     const paylodJwt = {
-      id: userData.id,
+      userId: userData.id,
       userType: userData.userType
     };
 

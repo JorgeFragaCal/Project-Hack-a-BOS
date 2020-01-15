@@ -1,3 +1,4 @@
+
 import React, { useRef } from "react";
 
 export function Search({ onSearchChange }) {
@@ -14,4 +15,5 @@ export function Search({ onSearchChange }) {
       </button>
     </section>
   );
+
 }

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import decode from "jwt-decode";
-import { useHistory } from "react-router-dom";
 import { login, register } from "../../http";
+import { useHistory } from "react-router-dom";
 
 const AuthContext = React.createContext();
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -25,10 +25,10 @@ export function AuthProvider({ children }) {
   const signIn = async ({ email, password }) => {
     try {
       const {
-        data: { token, dataUser }
+        data: { token, userData }
       } = await login(email, password);
       const { userType } = decode(token);
-      const user = dataUser;
+      const user = { userData, token };
       setUser(user);
       setIsAuthenticated(true);
       setUserType(userType);
@@ -41,6 +41,7 @@ export function AuthProvider({ children }) {
   };
 
   const signUp = async ({
+    id,
     username,
     name,
     lastName,
@@ -57,6 +58,7 @@ export function AuthProvider({ children }) {
       const {
         data: { token, dataUser }
       } = await register({
+        id,
         username,
         name,
         lastName,
@@ -89,7 +91,9 @@ export function AuthProvider({ children }) {
   const logout = () => {
     setUser(null);
     setUserType(false);
+    setIsAuthenticated(false);
     localStorage.removeItem("currentUser");
+    history.push("/");
   };
 
   return (

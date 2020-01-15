@@ -15,14 +15,14 @@ async function validateSchema(payload) {
     email: Joi.string()
       .email()
       .required(),
-    price: Joi.string(),
+    prize: Joi.string(),
     web: Joi.string(),
     price: Joi.string()
   });
   Joi.assert(payload, schema);
 }
 
-async function createEvent(res, req, next) {
+async function createEvent(req, res, next) {
   const eventData = { ...req.body };
   try {
     await validateSchema(eventData);
@@ -46,12 +46,13 @@ async function createEvent(res, req, next) {
       image: eventData.image,
       email: eventData.email,
       web: eventData.web,
-      price: eventData.price
+      prize: eventData.price
     });
     connection.release();
 
     res.status(201).send("event created");
   } catch (e) {
+    console.error(e);
     return res.status(500).send({ message: e.message });
   }
 }

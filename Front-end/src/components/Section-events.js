@@ -46,11 +46,14 @@ function SectionEvents() {
               />
               <section id="event-medium-description">
                 <h3>{title}</h3>
+
                 <p style={{ textAlign: "center" }}>{start_date}</p>
+
                 <p>
                   {address}
                   {city} {country}
                 </p>
+
                 <p>
                   <i className="fa fa-globe fa-fw"> </i>
                   {web}

@@ -21,12 +21,14 @@ export function Login() {
     return signIn(formData)
       .then(d => console.log(d))
       .catch(error => {
-        setError(
-          "password",
-          "invalidCredentials",
-          "The email or the password are invalid"
-        );
-        setValue("password", "");
+        if (error) {
+          setError(
+            "password",
+            "invalidCredentials",
+            "The email or the password are invalid"
+          );
+          setValue("password", "");
+        }
       });
   };
 
@@ -36,6 +38,7 @@ export function Login() {
         <h1>Please Log in</h1>
         <fieldset>
           <label htmlFor="email">Email</label>
+
           <input
             ref={register(LOGIN_VALIDATIONS.email)}
             id="email"
@@ -50,6 +53,7 @@ export function Login() {
         </fieldset>
         <fieldset>
           <label htmlFor="password">Password</label>
+
           <input
             ref={register(LOGIN_VALIDATIONS.password)}
             id="password"

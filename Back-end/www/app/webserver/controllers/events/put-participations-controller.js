@@ -4,17 +4,17 @@ async function participation(req, res, next) {
   /**
    * PArticipations on events
    */
-  const { id } = req.params;
-  const idUser = { ...req.body };
+  const { userId } = req.claims;
+  const { eventId } = req.params;
 
+  const connection = await mysqlPool.getConnection();
   try {
     const sqlQuery = `INSERT INTO user_participate_events SET ? 
     ;`;
 
-    const connection = await mysqlPool.getConnection();
-    const [rows] = await connection.execute(sqlQuery, {
-      user_iduser: idUser.user_iduser,
-      events_idevents: idUser.events_idevents
+    const [rows] = await connection.query(sqlQuery, {
+      user_iduser: userId,
+      events_idevents: eventId
     });
     connection.release();
 
@@ -22,6 +22,11 @@ async function participation(req, res, next) {
       data: rows
     });
   } catch (e) {
+    console.error(e);
+    if (e.errno === 1062) {
+      return res.status(409).send();
+    }
+    connection.release();
     return res.status(500).send({ message: e.message });
   }
 }

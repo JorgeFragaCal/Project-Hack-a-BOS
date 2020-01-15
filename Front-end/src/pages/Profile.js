@@ -58,7 +58,7 @@ export function Profile() {
         )
       )}
 
-      <SectionUserRanking />
+      <SectionUserRanking userId={params.id} />
     </main>
   );
 }

@@ -1,21 +1,22 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { MainMenu } from "./components/MainMenu";
+import { AboutUs } from "./pages/AboutUs";
+import { AuthProvider } from "./shared/context/auth-context";
+import { EventDetail } from "./pages/EventDetail";
+import { EventsPage } from "./pages/EventsPage";
 import { Footer } from "./components/Footer";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
-import { SignUp } from "./pages/SingUp";
-import { Privacy } from "./pages/Privacy";
-import { Terms } from "./pages/Terms";
-import { EventsPage } from "./pages/EventsPage";
-import { AuthProvider } from "./shared/context/auth-context";
-import { RankingPage } from "./pages/Rankings-page";
-import { AboutUs } from "./pages/AboutUs";
-import { EventDetail } from "./pages/EventDetail";
+import { MainMenu } from "./components/MainMenu";
 import { NewEvent } from "./pages/NewEvent";
 import { NotFound } from "./pages/NotFound";
+import { Privacy } from "./pages/Privacy";
 import { Profile } from "./pages/Profile";
+import { MyProfile } from "./pages/MyProfile";
+import { RankingPage } from "./pages/Rankings-page";
+import { SignUp } from "./pages/SingUp";
+import { Terms } from "./pages/Terms";
 
 function App() {
   return (
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path="/user/:id">
             <Profile />
+          </Route>
+          <Route path="/myprofile">
+            <MyProfile />
           </Route>
           <Route path="/ranking">
             <RankingPage />
