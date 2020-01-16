@@ -21,30 +21,22 @@ export function Footer() {
         <ul>
           <li>
             <a href="https://twitter.com/">
-
               <i className="fab fa-twitter" />
-
             </a>
           </li>
           <li>
             <a href="https://www.linkedin.com/">
-
               <i className="fab fa-linkedin" />
-
             </a>
           </li>
           <li>
             <a href="https://www.instagram.com/">
-
               <i className="fab fa-instagram" />
-
             </a>
           </li>
           <li>
             <a href="https://www.facebook.com/">
-
               <i className="fab fa-facebook " />
-
             </a>
           </li>
         </ul>
@@ -60,7 +52,7 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="tel:+34981123456">
                 <i className="fa fa-phone fa-fw" />
                 981 123 456
               </a>

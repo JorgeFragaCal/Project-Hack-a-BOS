@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import useForm from "react-hook-form";
 import { createEvent } from "../http/eventService";
-import CKEditor from "../../node_modules/ckeditor4-react";
+// import CKEditor from "../../node_modules/ckeditor4-react";
 
 export function NewEvent() {
   const { register, errors, formState, handleSubmit, setError } = useForm({
@@ -34,6 +34,11 @@ export function NewEvent() {
           <i className="fa fa-upload fa-fw"></i>
           <input type="file" name="image" id="image" class="inputfile" />
           <label for="image">Choose a image</label>
+        </fieldset>
+        <fieldset>
+          <i className="fa fa-upload fa-fw"></i>
+          <input type="file" name="banner" id="banner" class="inputfile" />
+          <label for="banner">Choose a banner (1500+500px recomended)</label>
         </fieldset>
         <fieldset class="name-event">
           <label htmlFor="title"> Hackathone title * :</label>
@@ -134,7 +139,7 @@ export function NewEvent() {
           />
           <fieldset class="description">
             <label htmlFor="description">Description</label>
-            <CKEditor style={{ marginTop: "1rem" }} />
+            {/* <CKEditor style={{ marginTop: "1rem" }} /> */}
           </fieldset>
         </fieldset>
         <button

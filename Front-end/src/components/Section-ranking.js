@@ -38,27 +38,44 @@ function SectionRanking() {
             <ul>
               {rankings
                 .filter(({ events_idevents }) => events_idevents === id)
-                .map(({ username, puntuation, user_iduser, avatar }) => (
-                  <li key={username}>
-                    <div
-                      className="image-profile-small"
-                      style={{
-                        backgroundImage: `url(${
-                          avatar === "N/A"
-                            ? "https://via.placeholder.com/1000"
-                            : avatar
-                        }`
-                      }}
-                    />
-                    <div>
-                      <Link
-                        to={isAuthenticated ? `/user/${user_iduser}` : "/login"}
-                      >
-                        {username} {puntuation}
-                      </Link>
-                    </div>
-                  </li>
-                ))}
+                .map(
+                  ({
+                    username,
+                    puntuation,
+                    user_iduser,
+                    avatar,
+                    anonymous
+                  }) => (
+                    <li key={username}>
+                      <div
+                        className="image-profile-small"
+                        style={{
+                          backgroundImage: `url(${
+                            anonymous === "true"
+                              ? "https://pwcenter.org/sites/default/files/default_images/default_profile.png"
+                              : avatar
+                          }`
+                        }}
+                      />
+                      <div>
+                        <Link
+                          to={
+                            isAuthenticated && anonymous === "false"
+                              ? `/user/${user_iduser}`
+                              : anonymous === "true"
+                              ? "/#"
+                              : !isAuthenticated
+                              ? "/login"
+                              : null
+                          }
+                        >
+                          {anonymous === "false" ? username : "anonymous"}{" "}
+                          {puntuation}
+                        </Link>
+                      </div>
+                    </li>
+                  )
+                )}
             </ul>
           </section>
         ))

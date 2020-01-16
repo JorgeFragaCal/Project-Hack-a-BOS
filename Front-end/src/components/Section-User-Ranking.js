@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { getUserRanking } from "../http/rankingService";
-import { useParams } from "react-router-dom";
 
 function SectionUserRanking({ userId }) {
   const [rankings, setRankings] = useState([]);

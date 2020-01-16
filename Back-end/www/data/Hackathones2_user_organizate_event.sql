@@ -16,36 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `invoice`
+-- Table structure for table `user_organizate_event`
 --
 
-DROP TABLE IF EXISTS `invoice`;
+DROP TABLE IF EXISTS `user_organizate_event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `invoice` (
-  `id` varchar(100) NOT NULL,
+CREATE TABLE `user_organizate_event` (
   `user_iduser` varchar(100) NOT NULL,
   `events_idevents` varchar(100) NOT NULL,
-  `IBAN` varchar(45) NOT NULL,
-  `price` float NOT NULL,
-  `IVA` int(11) NOT NULL,
-  `total` float NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_invoice_events1_idx` (`events_idevents`),
-  KEY `fk_invoice_user1_idx` (`user_iduser`),
-  CONSTRAINT `fk_invoice_events1` FOREIGN KEY (`events_idevents`) REFERENCES `events` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_invoice_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`user_iduser`,`events_idevents`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `invoice`
+-- Dumping data for table `user_organizate_event`
 --
 
-LOCK TABLES `invoice` WRITE;
-/*!40000 ALTER TABLE `invoice` DISABLE KEYS */;
-INSERT INTO `invoice` VALUES ('1','1','1','ES2620957287706145241366',100,21,121),('2','1','2','ES2620957287706145241366',100,21,121),('3','2','1','ES0501826474308619895367',100,21,121),('4','2','2','ES0501826474308619895367',100,21,121),('5','3','1','ES5301827486133498394989',100,21,121),('6','3','2','ES5301827486133498394989',100,21,121);
-/*!40000 ALTER TABLE `invoice` ENABLE KEYS */;
+LOCK TABLES `user_organizate_event` WRITE;
+/*!40000 ALTER TABLE `user_organizate_event` DISABLE KEYS */;
+INSERT INTO `user_organizate_event` VALUES ('0ca1bc0b-ebdb-473b-8f23-2f8c43591701','1'),('0ca1bc0b-ebdb-473b-8f23-2f8c43591701','2'),('0ca1bc0b-ebdb-473b-8f23-2f8c43591701','3'),('0ca1bc0b-ebdb-473b-8f23-2f8c43591701','7');
+/*!40000 ALTER TABLE `user_organizate_event` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-07 18:52:56
+-- Dump completed on 2020-01-16 21:02:27

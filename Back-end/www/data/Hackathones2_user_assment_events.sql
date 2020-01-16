@@ -27,10 +27,8 @@ CREATE TABLE `user_assment_events` (
   `events_idevents` varchar(100) NOT NULL,
   `assement` varchar(45) NOT NULL,
   PRIMARY KEY (`user_iduser`,`events_idevents`),
-  KEY `fk_user_has_events_events2_idx` (`events_idevents`),
   KEY `fk_user_has_events_user1_idx` (`user_iduser`),
-  CONSTRAINT `fk_user_has_events_events2` FOREIGN KEY (`events_idevents`) REFERENCES `events` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_has_events_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_user_has_events_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +38,7 @@ CREATE TABLE `user_assment_events` (
 
 LOCK TABLES `user_assment_events` WRITE;
 /*!40000 ALTER TABLE `user_assment_events` DISABLE KEYS */;
-INSERT INTO `user_assment_events` VALUES ('1','1','4'),('1','2','5'),('2','1','3'),('2','2','4'),('3','1','2'),('3','2','5');
+INSERT INTO `user_assment_events` VALUES ('1','1','5'),('f9412b20-477d-4016-ae40-4867d3253065','4','5');
 /*!40000 ALTER TABLE `user_assment_events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-07 18:52:56
+-- Dump completed on 2020-01-16 21:02:27

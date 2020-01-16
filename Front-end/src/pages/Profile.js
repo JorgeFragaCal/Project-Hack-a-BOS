@@ -52,7 +52,9 @@ export function Profile() {
                 <p>{phone}</p>
                 <p>{email}</p>
               </div>
-              <button className="button-blue">Enviar Mensaje</button>
+              <a href={`mailto:${email}`} className="button-blue">
+                Enviar Mensaje
+              </a>
             </section>
           </section>
         )

@@ -30,7 +30,7 @@ CREATE TABLE `ranking` (
   PRIMARY KEY (`user_iduser`,`events_idevents`),
   KEY `fk_user_has_events_events3_idx` (`events_idevents`),
   KEY `fk_user_has_events_user2_idx` (`user_iduser`),
-  CONSTRAINT `fk_user_has_events_events3` FOREIGN KEY (`events_idevents`) REFERENCES `events` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_has_events_events3` FOREIGN KEY (`events_idevents`) REFERENCES `events` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_has_events_user2` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -41,7 +41,7 @@ CREATE TABLE `ranking` (
 
 LOCK TABLES `ranking` WRITE;
 /*!40000 ALTER TABLE `ranking` DISABLE KEYS */;
-INSERT INTO `ranking` VALUES ('1','1','java',100),('1','2','php',20),('1','3','javascript',50),('2','1','java',80),('2','2','php',100),('3','1','java',30),('3','2','node',100);
+INSERT INTO `ranking` VALUES ('1','1','PHP',20),('1','3','JAVASCRIPT',50),('1','5','PYTHON',100),('2','2','JAVASCRIPT',80),('2','6','NODEJS',60),('3','1','NODEJS',100),('3','2','JAVASCRIPT',100),('3','5','JAVA',70),('f9412b20-477d-4016-ae40-4867d3253065','2','JAVASCRIPT',100),('f9412b20-477d-4016-ae40-4867d3253065','4','PHP',55),('f9412b20-477d-4016-ae40-4867d3253065','5','PYTHON',45),('f9412b20-477d-4016-ae40-4867d3253065','6','NODEJS',95);
 /*!40000 ALTER TABLE `ranking` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-07 18:52:56
+-- Dump completed on 2020-01-16 21:02:27

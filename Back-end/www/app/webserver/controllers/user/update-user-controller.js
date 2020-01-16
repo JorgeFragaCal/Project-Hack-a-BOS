@@ -13,7 +13,7 @@ async function validateSchema(payload) {
       .trim()
       .min(1)
       .max(45),
-    lastname: Joi.string()
+    lastName: Joi.string()
       .trim()
       .min(1)
       .max(45),
@@ -33,12 +33,16 @@ async function validateSchema(payload) {
     address: Joi.string()
       .trim()
       .min(1)
-      .max(45),
+      .max(100),
     city: Joi.string()
       .trim()
       .min(1)
       .max(45),
     country: Joi.string()
+      .trim()
+      .min(1)
+      .max(45),
+    anonymous: Joi.string()
       .trim()
       .min(1)
       .max(45)
@@ -78,18 +82,20 @@ async function updateUser(req, res, next) {
         address = ?,
         city = ?,
         country = ?
+        anonymous =?
       WHERE id = ?`;
 
     await connection.query(sqlUpdateUser, [
       userData.username,
       userData.name,
-      userData.lastname,
+      userData.lastName,
       userData.email,
       userData.phone,
       userData.avatar,
       userData.address,
       userData.city,
       userData.country,
+      userData.anonymous,
       userId
     ]);
     connection.release();

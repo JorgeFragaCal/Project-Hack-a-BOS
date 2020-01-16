@@ -35,7 +35,7 @@ export function createEvent({
   country,
   description,
   image,
-
+  banner,
   prize,
   web
 }) {
@@ -64,9 +64,9 @@ export function uploadEvent({
   email,
   prize,
   web,
-  id
+  eventId
 }) {
-  return axios.put(`${API_BASE_URL}/events/${id}`, {
+  return axios.put(`${API_BASE_URL}/events/event/${eventId}`, {
     title,
     start_date,
     email,

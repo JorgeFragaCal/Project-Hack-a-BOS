@@ -17,7 +17,8 @@ export function uploadAccount({
   avatar,
   address,
   city,
-  country
+  country,
+  anonymous
 }) {
   return axios.put(`${API_BASE_URL}`, {
     username,
@@ -28,6 +29,7 @@ export function uploadAccount({
     avatar,
     address,
     city,
-    country
+    country,
+    anonymous
   });
 }

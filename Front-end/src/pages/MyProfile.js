@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getProfile, uploadAccount } from "../http/index";
 import { SectionUserEvents } from "../components/Section-User-Events";
+import SectionUserRanking from "../components/Section-User-Ranking";
 import useForm from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../shared/context/auth-context";
-import SectionUserRanking from "../components/Section-User-Ranking";
-
 export function MyProfile() {
   const [open, setOpen] = useState(true);
   const [profile, setProfile] = useState([]);
@@ -16,7 +15,7 @@ export function MyProfile() {
   });
   const history = useHistory();
 
-  const handleSignUp = formData => {
+  const updateAccount = formData => {
     return uploadAccount(formData)
       .then(window.alert("Account upload"))
       .then(history.push("/myprofile"));
@@ -26,7 +25,7 @@ export function MyProfile() {
     getProfile(user.userData.id).then(profile => {
       setProfile(profile);
     });
-  }, []);
+  }, [user.userData.id]);
 
   if (!profile) return null;
 
@@ -53,7 +52,7 @@ export function MyProfile() {
               className="image-profile"
               style={{
                 backgroundImage: `url(${
-                  avatar === "N/A" ? "https://via.placeholder.com/1000" : avatar
+                  avatar === "N/A" ? "https://via.placeholder.com/300" : avatar
                 }`
               }}
             />
@@ -82,13 +81,13 @@ export function MyProfile() {
       <section id="register" className="auth">
         <form
           className={` ${open ? "uploadinfo" : ""}`}
-          onSubmit={handleSubmit(handleSignUp)}
+          onSubmit={handleSubmit(updateAccount)}
         >
           <div className="col-3">
             <fieldset>
               <label htmlFor="username">Username</label>
               <input
-                ref={register()}
+                ref={register}
                 id="username"
                 name="username"
                 type="text"
@@ -101,12 +100,12 @@ export function MyProfile() {
             </fieldset>
             <fieldset>
               <label> Anonymous</label>
-              <input type="checkbox"></input>
+              <input ref={register} type="checkbox" name="anonymous"></input>
             </fieldset>
             <fieldset>
               <i className="fa fa-upload fa-fw"></i>
               <input
-                ref={register()}
+                ref={register}
                 type="file"
                 name="image"
                 id="image"
@@ -121,7 +120,7 @@ export function MyProfile() {
             <label htmlFor="email">Email</label>
 
             <input
-              ref={register()}
+              ref={register}
               id="email"
               name="email"
               type="text"
@@ -137,7 +136,7 @@ export function MyProfile() {
               <label htmlFor="name">Name</label>
 
               <input
-                ref={register()}
+                ref={register}
                 id="name"
                 name="name"
                 type="text"
@@ -152,7 +151,7 @@ export function MyProfile() {
               <label htmlFor="lastName">Last Name</label>
 
               <input
-                ref={register()}
+                ref={register}
                 id="lastName"
                 name="lastName"
                 type="text"
@@ -186,7 +185,7 @@ export function MyProfile() {
               <label htmlFor="address">Address</label>
 
               <input
-                ref={register()}
+                ref={register}
                 id="address"
                 name="address"
                 type="text"
@@ -201,7 +200,7 @@ export function MyProfile() {
               <label htmlFor="city">City</label>
 
               <input
-                ref={register()}
+                ref={register}
                 id="city"
                 name="city"
                 type="text"
@@ -216,7 +215,7 @@ export function MyProfile() {
               <label htmlFor="country">Country</label>
 
               <input
-                ref={register()}
+                ref={register}
                 id="country"
                 name="country"
                 type="text"

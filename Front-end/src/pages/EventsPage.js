@@ -10,8 +10,8 @@ export function EventsPage() {
 
   const [city, setCity] = useState("");
   const [skill, setSkill] = useState("");
-  const [data_final, setDateF] = useState("");
-  const [data_start, setDateI] = useState("");
+  // const [data_final, setDateF] = useState("");
+  // const [data_start, setDateI] = useState("");
 
   useEffect(() => {
     filterEvents(city, skill)

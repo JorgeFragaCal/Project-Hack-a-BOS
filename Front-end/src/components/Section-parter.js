@@ -1,7 +1,6 @@
 import React from "react";
 import "../css/styles.css";
 import img1 from "../img/partners/hablogo.png";
-import zara from "../img/partners/zara.png";
 import softtek from "../img/partners/softtek.png";
 import oesia from "../img/partners/oesia.png";
 import improvingmetrics from "../img/partners/improvingmetrics.png";
