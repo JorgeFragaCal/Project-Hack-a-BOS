@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { getRanking } from "../http/rankingService";
 import { Link } from "react-router-dom";
 import { getEvents } from "../http/eventService";
+import { useAuth } from "../shared/context/auth-context";
 import aos from "aos";
 function SectionRanking() {
   const [rankings, setRankings] = useState([]);
   const [events, setEvents] = useState([]);
+  const { isAuthenticated } = useAuth();
   useEffect(() => {
     getEvents().then(events => {
       setEvents(events);
@@ -49,7 +51,9 @@ function SectionRanking() {
                       }}
                     />
                     <div>
-                      <Link to={`/user/${user_iduser}`}>
+                      <Link
+                        to={isAuthenticated ? `/user/${user_iduser}` : "/login"}
+                      >
                         {username} {puntuation}
                       </Link>
                     </div>

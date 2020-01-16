@@ -35,9 +35,7 @@ export function MainMenu() {
               <Link to="/login">Sign In</Link>
             )}
             {isAuthenticated ? (
-              <button className="button-blue" onClick={logout}>
-                Logout
-              </button>
+              <Link onClick={logout}>Logout</Link>
             ) : (
               <Link to="/signup">Sign Up</Link>
             )}

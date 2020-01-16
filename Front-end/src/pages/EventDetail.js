@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getEvent, participationEvent } from "../http/eventService";
+import { getEvent, participationEvent, puntuateEvent } from "../http/index";
 import { useParams } from "react-router-dom";
 import Interweave from "interweave";
 import { useAuth } from "../shared/context/auth-context";
@@ -30,14 +30,17 @@ export function EventDetail() {
           prize,
           web,
           email,
-          description
+          description,
+          banner
         }) => (
           <section id="event-detail" key={id}>
             <section
-              id="section-slider"
+              id="section-banner"
               style={{
                 backgroundImage: `url(${
-                  image === "null" ? "https://via.placeholder.com/300" : image
+                  image === "banner"
+                    ? "https://via.placeholder.com/300"
+                    : banner
                 }`
               }}
             />
@@ -60,15 +63,40 @@ export function EventDetail() {
               )}
 
               <div className="rating">
-                <input type="radio" name="start" id="start1" />
+                <input
+                  type="radio"
+                  onClick={() => puntuateEvent(id, 5)}
+                  name="start"
+                  id="start1"
+                />
                 <label htmlFor="start1"></label>
-                <input type="radio" name="start" id="start2" />
+                <input
+                  type="radio"
+                  onClick={() => puntuateEvent(id, 4)}
+                  name="start"
+                  id="start2"
+                />
                 <label htmlFor="start2"></label>
-                <input type="radio" name="start" id="start3" />
+                <input
+                  type="radio"
+                  onClick={() => puntuateEvent(id, 3)}
+                  name="start"
+                  id="start3"
+                />
                 <label htmlFor="start3"></label>
-                <input type="radio" name="start" id="start4" />
+                <input
+                  type="radio"
+                  onClick={() => puntuateEvent(id, 2)}
+                  name="start"
+                  id="start4"
+                />
                 <label htmlFor="start4"></label>
-                <input type="radio" name="start" id="start5" />
+                <input
+                  type="radio"
+                  onClick={() => puntuateEvent(id, 1)}
+                  name="start"
+                  id="start5"
+                />
                 <label htmlFor="start5"></label>
               </div>
             </div>

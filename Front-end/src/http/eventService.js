@@ -13,7 +13,9 @@ async function getEvents() {
 }
 
 async function getUserOrganizateEvents(id) {
-  const response = await axios.get(`${API_BASE_URL}/events/my-events/${id}`);
+  const response = await axios.get(
+    `${API_BASE_URL}/events/organizated-events/${id}`
+  );
   return response.data.data || [];
 }
 
@@ -61,17 +63,18 @@ export function uploadEvent({
   image,
   email,
   prize,
-  web
+  web,
+  id
 }) {
-  return axios.put(`${API_BASE_URL}/events`, {
+  return axios.put(`${API_BASE_URL}/events/${id}`, {
     title,
     start_date,
+    email,
     address: address ? address : "null",
     city: city ? city : "null",
     country: country ? country : "null",
     description: description ? description : "null",
     image: image ? image : "https://via.placeholder.com/300",
-    email,
     prize: prize ? prize : "free",
     web: web ? web : "null"
   });
@@ -83,6 +86,11 @@ export function deleteEvent(id) {
 
 export function participationEvent(id) {
   return axios.post(`${API_BASE_URL}/events/event/${id}`);
+}
+export function puntuateEvent(id, assement) {
+  return axios.put(
+    `${API_BASE_URL}/events/event/rating/${id}/?assement=${assement}`
+  );
 }
 
 export { getEvent, getEvents, filterEvents, getUserOrganizateEvents };

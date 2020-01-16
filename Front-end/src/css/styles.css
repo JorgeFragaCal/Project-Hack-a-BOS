@@ -468,8 +468,11 @@ section#terms {
 
 /*.............PAGE OF EVENTS DETAILS..........*/
 
-#main-event-detail {
-  margin-top: 50px;
+#section-banner {
+  background-size: auto;
+  background-attachment: fixed;
+  background-position: top;
+  height: 500px;
 }
 
 #description {
@@ -598,6 +601,10 @@ section#terms {
   background-color: #393e46;
   border: solid 1px rgba(255, 255, 255, 0.1);
   border-radius: 2%;
+}
+.ranking ul {
+  max-height: 360px;
+  overflow: auto;
 }
 #ranking-home ul li {
   margin: 1rem;

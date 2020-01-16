@@ -6,8 +6,11 @@ import {
   getEvents,
   createEvent,
   deleteEvent,
-  uploadEvent
+  uploadEvent,
+  participationEvent,
+  puntuateEvent
 } from "./eventService";
+import { getProfile, uploadAccount } from "./accountService";
 
 const TOKEN_URLS = ["/auth", "/users"];
 
@@ -65,5 +68,9 @@ export {
   uploadEvent,
   getRanking,
   getUserRanking,
-  getSkills
+  getSkills,
+  getProfile,
+  uploadAccount,
+  participationEvent,
+  puntuateEvent
 };

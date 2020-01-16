@@ -3,8 +3,10 @@ import { getRanking } from "../http/rankingService";
 import { getEvents } from "../http/eventService";
 import { getSkills } from "../http/rankingService";
 import { Link } from "react-router-dom";
+import { useAuth } from "../shared/context/auth-context";
 export function RankingPage() {
   const [rankings, setRankings] = useState([]);
+  const { isAuthenticated } = useAuth();
   useEffect(() => {
     getRanking().then(rankings => {
       setRankings(rankings);
@@ -47,7 +49,9 @@ export function RankingPage() {
                       }}
                     />
                     <div>
-                      <Link to={`/user/${user_iduser}`}>
+                      <Link
+                        to={isAuthenticated ? `/user/${user_iduser}` : "/login"}
+                      >
                         {username} {puntuation}
                       </Link>
                     </div>
@@ -77,7 +81,9 @@ export function RankingPage() {
                       }}
                     />
                     <div>
-                      <Link to={`/user/${user_iduser}`}>
+                      <Link
+                        to={isAuthenticated ? `/user/${user_iduser}` : "/login"}
+                      >
                         {username} {puntuation}
                       </Link>
                     </div>

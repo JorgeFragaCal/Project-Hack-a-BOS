@@ -16,14 +16,14 @@ const router = express.Router();
 
 router.get("/", getEvents);
 router.get("/event/:id", getEvent);
-router.get("/my-events/:id", getUserOrganizateEvent);
+router.get("/organizated-events/:id", getUserOrganizateEvent);
 router.get("/filter", filterEvent);
 
 router.post("/new", checkAccontSession, createEvent);
 router.post("/event/:eventId", checkAccontSession, participation);
 
 router.put("/event/:eventId", checkAccontSession, updateEvent);
-router.put("/event", checkAccontSession, putAssement);
+router.put("/event/rating/:eventId", checkAccontSession, putAssement);
 
 router.delete("/event/:eventId", checkAccontSession, deleteEvent);
 

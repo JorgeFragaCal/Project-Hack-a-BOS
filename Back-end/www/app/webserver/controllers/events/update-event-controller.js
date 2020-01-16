@@ -18,43 +18,37 @@ async function validateSchema(payload) {
     address: Joi.string()
       .trim()
       .min(1)
-      .max(45)
-      .required(),
+      .max(45),
     city: Joi.string()
       .trim()
       .min(1)
-      .max(45)
-      .required(),
+      .max(45),
     country: Joi.string()
       .trim()
       .min(1)
-      .max(45)
-      .required(),
+      .max(45),
     description: Joi.string()
       .trim()
       .min(1)
-      .max(65536)
-      .required(),
+      .max(65536),
     image: Joi.string()
       .trim()
       .min(1)
-      .max(65536)
-      .required(),
+      .max(65536),
     email: Joi.string()
       .trim()
       .min(1)
       .max(45)
+      .email()
       .required(),
     prize: Joi.string()
       .trim()
       .min(1)
-      .max(45)
-      .required(),
+      .max(45),
     web: Joi.string()
       .trim()
       .min(1)
       .max(45)
-      .required()
   });
 
   Joi.assert(payload, schema);
@@ -69,7 +63,8 @@ async function validateSchema(payload) {
  */
 async function updateEvent(req, res, next) {
   const { eventId } = req.params;
-  const { userId } = req.claims;
+
+  const { userId, userType } = req.claims;
   const eventData = {
     ...req.body,
     eventId,
@@ -82,13 +77,12 @@ async function updateEvent(req, res, next) {
     console.error(e);
     return res.status(400).send(e);
   }
-
+  if (userType !== "Organizating") {
+    return res.status(403).send();
+  }
   try {
     const connection = await mysqlPool.getConnection();
-    const now = new Date()
-      .toISOString()
-      .replace("T", " ")
-      .substring(0, 19);
+
     const sqlUpdateEvent = `UPDATE events
       SET title = ?,
         start_date = ?,

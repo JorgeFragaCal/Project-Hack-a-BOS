@@ -17,5 +17,5 @@ router.post(
   uploadAvatar
 );
 router.get("/:id", getUser);
-router.put("/:id", updateUser);
+router.put("/", checkAccountSession, updateUser);
 module.exports = router;

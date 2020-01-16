@@ -1,31 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { getProfile } from "../http/get-account";
-import { REGISTER_VALIDATIONS } from "../shared/validations";
+import { getProfile, uploadAccount } from "../http/index";
 import { SectionUserEvents } from "../components/Section-User-Events";
 import useForm from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "../shared/context/auth-context";
 import SectionUserRanking from "../components/Section-User-Ranking";
 
 export function MyProfile() {
   const [open, setOpen] = useState(true);
   const [profile, setProfile] = useState([]);
-  const { user, updateAccount, userType } = useAuth();
-  const { register, errors, handleSubmit, formState, setError } = useForm({
+  const { user, userType } = useAuth();
+
+  const { register, errors, handleSubmit, formState } = useForm({
     mode: "onBlur"
   });
+  const history = useHistory();
 
   const handleSignUp = formData => {
-    return updateAccount(formData)
-      .then(window.alert("Account created"))
-      .catch(error => {
-        if (error.response.status === 409) {
-          setError(
-            "email",
-            "conflict",
-            "The email already exists. Please try again"
-          );
-        }
-      });
+    return uploadAccount(formData)
+      .then(window.alert("Account upload"))
+      .then(history.push("/myprofile"));
   };
 
   useEffect(() => {
@@ -94,7 +88,7 @@ export function MyProfile() {
             <fieldset>
               <label htmlFor="username">Username</label>
               <input
-                ref={register(REGISTER_VALIDATIONS.name)}
+                ref={register()}
                 id="username"
                 name="username"
                 type="text"
@@ -112,6 +106,7 @@ export function MyProfile() {
             <fieldset>
               <i className="fa fa-upload fa-fw"></i>
               <input
+                ref={register()}
                 type="file"
                 name="image"
                 id="image"
@@ -126,7 +121,7 @@ export function MyProfile() {
             <label htmlFor="email">Email</label>
 
             <input
-              ref={register(REGISTER_VALIDATIONS.email)}
+              ref={register()}
               id="email"
               name="email"
               type="text"
@@ -135,22 +130,6 @@ export function MyProfile() {
             />
             <span className="errorMessage">
               {errors.email && errors.email.message}
-            </span>
-          </fieldset>
-
-          <fieldset>
-            <label htmlFor="password">Password</label>
-
-            <input
-              ref={register(REGISTER_VALIDATIONS.password)}
-              id="password"
-              name="password"
-              label="password"
-              type="password"
-              placeholder="Enter your password"
-            />
-            <span className="errorMessage">
-              {errors.password && errors.password.message}
             </span>
           </fieldset>
           <div className="col-3">
@@ -186,7 +165,6 @@ export function MyProfile() {
             </fieldset>
             <fieldset className="register-user">
               <label htmlFor="phone">Telephone</label>
-
               <input
                 ref={register({
                   pattern: {
@@ -251,7 +229,7 @@ export function MyProfile() {
             </fieldset>
           </div>
           <button
-            id="signup"
+            id="update"
             className="button-blue"
             type="submit"
             disabled={formState.isSubmitting}

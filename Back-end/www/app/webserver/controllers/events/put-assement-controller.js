@@ -4,17 +4,18 @@ async function putAssement(req, res, next) {
   /**
    * Put puntuations on events
    */
-  const userAssement = { ...req.body };
-
+  const { assement } = req.query;
+  const { userId } = req.claims;
+  const { eventId } = req.params;
   try {
-    const sqlQuery = `INSERT INTO user_assment_events SET ? 
-    ;`;
+    const sqlQuery = `INSERT INTO user_assment_events SET ?;`;
 
     const connection = await mysqlPool.getConnection();
-    const [rows] = await connection.execute(sqlQuery, {
-      user_iduser: userAssement.user_iduser,
-      events_idevents: userAssement.events_idevents,
-      assement: userAssement.assement
+
+    const [rows] = await connection.query(sqlQuery, {
+      user_iduser: userId,
+      events_idevents: eventId,
+      assement: assement
     });
     connection.release();
 

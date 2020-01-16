@@ -58,9 +58,9 @@ export function Selector({ onSkillChange, type }) {
       <section className="radio">
         <input
           id="5"
-          checked={type === "c"}
+          checked={type === "C#"}
           type="radio"
-          value="c"
+          value="C#"
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="5">
@@ -71,9 +71,9 @@ export function Selector({ onSkillChange, type }) {
       <section className="radio">
         <input
           id="6"
-          checked={type === "node"}
+          checked={type === "nodejs"}
           type="radio"
-          value="node"
+          value="nodejs"
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="6">
