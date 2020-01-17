@@ -24,10 +24,10 @@ export function Privacy() {
             This Privacy Policy applies to visitors to our Site, who view only
             publicly-available content (“Visitors”), individuals who have signed
             up to access and use our Services to seek employment opportunities,
-            or take part in Hackathons (“Users”), organizations who have signed
+            or take part in Hackathones (“Users”), organizations who have signed
             up to access and use our Services to hire Users (“Employers”), and
             individuals and organizations who have signed up to access and use
-            our Services to post and/or sponsor Hackathons (“Posters”).
+            our Services to post and/or sponsor Hackathones (“Posters”).
           </p>
 
           <p>
@@ -41,7 +41,7 @@ export function Privacy() {
               {" "}
               each User acknowledges that the User has read, understood and
               agrees to be legally bound by the terms of this Privacy Policy and
-              the accompanying Terms of Service for Jobs and Hackathons;
+              the accompanying Terms of Service for Jobs and Hackathones;
             </li>
             <li>
               {" "}
@@ -53,7 +53,7 @@ export function Privacy() {
               {" "}
               each Poster acknowledges that the Poster has read, understood and
               agrees to be legally bound by the terms of this Privacy Policy and
-              the accompanying Terms of Service for Hackathons.
+              the accompanying Terms of Service for Hackathones.
             </li>
           </ol>
 
@@ -127,22 +127,22 @@ export function Privacy() {
           </p>
 
           <p>
-            <strong>Hackathon Submission Information:</strong> If you would like
-            to register and/or submit an entry for a hackathon through our
+            <strong>Hackathone Submission Information:</strong> If you would like
+            to register and/or submit an entry for a hackathone through our
             Services, you will need to provide your name, e-mail address, the
             name of your submission, description of your submission, names of
             your team members and any other information required by the
-            applicable Posters (collectively, the “Hackathon Submission
+            applicable Posters (collectively, the “Hackathone Submission
             Information”). We may share the Hackathon Submission Information
-            with the applicable Posters. We may use such Hackathon Submission
+            with the applicable Posters. We may use such Hackathone Submission
             Information to give you more tailored recommendations regarding
-            future hackathons.
+            future hackathones.
           </p>
 
           <p>
             <strong>Other Information:</strong> In addition to the Contact
             Information, Profile Information, Job Application Information, and
-            Hackathon Submission Information, we may collect and/or receive the
+            Hackathone Submission Information, we may collect and/or receive the
             following information (“Other Information”):
           </p>
           <ol>
@@ -275,10 +275,10 @@ export function Privacy() {
             subscription databases. You cannot opt-out of receiving
             transactional e-mails related to your account with Hackathones. If
             you provide personal information to us that is contained in a
-            submission to a hackathon, such information may not be edited after
+            submission to a hackathone, such information may not be edited after
             the competition submission deadline until the conclusion of the
-            hackathon, per the rules of each competition. Requests to remove
-            such information from a submission may be made after a hackathon is
+            hackathone, per the rules of each competition. Requests to remove
+            such information from a submission may be made after a hackathone is
             over by emailing us at <strong> support@hackathones.es</strong>.
           </p>
         </section>

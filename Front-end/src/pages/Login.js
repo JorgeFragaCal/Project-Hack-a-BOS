@@ -18,18 +18,16 @@ export function Login() {
   });
 
   const handleSignin = formData => {
-    return signIn(formData)
-      .then(d => console.log(d))
-      .catch(error => {
-        if (error) {
-          setError(
-            "password",
-            "invalidCredentials",
-            "The email or the password are invalid"
-          );
-          setValue("password", "");
-        }
-      });
+    return signIn(formData).catch(error => {
+      if (error) {
+        setError(
+          "password",
+          "invalidCredentials",
+          "The email or the password are invalid"
+        );
+        setValue("password", "");
+      }
+    });
   };
 
   return (

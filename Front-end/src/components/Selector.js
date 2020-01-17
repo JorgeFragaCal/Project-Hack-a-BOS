@@ -12,7 +12,7 @@ export function Selector({ onSkillChange, type }) {
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="1">
-          <i class="fab fa-java php"></i>
+          <i className="fab fa-java php"></i>
         </label>
       </section>
 
@@ -25,7 +25,7 @@ export function Selector({ onSkillChange, type }) {
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="2">
-          <i class="fab fa-php"></i>
+          <i className="fab fa-php"></i>
         </label>
       </section>
 
@@ -38,7 +38,7 @@ export function Selector({ onSkillChange, type }) {
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="3">
-          <i class="fab fa-js"></i>
+          <i className="fab fa-js"></i>
         </label>
       </section>
 
@@ -51,7 +51,7 @@ export function Selector({ onSkillChange, type }) {
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="4">
-          <i class="fab fa-python"></i>
+          <i className="fab fa-python"></i>
         </label>
       </section>
 
@@ -64,7 +64,7 @@ export function Selector({ onSkillChange, type }) {
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="5">
-          <i class="fab fa-cuttlefish"></i>
+          <i className="fab fa-cuttlefish"></i>
         </label>
       </section>
 
@@ -77,7 +77,7 @@ export function Selector({ onSkillChange, type }) {
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="6">
-          <i class="fab fa-node"></i>
+          <i className="fab fa-node"></i>
         </label>
       </section>
 
@@ -90,7 +90,7 @@ export function Selector({ onSkillChange, type }) {
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="7">
-          <i class="fab fa-react"></i>
+          <i className="fab fa-react"></i>
         </label>
       </section>
 
@@ -103,7 +103,7 @@ export function Selector({ onSkillChange, type }) {
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="8">
-          <i class="fab fa-angular"></i>
+          <i className="fab fa-angular"></i>
         </label>
       </section>
 
@@ -116,7 +116,7 @@ export function Selector({ onSkillChange, type }) {
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="9">
-          <i class="fab fa-html5"></i>
+          <i className="fab fa-html5"></i>
         </label>
       </section>
 
@@ -129,7 +129,7 @@ export function Selector({ onSkillChange, type }) {
           onChange={e => onSkillChange(e.target.value)}
         />
         <label htmlFor="10">
-          <i class="fab fa-css3-alt"></i>
+          <i className="fab fa-css3-alt"></i>
         </label>
       </section>
     </section>

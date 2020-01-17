@@ -21,10 +21,10 @@ export function AboutUs() {
             </u>{" "}
             provided us with the project, we took it as a challenge. Our
             intention is to create a technological community and organize the
-            world’s hackathons and make them universally accessible and useful
+            world’s hackathones and make them universally accessible and useful
             by enabling tech recruiters and hiring managers to objectively
             evaluate talent at every stage of the recruiting process. So
-            Hackathone helps companies hire skilled developers and innovate
+            Hackathones helps companies hire skilled developers and innovate
             faster.
           </p>
 
@@ -50,8 +50,8 @@ export function AboutUs() {
         </section>
 
         <section id="past-partners">
-          <div class="row">
-            <div class="medium-12 text-center columns">
+          <div className="row">
+            <div className="medium-12 text-center columns">
               <h2>Organizations we would like to work with:</h2>
             </div>
           </div>

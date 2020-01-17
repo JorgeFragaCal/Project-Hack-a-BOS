@@ -56,7 +56,7 @@ export function AuthProvider({ children }) {
   }) => {
     try {
       const {
-        data: { token, dataUser }
+        data: { dataUser }
       } = await register({
         id,
         username,
@@ -74,16 +74,6 @@ export function AuthProvider({ children }) {
       const user = dataUser;
       setUser(user);
       setUserType(userType);
-      setIsAuthenticated(true);
-      if (token) {
-        if (userType === "Developer") {
-          history.push("/principalDeveloper");
-        } else if (userType === "Organizating") {
-          history.push("/principalEmployerOrg");
-        } else if (userType === "Recruiting") {
-          history.push("/principalEmployerRec");
-        }
-      }
     } catch (error) {
       return Promise.reject(error);
     }

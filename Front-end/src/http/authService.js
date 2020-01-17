@@ -16,7 +16,7 @@ export function register({
   email,
   phone,
   password,
-  image,
+  avatar,
   address,
   city,
   country,
@@ -29,12 +29,12 @@ export function register({
     email,
     password,
     userType,
-    image: image ? image : "null",
-    name: name ? name : "null",
-    lastName: lastName ? lastName : "null",
-    phone: phone ? phone : "null",
-    address: address ? address : "null",
-    city: city ? city : "null",
-    country: country ? country : "null"
+    phone,
+    avatar,
+    name,
+    lastName,
+    address,
+    city,
+    country
   });
 }

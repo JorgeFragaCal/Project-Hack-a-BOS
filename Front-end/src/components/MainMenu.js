@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useAuth } from "../shared/context/auth-context";
+import { Link } from "react-router-dom";
 export function MainMenu() {
+  const { user, isAuthenticated, logout } = useAuth();
   const [open, setOpen] = useState(true);
-  const { isAuthenticated, logout, user } = useAuth();
   return (
     <header>
       <nav className="menu">

@@ -65,7 +65,7 @@ export function SignUp() {
           </fieldset>
           <fieldset>
             <i className="fa fa-upload fa-fw"></i>
-            <input type="file" name="image" id="image" class="inputfile" />
+            <input type="file" name="image" id="image" className="inputfile" />
 
             <label htmlFor="image">Choose a image</label>
           </fieldset>

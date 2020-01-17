@@ -17,7 +17,7 @@ async function validate(payload) {
 
 async function uploadAvatar(res, req, next) {
   const { file } = req;
-  const { userId, role } = req.claims;
+  const { userId } = req.claims;
   const payload = {
     userId
   };
@@ -47,7 +47,7 @@ async function uploadAvatar(res, req, next) {
           return res.status(400).send(err);
         }
         const { secure_url: secureUrl } = result;
-        const sqlQuery = `UPDATE user SET image=? WHERE id=?`;
+        const sqlQuery = `UPDATE user SET avatar=? WHERE id=?`;
 
         try {
           const connection = await mysqlPool.getConnetion();

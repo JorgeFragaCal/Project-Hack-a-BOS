@@ -75,17 +75,18 @@ export function SectionUserEvents() {
           ))
           .slice(0, 4)}
       </section>
-      <section id="create-event" class="auth">
+      <section id="create-event" className="auth">
         <form
           className={` ${open ? "uploadinfo" : "col-4"}`}
           onSubmit={handleSubmit(updateEvent)}
         >
+          <h2>Cover all fields</h2>
           <fieldset>
             <i className="fa fa-upload fa-fw"></i>
-            <input type="file" name="image" id="image" class="inputfile" />
-            <label for="image">Choose a image</label>
+            <input type="file" name="image" id="image" className="inputfile" />
+            <label htmlFor="image">Choose a image</label>
           </fieldset>
-          <fieldset class="name-event">
+          <fieldset className="name-event">
             <label htmlFor="title"> Hackathone title * :</label>
             <input
               ref={register({
@@ -103,7 +104,7 @@ export function SectionUserEvents() {
           </fieldset>
 
           <fieldset>
-            <label for="start_date">Start date * :</label>
+            <label htmlFor="start_date">Start date * :</label>
             <input
               ref={register({
                 required: "The Date is required"
@@ -182,7 +183,7 @@ export function SectionUserEvents() {
               id="prize"
               placeholder="Enter the prize"
             />
-            <fieldset class="description">
+            <fieldset className="description">
               <label htmlFor="description">Description</label>
               {/* <CKEditor style={{ marginTop: "1rem" }} /> */}
             </fieldset>

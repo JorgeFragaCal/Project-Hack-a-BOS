@@ -31,15 +31,18 @@ export function NewEvent() {
       <form className="col-4" onSubmit={handleSubmit(handleCreateEvent)}>
         <h1>Add a Hackathon</h1>
         <fieldset>
-          <i className="fa fa-upload fa-fw"></i>
+          <i className="fa fa-upload fa-fw "></i>
           <input type="file" name="image" id="image" class="inputfile" />
-          <label for="image">Choose a image</label>
-        </fieldset>
-        <fieldset>
+          <label for="image">
+            Choose a image <small>(300x300px)</small>
+          </label>{" "}
           <i className="fa fa-upload fa-fw"></i>
           <input type="file" name="banner" id="banner" class="inputfile" />
-          <label for="banner">Choose a banner (1500+500px recomended)</label>
+          <label for="banner">
+            Choose a banner <small>(1500x500px)</small>
+          </label>
         </fieldset>
+
         <fieldset class="name-event">
           <label htmlFor="title"> Hackathone title * :</label>
           <input
@@ -137,10 +140,11 @@ export function NewEvent() {
             id="prize"
             placeholder="Enter the prize"
           />
-          <fieldset class="description">
-            <label htmlFor="description">Description</label>
-            {/* <CKEditor style={{ marginTop: "1rem" }} /> */}
-          </fieldset>
+        </fieldset>
+        <fieldset class="description">
+          <label htmlFor="description">Description</label>
+          <input type="textarea" cols="10" rows="10"></input>
+          {/* <CKEditor style={{ marginTop: "1rem" }} /> */}
         </fieldset>
         <button
           type="submit"

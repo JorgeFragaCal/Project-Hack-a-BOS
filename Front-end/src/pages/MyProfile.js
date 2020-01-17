@@ -9,7 +9,6 @@ export function MyProfile() {
   const [open, setOpen] = useState(true);
   const [profile, setProfile] = useState([]);
   const { user, userType } = useAuth();
-
   const { register, errors, handleSubmit, formState } = useForm({
     mode: "onBlur"
   });
@@ -83,11 +82,16 @@ export function MyProfile() {
           className={` ${open ? "uploadinfo" : ""}`}
           onSubmit={handleSubmit(updateAccount)}
         >
+          <h2>Cover all fields</h2>
           <div className="col-3">
             <fieldset>
               <label htmlFor="username">Username</label>
               <input
-                ref={register}
+                ref={register({
+                  username: {
+                    required: "The username is required"
+                  }
+                })}
                 id="username"
                 name="username"
                 type="text"
@@ -100,7 +104,29 @@ export function MyProfile() {
             </fieldset>
             <fieldset>
               <label> Anonymous</label>
-              <input ref={register} type="checkbox" name="anonymous"></input>
+              <section className="radio" id="anonymouss">
+                <input
+                  ref={register}
+                  id="1"
+                  name="anonymous"
+                  type="radio"
+                  value="true"
+                />
+                <label htmlFor="1">
+                  <i className="fas fa-check-circle"></i>
+                </label>
+
+                <input
+                  ref={register}
+                  id="2"
+                  name="anonymous"
+                  type="radio"
+                  value="false"
+                />
+                <label htmlFor="2">
+                  <i className="fas fa-times-circle"></i>
+                </label>
+              </section>
             </fieldset>
             <fieldset>
               <i className="fa fa-upload fa-fw"></i>
@@ -120,7 +146,15 @@ export function MyProfile() {
             <label htmlFor="email">Email</label>
 
             <input
-              ref={register}
+              ref={register({
+                email: {
+                  required: "The email is required",
+                  pattern: {
+                    message: "The email is not valid",
+                    value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                  }
+                }
+              })}
               id="email"
               name="email"
               type="text"
@@ -136,7 +170,11 @@ export function MyProfile() {
               <label htmlFor="name">Name</label>
 
               <input
-                ref={register}
+                ref={register({
+                  name: {
+                    required: "The name is required"
+                  }
+                })}
                 id="name"
                 name="name"
                 type="text"
@@ -151,7 +189,11 @@ export function MyProfile() {
               <label htmlFor="lastName">Last Name</label>
 
               <input
-                ref={register}
+                ref={register({
+                  lastName: {
+                    required: "The lastName is required"
+                  }
+                })}
                 id="lastName"
                 name="lastName"
                 type="text"
@@ -166,6 +208,9 @@ export function MyProfile() {
               <label htmlFor="phone">Telephone</label>
               <input
                 ref={register({
+                  number: {
+                    required: "The number is required"
+                  },
                   pattern: {
                     value: /^\d+$/
                   }
@@ -185,7 +230,11 @@ export function MyProfile() {
               <label htmlFor="address">Address</label>
 
               <input
-                ref={register}
+                ref={register({
+                  address: {
+                    required: "The address is required"
+                  }
+                })}
                 id="address"
                 name="address"
                 type="text"
@@ -200,7 +249,11 @@ export function MyProfile() {
               <label htmlFor="city">City</label>
 
               <input
-                ref={register}
+                ref={register({
+                  city: {
+                    required: "The city is required"
+                  }
+                })}
                 id="city"
                 name="city"
                 type="text"
@@ -215,7 +268,11 @@ export function MyProfile() {
               <label htmlFor="country">Country</label>
 
               <input
-                ref={register}
+                ref={register({
+                  country: {
+                    required: "The country is required"
+                  }
+                })}
                 id="country"
                 name="country"
                 type="text"

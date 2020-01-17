@@ -46,22 +46,6 @@ export function EventDetail() {
             />
             <div>
               <h1>{title}</h1>
-              <p>{start_date}</p>
-              <p>{web}</p>
-              <p>{email}</p>
-              <p>
-                {address}
-                {city} {country}
-              </p>
-              {userType === "Developer" && (
-                <button
-                  className="button-blue"
-                  onClick={() => participationEvent(id)}
-                >
-                  APPLY TO THE HACKATHONE
-                </button>
-              )}
-
               <div className="rating">
                 <input
                   type="radio"
@@ -99,6 +83,21 @@ export function EventDetail() {
                 />
                 <label htmlFor="start5"></label>
               </div>
+              {userType === "Developer" && (
+                <button
+                  className="button-blue"
+                  onClick={() => participationEvent(id)}
+                >
+                  APPLY TO THE HACKATHONE
+                </button>
+              )}
+              <p>{start_date}</p>
+              <p>{web}</p>
+              <p>{email}</p>
+              <p>
+                {address}
+                {city} {country}
+              </p>
             </div>
             <div id="description">
               <Interweave content={description} id="description"></Interweave>

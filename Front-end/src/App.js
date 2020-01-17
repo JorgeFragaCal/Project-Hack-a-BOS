@@ -20,53 +20,55 @@ import { Terms } from "./pages/Terms";
 
 function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <MainMenu />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/newEvent">
-            <NewEvent />
-          </Route>
-          <Route path="/events">
-            <EventsPage />
-          </Route>
-          <Route path="/event/:id">
-            <EventDetail />
-          </Route>
-          <Route path="/about">
-            <AboutUs />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
-          <Route path="/user/:id">
-            <Profile />
-          </Route>
-          <Route path="/myprofile">
-            <MyProfile />
-          </Route>
-          <Route path="/ranking">
-            <RankingPage />
-          </Route>
-          <Route path="/privacy">
-            <Privacy />
-          </Route>
-          <Route path="/terms">
-            <Terms />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
-        <Footer />
-      </AuthProvider>
-    </BrowserRouter>
+    <React.Fragment>
+      <BrowserRouter>
+        <AuthProvider>
+          <MainMenu />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/newEvent">
+              <NewEvent />
+            </Route>
+            <Route path="/events">
+              <EventsPage />
+            </Route>
+            <Route path="/event/:id">
+              <EventDetail />
+            </Route>
+            <Route path="/about">
+              <AboutUs />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/signup">
+              <SignUp />
+            </Route>
+            <Route path="/user/:id">
+              <Profile />
+            </Route>
+            <Route path="/myprofile">
+              <MyProfile />
+            </Route>
+            <Route path="/ranking">
+              <RankingPage />
+            </Route>
+            <Route path="/privacy">
+              <Privacy />
+            </Route>
+            <Route path="/terms">
+              <Terms />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+          <Footer />
+        </AuthProvider>
+      </BrowserRouter>
+    </React.Fragment>
   );
 }
 export default App;

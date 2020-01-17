@@ -81,7 +81,7 @@ async function updateUser(req, res, next) {
         avatar= ?,
         address = ?,
         city = ?,
-        country = ?
+        country = ?,
         anonymous =?
       WHERE id = ?`;
 

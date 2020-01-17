@@ -303,6 +303,7 @@ footer li {
 
 section#privacy {
   grid-template-columns: 1fr;
+  margin: 50px 1rem;
 }
 
 /*--------ABOUT--------*/
@@ -390,6 +391,7 @@ section#about {
 
 section#terms {
   grid-template-columns: 1fr;
+  margin: 50px 1rem;
 }
 
 /*---------LOGIN SIGN IN-----------*/
@@ -474,10 +476,14 @@ section#terms {
   background-position: top;
   height: 500px;
 }
-
+#event-detail h1,
+#event-detail p {
+  text-align: center;
+}
 #description {
   grid-column: -1/1;
 }
+
 /*.............PAGE OF EVENTS..........*/
 
 #main-page-of-events {
@@ -505,8 +511,10 @@ section#terms {
 
 /*-------------------------RATING------------------*/
 .rating {
-  transform: translate(-43%) rotateY(180deg);
+  transform: rotateY(180deg);
   display: flex;
+  justify-content: center;
+  margin: 1rem;
 }
 .rating input {
   display: none;
@@ -555,6 +563,14 @@ section#terms {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
+#anonymouss {
+  display: flex;
+}
+#anonymouss label {
+  margin: 0 auto;
+  height: initial;
+  width: initial;
+}
 .radio {
   margin: 1rem auto 0;
 }
@@ -578,7 +594,8 @@ section#terms {
   background-color: #eeeeee;
   transition: 0.5s;
 }
-.radio label .fab {
+.radio label .fab,
+.radio label .fas {
   color: coral;
   font-size: 2rem;
 }
@@ -887,6 +904,7 @@ button {
   }
   .profile {
     grid-template-columns: 1fr;
+    min-width: inherit;
   }
   #section-user-ranking {
     grid-template-columns: 1fr;
