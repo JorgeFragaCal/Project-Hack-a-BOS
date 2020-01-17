@@ -48,7 +48,7 @@ export function Footer() {
             <li>
               <a href="mailto: info@hackathones.com">
                 <i className="fa fa-envelope fa-fw" />
-                info@hackathons.com
+                info@hackathones.com
               </a>
             </li>
             <li>

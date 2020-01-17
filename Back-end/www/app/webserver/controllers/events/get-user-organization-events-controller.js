@@ -7,10 +7,8 @@ async function getUserOrganizateEvent(req, res, next) {
   const { id } = req.params;
   try {
     const sqlQuery = `SELECT title, image,id
-    FROM user_organizate_event 
-    INNER JOIN events 
-    ON user_organizate_event.events_idevents = events.id
-    WHERE user_organizate_event.user_iduser = ?
+    FROM  events 
+    WHERE creator = ?
      ;`;
 
     const connection = await mysqlPool.getConnection();

@@ -33,12 +33,12 @@ export function NewEvent() {
         <fieldset>
           <i className="fa fa-upload fa-fw "></i>
           <input type="file" name="image" id="image" class="inputfile" />
-          <label for="image">
+          <label htmlFor="image">
             Choose a image <small>(300x300px)</small>
           </label>{" "}
           <i className="fa fa-upload fa-fw"></i>
           <input type="file" name="banner" id="banner" class="inputfile" />
-          <label for="banner">
+          <label htmlFor="banner">
             Choose a banner <small>(1500x500px)</small>
           </label>
         </fieldset>
@@ -61,7 +61,7 @@ export function NewEvent() {
         </fieldset>
 
         <fieldset>
-          <label for="start_date">Start date * :</label>
+          <label htmlFor="start_date">Start date * :</label>
           <input
             ref={register({
               required: "The Date is required"
@@ -141,7 +141,7 @@ export function NewEvent() {
             placeholder="Enter the prize"
           />
         </fieldset>
-        <fieldset class="description">
+        <fieldset className="description">
           <label htmlFor="description">Description</label>
           <input type="textarea" cols="10" rows="10"></input>
           {/* <CKEditor style={{ marginTop: "1rem" }} /> */}

@@ -87,6 +87,9 @@ export function deleteEvent(id) {
 export function participationEvent(id) {
   return axios.post(`${API_BASE_URL}/events/event/${id}`);
 }
+export function organizateEvent(id) {
+  return axios.post(`${API_BASE_URL}/events/event/${id}`);
+}
 export function puntuateEvent(id, assement) {
   return axios.put(
     `${API_BASE_URL}/events/event/rating/${id}/?assement=${assement}`

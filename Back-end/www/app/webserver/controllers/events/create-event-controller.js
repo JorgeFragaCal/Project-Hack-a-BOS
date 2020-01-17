@@ -24,6 +24,7 @@ async function validateSchema(payload) {
 
 async function createEvent(req, res, next) {
   const eventData = { ...req.body };
+  const { userId } = req.claims;
   try {
     await validateSchema(eventData);
   } catch (e) {
@@ -46,7 +47,8 @@ async function createEvent(req, res, next) {
       image: eventData.image,
       email: eventData.email,
       web: eventData.web,
-      prize: eventData.price
+      prize: eventData.price,
+      creator: userId
     });
     connection.release();
 

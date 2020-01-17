@@ -36,44 +36,42 @@ export function SectionUserEvents() {
     <React.Fragment>
       <section id="list-events-profile">
         <h2>Events Created</h2>
-        {events
-          .map(({ id, title, image }, i) => (
-            <section className="event" key={i}>
-              <div
-                className="image"
-                style={{
-                  backgroundImage: `url(${
-                    image === "null" ? "https://via.placeholder.com/300" : image
-                  }`
-                }}
-              />
-              <section id="event-medium-description">
-                <h3>{title}</h3>
-                <div id="buttons">
-                  <button
-                    className="button-edit-event"
-                    onClick={e => {
-                      setOpen(!open);
-                      setOpenedEventId(id);
-                    }}
-                  >
-                    <i className="fas fa-edit "></i>
-                  </button>
-                  <button
-                    className="button-delete-event"
-                    onClick={() => {
-                      deleteEvent(id).then(() => {
-                        setEvents(events.filter(e => e.id !== id));
-                      });
-                    }}
-                  >
-                    <i className="fas fa-trash"></i>
-                  </button>
-                </div>
-              </section>
+        {events.map(({ id, title, image }, i) => (
+          <section className="event" key={i}>
+            <div
+              className="image"
+              style={{
+                backgroundImage: `url(${
+                  image === "null" ? "https://via.placeholder.com/300" : image
+                }`
+              }}
+            />
+            <section id="event-medium-description">
+              <h3>{title}</h3>
+              <div id="buttons">
+                <button
+                  className="button-edit-event"
+                  onClick={e => {
+                    setOpen(!open);
+                    setOpenedEventId(id);
+                  }}
+                >
+                  <i className="fas fa-edit "></i>
+                </button>
+                <button
+                  className="button-delete-event"
+                  onClick={() => {
+                    deleteEvent(id).then(() => {
+                      setEvents(events.filter(e => e.id !== id));
+                    });
+                  }}
+                >
+                  <i className="fas fa-trash"></i>
+                </button>
+              </div>
             </section>
-          ))
-          .slice(0, 4)}
+          </section>
+        ))}
       </section>
       <section id="create-event" className="auth">
         <form
