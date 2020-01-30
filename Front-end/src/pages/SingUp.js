@@ -13,7 +13,7 @@ export function SignUp() {
 
   const handleSignUp = formData => {
     return signUp(formData)
-      .then(window.alert("Account created"))
+      .then()
 
       .then(history.push("/login"))
       .catch(error => {

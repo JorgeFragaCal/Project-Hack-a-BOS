@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 const AuthContext = React.createContext();
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-/*Decodificamos el token para saber el rol */
+/*------------------------------------ */
 export function tokenDecoded(token) {
   if (currentUser !== null) {
     const { userType } = decode(currentUser.token);
@@ -41,14 +41,13 @@ export function AuthProvider({ children }) {
   };
 
   const signUp = async ({
-    id,
     username,
     name,
     lastName,
     email,
     phone,
     password,
-    image,
+    avatar,
     address,
     city,
     country,
@@ -56,16 +55,15 @@ export function AuthProvider({ children }) {
   }) => {
     try {
       const {
-        data: { dataUser }
+        data: { dataUser, token }
       } = await register({
-        id,
         username,
         name,
         lastName,
         email,
         phone,
         password,
-        image,
+        avatar,
         address,
         city,
         country,
@@ -74,6 +72,9 @@ export function AuthProvider({ children }) {
       const user = dataUser;
       setUser(user);
       setUserType(userType);
+      if (token) {
+        history.push("/");
+      }
     } catch (error) {
       return Promise.reject(error);
     }
@@ -95,7 +96,6 @@ export function AuthProvider({ children }) {
         setUserType,
         signIn,
         user,
-        setUser,
         signUp,
         logout
       }}

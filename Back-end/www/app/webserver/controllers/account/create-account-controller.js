@@ -64,7 +64,7 @@ async function createAccount(req, res, next) {
   const securePassword = await bcrypt.hash(accountData.password, 10);
 
   try {
-    const verificationCode = cryptoRandomString({ length: 64 });
+    //const verificationCode = cryptoRandomString({ length: 64 });
     const connection = await mysqlPool.getConnection();
     const sqlInsercion = "INSERT INTO user SET ?";
 
@@ -81,8 +81,8 @@ async function createAccount(req, res, next) {
       city: accountData.city,
       country: accountData.country,
       userType: accountData.userType,
-      created_at: createdAt,
-      verification_code: verificationCode
+      created_at: createdAt
+      //verification_code: verificationCode
     });
 
     connection.release();

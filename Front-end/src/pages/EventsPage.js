@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import { filterEvents } from "../http/eventService";
-import { getEvents } from "../http/eventService";
-import { Link } from "react-router-dom";
-import { Selector } from "../components/Selector";
-import { Search } from "../components/Search";
+import { filterEvents } from '../http/eventService';
+import { getEvents } from '../http/eventService';
+import { Link } from 'react-router-dom';
+import { Selector } from '../components/Selector';
+import { Search } from '../components/Search';
 export function EventsPage() {
   const [events, setEvents] = useState([]);
 
-  const [city, setCity] = useState("");
-  const [skill, setSkill] = useState("");
+  const [city, setCity] = useState('');
+  const [skill, setSkill] = useState('');
   // const [data_final, setDateF] = useState("");
   // const [data_start, setDateI] = useState("");
 
@@ -30,14 +30,14 @@ export function EventsPage() {
   }, []);
 
   return (
-    <main id="main-page-of-events">
+    <main id='main-page-of-events'>
       <span />
-      <section className="aside">
+      <section className='aside'>
         <Search text={city} onSearchChange={text => setCity(text)} />
         <Selector type={skill} onSkillChange={e => setSkill(e)} />
       </section>
 
-      <section className=" list-of-events-event-page">
+      <section className=' list-of-events-event-page'>
         {events.map(
           ({
             id,
@@ -51,33 +51,33 @@ export function EventsPage() {
             address,
             country
           }) => (
-            <section className="event-on-event-page" key={id}>
+            <section className='event-on-event-page' key={id}>
               <div
-                className="image-event-page"
+                className='image-event-page'
                 style={{
                   backgroundImage: `url(${image}`
                 }}
               />
-              <section id="event-medium-description">
+              <section id='event-medium-description'>
                 <h3>{title}</h3>
                 <p>{start_date}</p>
                 <p>
-                  {" "}
+                  {' '}
                   {address}
                   {city} {country}
                 </p>
                 <p href={web}>{web}</p>
                 <p>
-                  <i className="fa fa-globe fa-fw"> </i>
+                  <i className='fa fa-globe fa-fw'> </i>
                   {web}
                 </p>
                 <p>
-                  <i className="fa fa-envelope"> </i>
+                  <i className='fa fa-envelope'> </i>
                   {email}
                 </p>
                 <p>Prize: {prize} €</p>
-                <Link to={`/event/${id}`} className="button-blue">
-                  CHEK IT OUT
+                <Link to={`/event/${id}`} className='button-blue'>
+                  CHECK IT OUT
                 </Link>
               </section>
             </section>

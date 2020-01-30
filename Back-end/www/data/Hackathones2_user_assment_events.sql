@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.28, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: Hackathones2
+-- Host: localhost    Database: Hackathones2
 -- ------------------------------------------------------
 -- Server version	5.7.28-0ubuntu0.18.04.4
 
@@ -38,7 +38,7 @@ CREATE TABLE `user_assment_events` (
 
 LOCK TABLES `user_assment_events` WRITE;
 /*!40000 ALTER TABLE `user_assment_events` DISABLE KEYS */;
-INSERT INTO `user_assment_events` VALUES ('1','1','5'),('f9412b20-477d-4016-ae40-4867d3253065','4','5');
+INSERT INTO `user_assment_events` VALUES ('0ca1bc0b-ebdb-473b-8f23-2f8c43591701','3','3'),('0ca1bc0b-ebdb-473b-8f23-2f8c43591701','6','5'),('1','1','5'),('2','1','4'),('f9412b20-477d-4016-ae40-4867d3253065','3','5'),('f9412b20-477d-4016-ae40-4867d3253065','4','3');
 /*!40000 ALTER TABLE `user_assment_events` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-16 21:02:27
+-- Dump completed on 2020-01-30 15:12:52

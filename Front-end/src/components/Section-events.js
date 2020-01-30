@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { getEvents } from "../http/eventService";
-import { Link } from "react-router-dom";
-import aos from "aos";
+import React, { useState, useEffect } from 'react';
+import { getEvents } from '../http/eventService';
+import { Link } from 'react-router-dom';
+import aos from 'aos';
 
 function SectionEvents() {
   const [events, setEvents] = useState([]);
@@ -12,7 +12,7 @@ function SectionEvents() {
     });
   }, []);
   return (
-    <section id="list-events-home">
+    <section id='list-events-home'>
       <h2>New Events</h2>
       {events
         .map(
@@ -29,25 +29,25 @@ function SectionEvents() {
             address
           }) => (
             <section
-              className="event"
+              className='event'
               key={id}
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-easing="ease-in-out"
-              data-aos-once="false"
+              data-aos='fade-up'
+              data-aos-duration='1000'
+              data-aos-easing='ease-in-out'
+              data-aos-once='false'
             >
               <div
-                className="image"
+                className='image'
                 style={{
                   backgroundImage: `url(${
-                    image === "null" ? "https://via.placeholder.com/300" : image
+                    image === 'null' ? 'https://via.placeholder.com/300' : image
                   }`
                 }}
               />
-              <section id="event-medium-description">
+              <section id='event-medium-description'>
                 <h3>{title}</h3>
 
-                <p style={{ textAlign: "center" }}>{start_date}</p>
+                <p style={{ textAlign: 'center' }}>{start_date}</p>
 
                 <p>
                   {address}
@@ -55,16 +55,16 @@ function SectionEvents() {
                 </p>
 
                 <p>
-                  <i className="fa fa-globe fa-fw"> </i>
+                  <i className='fa fa-globe fa-fw'> </i>
                   {web}
                 </p>
                 <p>
-                  <i className="fa fa-envelope fa-fw"> </i>
+                  <i className='fa fa-envelope fa-fw'> </i>
                   {email}
                 </p>
-                <p id="prize">Prize: {prize} €</p>
-                <Link to={`/event/${id}`} className="button-blue">
-                  CHEK IT OUT
+                <p id='prize'>Prize: {prize} €</p>
+                <Link to={`/event/${id}`} className='button-blue'>
+                  CHECK IT OUT
                 </Link>
               </section>
             </section>

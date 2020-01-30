@@ -29,6 +29,12 @@ h2 {
 h3 {
   margin-top: 1rem;
 }
+h4 {
+  text-align: center;
+  color: coral;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
 
 p {
   margin: 1rem;
@@ -67,8 +73,8 @@ ol li {
 }
 table {
   border-collapse: collapse;
-  width: 100%;
-  margin: 1rem 0;
+
+  margin: 1rem auto;
 }
 
 th,
@@ -91,6 +97,9 @@ input {
   text-indent: 0.5rem;
   padding: 0.8rem;
   width: 100%;
+}
+input::placeholder {
+  color: #eeeeee;
 }
 
 input[type="checkbox"] {
@@ -348,6 +357,44 @@ section#about {
   max-width: 1300px;
   margin: 50px auto;
 }
+.alert {
+  padding: 1rem;
+  width: 100%;
+  background-color: coral;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -100%);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+#close {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #eeeeee;
+  position: fixed;
+  right: 10px;
+}
+#close:hover {
+  background-color: #eeeeee;
+  color: coral;
+}
+#confirm {
+  width: 50px;
+  height: 20px;
+  border-radius: 1%;
+  background-color: transparent;
+  border: 1px solid #eeeeee;
+  margin-left: 1rem;
+  font-weight: bold;
+}
+#confirm:hover {
+  background-color: #eeeeee;
+  color: coral;
+}
 .profile {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -406,7 +453,7 @@ section#terms {
 }
 .errorMessage {
   font-size: 0.8rem;
-  color: #d0373f;
+  color: coral;
 }
 .inputfile {
   display: none;
@@ -476,12 +523,15 @@ section#terms {
   background-position: top;
   height: 500px;
 }
-#event-detail h1,
-#event-detail p {
+#event-detail > div > h1,
+#event-detail > div > p {
   text-align: center;
 }
 #description {
   grid-column: -1/1;
+  max-width: 700px;
+  text-align: justify;
+  margin: 1rem auto;
 }
 
 /*.............PAGE OF EVENTS..........*/
@@ -814,6 +864,21 @@ button {
     grid-template-columns: 1fr 1fr 1fr;
     margin: 0 auto;
   }
+  .aside {
+    display: none;
+  }
+  #main-page-of-events {
+    grid-template-columns: 1fr;
+  }
+  #list-events-profile {
+    grid-template-columns: 1fr 1fr;
+  }
+  #companies {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  #list-page-of-rankings {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 @media only screen and (max-width: 640px) {
@@ -907,6 +972,15 @@ button {
     min-width: inherit;
   }
   #section-user-ranking {
+    grid-template-columns: 1fr;
+  }
+  #list-events-profile {
+    grid-template-columns: 1fr;
+  }
+  #companies {
+    grid-template-columns: 1fr;
+  }
+  #team {
     grid-template-columns: 1fr;
   }
 }

@@ -11,6 +11,10 @@ async function getEvents() {
   const response = await axios.get(`${API_BASE_URL}/events`);
   return response.data.data || [];
 }
+async function getAssement(id) {
+  const response = await axios.get(`${API_BASE_URL}/events/assement/${id}`);
+  return response.data.data || [];
+}
 
 async function getUserOrganizateEvents(id) {
   const response = await axios.get(
@@ -43,13 +47,13 @@ export function createEvent({
     title,
     start_date,
     email,
-    address: address ? address : "null",
-    city: city ? city : "null",
-    country: country ? country : "null",
-    description: description ? description : "null",
+    address: address ? address : " ",
+    city: city ? city : " ",
+    country: country ? country : " ",
+    description: description ? description : " ",
     image: image ? image : "https://via.placeholder.com/300",
     prize: prize ? prize : "free",
-    web: web ? web : "null"
+    web: web ? web : " "
   });
 }
 
@@ -96,4 +100,10 @@ export function puntuateEvent(id, assement) {
   );
 }
 
-export { getEvent, getEvents, filterEvents, getUserOrganizateEvents };
+export {
+  getEvent,
+  getEvents,
+  filterEvents,
+  getUserOrganizateEvents,
+  getAssement
+};

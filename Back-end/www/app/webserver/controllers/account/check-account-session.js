@@ -3,10 +3,6 @@
 const jwt = require("jsonwebtoken");
 
 async function checkAccountSession(req, res, next) {
-  /*
-  Miramos el header que contiene el token del id codificado
-  Comprobamos que coincide con el del usuario logeado
-  */
   const { authorization } = req.headers;
   if (!authorization) {
     return res.status(401).send();

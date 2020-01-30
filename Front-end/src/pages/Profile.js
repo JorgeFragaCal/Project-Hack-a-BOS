@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { getProfile } from "../http/index";
+import { getProfile, getPuntuation } from "../http/index";
 import { useParams } from "react-router-dom";
 import SectionUserRanking from "../components/Section-User-Ranking";
 
 export function Profile() {
   const [profile, setProfile] = useState([]);
+  const [puntuation, setPuntuation] = useState([]);
   const params = useParams();
 
   useEffect(() => {
     getProfile(params.id).then(profile => {
       setProfile(profile);
+    });
+  }, [params.id]);
+  useEffect(() => {
+    getPuntuation(params.id).then(puntuation => {
+      setPuntuation(puntuation);
     });
   }, [params.id]);
 
@@ -27,8 +33,7 @@ export function Profile() {
           avatar,
           address,
           city,
-          country,
-          puntuation
+          country
         }) => (
           <section className="profile">
             <div
@@ -40,7 +45,9 @@ export function Profile() {
               }}
             />
             <section id="user-data">
-              <h2>250{puntuation}</h2>
+              {puntuation.map(({ puntuation }) => (
+                <h2>{puntuation}</h2>
+              ))}
               <h1>{username}</h1>
               <h3>
                 {name} {lastName}

@@ -2,19 +2,20 @@ import React, { useState, useEffect } from "react";
 import { getUserOrganizateEvents, deleteEvent } from "../http/eventService";
 import { useAuth } from "../shared/context/auth-context";
 // import CKEditor from "../../node_modules/ckeditor4-react";
-import { useHistory } from "react-router-dom";
 import useForm from "react-hook-form";
 import { uploadEvent } from "../http/index";
+import { EVENT_VALIDATIONS } from "../shared/validations";
 
 export function SectionUserEvents() {
   const { user } = useAuth();
   const [events, setEvents] = useState([]);
   const [open, setOpen] = useState(true);
+  const [hide, setHide] = useState(true);
+  const [hideAlert, setHideAlert] = useState(true);
   const [openedEventId, setOpenedEventId] = useState(null);
   const { register, errors, handleSubmit, formState } = useForm({
     mode: "onBlur"
   });
-  const history = useHistory();
 
   const updateEvent = formData => {
     const payload = {
@@ -22,8 +23,9 @@ export function SectionUserEvents() {
       eventId: openedEventId
     };
     return uploadEvent(payload)
-      .then(window.alert("Account upload"))
-      .then(history.push("/myprofile"));
+      .then(setOpen(!open))
+      .then(setHideAlert(!hideAlert))
+      .then(setTimeout(a => window.location.reload(), 2000));
   };
 
   useEffect(() => {
@@ -38,6 +40,30 @@ export function SectionUserEvents() {
         <h2>Events Created</h2>
         {events.map(({ id, title, image }, i) => (
           <section className="event" key={i}>
+            <div className={` ${hide ? "uploadinfo " : "alert"}`}>
+              are you sure you want to delete this event?
+              <button
+                id="confirm"
+                onClick={() => {
+                  deleteEvent(id).then(() => {
+                    setEvents(events.filter(e => e.id !== id));
+                  });
+                  setHide(!hide);
+                }}
+              >
+                {" "}
+                YES{" "}
+              </button>
+              <button
+                id="close"
+                onClick={() => {
+                  setHide(!hide);
+                }}
+              >
+                {" "}
+                X{" "}
+              </button>
+            </div>
             <div
               className="image"
               style={{
@@ -60,11 +86,7 @@ export function SectionUserEvents() {
                 </button>
                 <button
                   className="button-delete-event"
-                  onClick={() => {
-                    deleteEvent(id).then(() => {
-                      setEvents(events.filter(e => e.id !== id));
-                    });
-                  }}
+                  onClick={e => setHide(!hide)}
                 >
                   <i className="fas fa-trash"></i>
                 </button>
@@ -74,6 +96,13 @@ export function SectionUserEvents() {
         ))}
       </section>
       <section id="create-event" className="auth">
+        <div className={` ${hideAlert ? "uploadinfo" : "alert"}`}>
+          Event upload
+          <button id="close" onClick={e => setHideAlert(!hideAlert)}>
+            {" "}
+            X{" "}
+          </button>
+        </div>
         <form
           className={` ${open ? "uploadinfo" : "col-4"}`}
           onSubmit={handleSubmit(updateEvent)}
@@ -87,9 +116,7 @@ export function SectionUserEvents() {
           <fieldset className="name-event">
             <label htmlFor="title"> Hackathone title * :</label>
             <input
-              ref={register({
-                required: "The title is required"
-              })}
+              ref={register(EVENT_VALIDATIONS.title)}
               type="text"
               name="title"
               id="title"
@@ -104,9 +131,7 @@ export function SectionUserEvents() {
           <fieldset>
             <label htmlFor="start_date">Start date * :</label>
             <input
-              ref={register({
-                required: "The Date is required"
-              })}
+              ref={register(EVENT_VALIDATIONS.start_date)}
               type="date"
               name="start_date"
               id="start_date"
@@ -118,9 +143,7 @@ export function SectionUserEvents() {
           <fieldset>
             <label htmlFor="email">Email * :</label>
             <input
-              ref={register({
-                required: "The email is required"
-              })}
+              ref={register(EVENT_VALIDATIONS.email)}
               type="email"
               name="email"
               id="email"

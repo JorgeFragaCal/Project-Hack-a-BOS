@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { getEvent, participationEvent, puntuateEvent } from "../http/index";
+import {
+  getEvent,
+  participationEvent,
+  puntuateEvent,
+  getAssement
+} from "../http/index";
 import { useParams } from "react-router-dom";
 import Interweave from "interweave";
 import { useAuth } from "../shared/context/auth-context";
 
 export function EventDetail() {
   const [eventDetail, setEventDetail] = useState([]);
+  const [eventAssement, setEventAssement] = useState([]);
   const params = useParams();
   const { userType } = useAuth();
+
   useEffect(() => {
     getEvent(params.id).then(eventDetail => {
       setEventDetail(eventDetail);
+    });
+  }, [params.id]);
+
+  useEffect(() => {
+    getAssement(params.id).then(eventAssement => {
+      setEventAssement(eventAssement);
     });
   }, [params.id]);
 
@@ -83,12 +96,17 @@ export function EventDetail() {
                 />
                 <label htmlFor="start5"></label>
               </div>
+              <div>
+                {eventAssement.map(({ assement }) => (
+                  <h4> {assement} / 5</h4>
+                ))}
+              </div>
               {userType === "Developer" && (
                 <button
                   className="button-blue"
                   onClick={() => participationEvent(id)}
                 >
-                  APPLY TO THE HACKATHONE
+                  PARTICIPATE IN THE HACKATHONE
                 </button>
               )}
               <p>{start_date}</p>
@@ -98,6 +116,7 @@ export function EventDetail() {
                 {address}
                 {city} {country}
               </p>
+              <h4>{prize} €</h4>
             </div>
             <div id="description">
               <Interweave content={description} id="description"></Interweave>

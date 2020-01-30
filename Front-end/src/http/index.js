@@ -8,15 +8,19 @@ import {
   deleteEvent,
   uploadEvent,
   participationEvent,
-  puntuateEvent
+  puntuateEvent,
+  getAssement
 } from "./eventService";
-import { getProfile, uploadAccount } from "./accountService";
-
-const TOKEN_URLS = ["/auth", "/users"];
+import {
+  getProfile,
+  uploadAccount,
+  uploadAvatar,
+  getPuntuation
+} from "./accountService";
 
 function isBearerTokenRequired(url) {
   const parsedURL = new URL(url);
-  if (TOKEN_URLS.includes(parsedURL.pathname)) {
+  if (["/auth", "/users"].includes(parsedURL.pathname)) {
     return false;
   }
   return true;
@@ -49,7 +53,7 @@ axios.interceptors.response.use(
   function(error) {
     if (
       error.response.status === 401 &&
-      error.config.url.indexOf(TOKEN_URLS) === -1
+      error.config.url.indexOf("/auth") === -1
     ) {
       localStorage.removeItem("currentUser");
       window.location.href = "/login";
@@ -72,5 +76,8 @@ export {
   getProfile,
   uploadAccount,
   participationEvent,
-  puntuateEvent
+  puntuateEvent,
+  getAssement,
+  uploadAvatar,
+  getPuntuation
 };

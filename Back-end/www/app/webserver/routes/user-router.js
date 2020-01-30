@@ -4,6 +4,7 @@ const multer = require("multer");
 const checkAccountSession = require("../controllers/account/check-account-session");
 const uploadAvatar = require("../controllers/user/upload-avatar-controller");
 const getUser = require("../controllers/user/get-user-controller");
+const getPuntuation = require("../controllers/user/get-puntuation-controller");
 const updateUser = require("../controllers/user/update-user-controller");
 
 /*Create object multer*/
@@ -17,5 +18,6 @@ router.post(
   uploadAvatar
 );
 router.get("/:id", getUser);
+router.get("/puntuation/:id", getPuntuation);
 router.put("/", checkAccountSession, updateUser);
 module.exports = router;

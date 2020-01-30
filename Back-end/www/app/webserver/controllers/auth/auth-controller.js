@@ -12,8 +12,7 @@ async function validateSchema(payload) {
       .required(),
     password: Joi.string()
       .regex(/^[a-zA-Z0-9]{3,30}$/)
-      .required(),
-    userType: Joi.string()
+      .required()
   });
 
   Joi.assert(payload, schema);
@@ -34,15 +33,15 @@ async function login(req, res, next) {
       WHERE email = '${authData.email}'`;
 
     const connection = await mysqlPool.getConnection();
-    const [dataUser] = await connection.query(sqlQuery);
+    const [result] = await connection.query(sqlQuery);
 
     connection.release();
 
-    if (dataUser.length !== 1) {
+    if (result.length !== 1) {
       return res.status(401).send("Account does not exist");
     }
 
-    const userData = dataUser[0];
+    const userData = result[0];
 
     const isPassworkOk = await bcrypt.compare(
       authData.password,
@@ -62,6 +61,7 @@ async function login(req, res, next) {
       expiresIn: jwtExpiresIn
     });
 
+    /*------------------------------------------------------------*/
     const response = {
       token,
       expiresIn: jwtExpiresIn,

@@ -3,7 +3,9 @@ const cloudinary = require("cloudinary");
 const Joi = require("@hapi/joi");
 const mysqlPool = require("../../../database/mysql-pool");
 cloudinary.config({
-  /**/
+  cloud_name: process.env.CLOUDINARI_CLOUD_NAME,
+  api_key: process.env.CLOUDINARI_API_KEY,
+  api_secret: process.env.CLOUDINARI_API_SECRET
 });
 
 async function validate(payload) {
@@ -36,8 +38,8 @@ async function uploadAvatar(res, req, next) {
       {
         resource_type: "image",
         public_id: userId,
-        width: 200,
-        height: 200,
+        width: 300,
+        height: 300,
         format: "jpg",
         crop: "limit"
       },
@@ -62,6 +64,5 @@ async function uploadAvatar(res, req, next) {
       }
     )
     .end(file.buffer);
-  /*.buffer son los numeros que representan los pixeles de la img*/
 }
 module.exports = uploadAvatar;

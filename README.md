@@ -1,2 +1,2 @@
-# Project-Hack-a-BOS
+# Proyect-Hack-a-BOS
 Final project on the bootcamp from Hack to BOS
