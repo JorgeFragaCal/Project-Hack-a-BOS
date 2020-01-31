@@ -74,8 +74,8 @@ export function MyProfile() {
                 }}
               />
               <section id="user-data">
-                {puntuation.map(({ puntuation }) => (
-                  <h2>{puntuation}</h2>
+                {puntuation.map(({ puntuation }, i) => (
+                  <h2 key={i}>{puntuation}</h2>
                 ))}
                 <h1>{username}</h1>
                 <h3>
@@ -180,11 +180,7 @@ export function MyProfile() {
                 <label htmlFor="name">Name</label>
 
                 <input
-                  ref={register({
-                    name: {
-                      required: "The name is required"
-                    }
-                  })}
+                  ref={register({})}
                   id="name"
                   name="name"
                   type="text"

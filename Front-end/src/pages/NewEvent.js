@@ -42,7 +42,7 @@ export function NewEvent() {
           <i className="fa fa-upload fa-fw"></i>
           <input type="file" name="banner" id="banner" className="inputfile" />
           <label htmlFor="banner">
-            Choose a banner <small>(1500x500px)</small>
+            Choose a banner <small>(1920x600px)</small>
           </label>
         </fieldset>
 
@@ -141,6 +141,7 @@ export function NewEvent() {
         <fieldset className="description">
           <label htmlFor="description">Description</label>
           <input
+            ref={register}
             type="textarea"
             name="description"
             id="description"

@@ -39,9 +39,9 @@ export function createEvent({
   country,
   description,
   image,
-  banner,
   prize,
-  web
+  web,
+  banner
 }) {
   return axios.post(`${API_BASE_URL}/events/new`, {
     title,
@@ -53,7 +53,8 @@ export function createEvent({
     description: description ? description : " ",
     image: image ? image : "https://via.placeholder.com/300",
     prize: prize ? prize : "free",
-    web: web ? web : " "
+    web: web ? web : " ",
+    banner: banner ? banner : "https://via.placeholder.com/1960x600"
   });
 }
 
@@ -74,13 +75,13 @@ export function uploadEvent({
     title,
     start_date,
     email,
-    address: address ? address : "null",
-    city: city ? city : "null",
-    country: country ? country : "null",
-    description: description ? description : "null",
+    address: address ? address : " ",
+    city: city ? city : " ",
+    country: country ? country : " ",
+    description: description ? description : " ",
     image: image ? image : "https://via.placeholder.com/300",
     prize: prize ? prize : "free",
-    web: web ? web : "null"
+    web: web ? web : " "
   });
 }
 

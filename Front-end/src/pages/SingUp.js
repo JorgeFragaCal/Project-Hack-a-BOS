@@ -36,7 +36,7 @@ export function SignUp() {
             <label htmlFor="username">Username</label>
 
             <input
-              ref={register(REGISTER_VALIDATIONS.name)}
+              ref={register(REGISTER_VALIDATIONS.username)}
               id="username"
               name="username"
               type="text"
@@ -107,7 +107,7 @@ export function SignUp() {
             <label htmlFor="name">Name</label>
 
             <input
-              ref={register()}
+              ref={register({})}
               id="name"
               name="name"
               type="text"
@@ -122,7 +122,7 @@ export function SignUp() {
             <label htmlFor="lastName">Last Name</label>
 
             <input
-              ref={register()}
+              ref={register}
               id="lastName"
               name="lastName"
               type="text"
@@ -157,7 +157,7 @@ export function SignUp() {
             <label htmlFor="address">Address</label>
 
             <input
-              ref={register()}
+              ref={register}
               id="address"
               name="address"
               type="text"
@@ -172,7 +172,7 @@ export function SignUp() {
             <label htmlFor="city">City</label>
 
             <input
-              ref={register()}
+              ref={register}
               id="city"
               name="city"
               type="text"
@@ -187,7 +187,7 @@ export function SignUp() {
             <label htmlFor="country">Country</label>
 
             <input
-              ref={register()}
+              ref={register}
               id="country"
               name="country"
               type="text"

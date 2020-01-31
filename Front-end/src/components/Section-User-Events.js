@@ -109,9 +109,21 @@ export function SectionUserEvents() {
         >
           <h2>Cover all fields</h2>
           <fieldset>
-            <i className="fa fa-upload fa-fw"></i>
+            <i className="fa fa-upload fa-fw "></i>
             <input type="file" name="image" id="image" className="inputfile" />
-            <label htmlFor="image">Choose a image</label>
+            <label htmlFor="image">
+              Choose a image <small>(300x300px)</small>
+            </label>{" "}
+            <i className="fa fa-upload fa-fw"></i>
+            <input
+              type="file"
+              name="banner"
+              id="banner"
+              className="inputfile"
+            />
+            <label htmlFor="banner">
+              Choose a banner <small>(1920x600px)</small>
+            </label>
           </fieldset>
           <fieldset className="name-event">
             <label htmlFor="title"> Hackathone title * :</label>
@@ -206,6 +218,13 @@ export function SectionUserEvents() {
             />
             <fieldset className="description">
               <label htmlFor="description">Description</label>
+              <input
+                ref={register}
+                type="textarea"
+                name="description"
+                id="description"
+                placeholder="Enter the description"
+              ></input>
               {/* <CKEditor style={{ marginTop: "1rem" }} /> */}
             </fieldset>
           </fieldset>

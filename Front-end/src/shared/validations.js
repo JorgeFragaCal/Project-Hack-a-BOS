@@ -16,8 +16,8 @@ export const LOGIN_VALIDATIONS = {
 };
 
 export const REGISTER_VALIDATIONS = {
-  name: {
-    required: "The name is required"
+  username: {
+    required: "The username is required"
   },
   email: {
     required: "The email is required",

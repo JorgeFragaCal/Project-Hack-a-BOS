@@ -6,49 +6,40 @@ const mysqlPool = require("../../../database/mysql-pool");
 async function validateSchema(payload) {
   const schema = Joi.object({
     title: Joi.string()
-      .trim()
       .min(1)
       .max(45)
       .required(),
     start_date: Joi.string()
-      .trim()
       .min(1)
       .max(45)
       .required(),
     address: Joi.string()
-      .trim()
       .min(1)
       .max(45),
     city: Joi.string()
-      .trim()
       .min(1)
       .max(45),
     country: Joi.string()
-      .trim()
       .min(1)
       .max(45),
     description: Joi.string()
-      .trim()
       .min(1)
       .max(65536),
     image: Joi.string()
-      .trim()
       .min(1)
       .max(65536),
     email: Joi.string()
-      .trim()
       .min(1)
       .max(45)
       .email()
       .required(),
     prize: Joi.string()
-      .trim()
       .min(1)
       .max(45),
     web: Joi.string()
-      .trim()
       .min(1)
-      .max(45)
+      .max(45),
+    banner: Joi.string()
   });
 
   Joi.assert(payload, schema);
